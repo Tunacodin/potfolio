@@ -1,68 +1,119 @@
-import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import videoFile from "./videos/0221.mov";
 
 export function Hero() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0]);
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
-          <div className="space-y-2">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight">
-              Tuna
-              <br />
-              <span className="text-purple-400">BOSTANCIBAŞI</span>
+    <section ref={containerRef} className="relative h-screen w-screen overflow-hidden">
+      {/* Video Background with Parallax */}
+      <motion.div
+        style={{ scale: videoScale }}
+        className="absolute inset-0 w-full h-full z-0"
+      >
+        <video
+          src={videoFile}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
+      </motion.div>
+      
+      {/* Smooth Dark Overlay - Eventis Style */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black z-0" />
+      
+      {/* Content */}
+      <motion.div
+        style={{ y: contentY, opacity }}
+        className="relative z-10 h-screen flex items-center justify-center px-6"
+      >
+        <div className="max-w-5xl w-full space-y-8">
+          {/* Subtitle Line */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex items-center gap-3"
+          >
+            <div className="w-8 h-px bg-gradient-to-r from-blue-500 to-blue-300" />
+            <span className="text-sm md:text-base font-light tracking-widest text-gray-300">
+              MOBILE-FIRST ENGINEER
+            </span>
+          </motion.div>
+
+          {/* Main Title - Gradient Typography */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-4"
+          >
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-light leading-tight text-white tracking-tight">
+              TUNA <br />
+              <span className="bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
+                BOSTANCIBAŞI
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-400">
-              Mobile-First Product Engineer
-            </p>
-          </div>
+          </motion.div>
 
-          <p className="text-base sm:text-lg text-gray-300 max-w-xl leading-relaxed">
-            I build scalable mobile applications with clean backend architecture and automation-driven workflows.
-          </p>
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed"
+          >
+            Building scalable mobile applications with domain-driven architecture and clean backend systems.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          {/* CTA Buttons - Eventis Style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-wrap gap-4 pt-8"
+          >
             <a
               href="#work"
-              className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg flex items-center justify-center gap-2 transition-colors group"
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
             >
-              View Selected Work
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              View Work
             </a>
             <a
               href="#contact"
-              className="px-6 py-3 border border-white/20 hover:border-purple-500/50 rounded-lg transition-colors text-center"
+              className="px-8 py-3 border border-gray-500 text-white font-medium rounded-full hover:border-white hover:bg-white/10 transition-all duration-300"
             >
-              Book a Call
+              Get in Touch
             </a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative hidden lg:block"
-        >
-          <div className="relative rounded-2xl overflow-hidden border border-white/10">
-            <video
-              src={videoFile}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-          </div>
-        </motion.div>
-      </div>
+      {/* Scroll Indicator - Eventis Style */}
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+      >
+        <div className="w-6 h-10 border border-white/50 rounded-full flex items-start justify-center pt-2">
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1 h-1 bg-white rounded-full"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }

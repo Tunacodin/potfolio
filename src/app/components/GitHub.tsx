@@ -1,36 +1,43 @@
 import { motion } from "motion/react";
-import { Github, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export function GitHub() {
   return (
-    <section className="py-32 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-32 px-6 bg-black relative overflow-hidden">
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-8"
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-12 border border-gray-800 rounded-lg p-12 md:p-20 hover:border-blue-600/50 hover:bg-blue-600/5 transition-all duration-300"
         >
-          <Github className="w-16 h-16 mx-auto text-purple-400" />
-          
           <div className="space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold">Code & Architecture</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Explore selected repositories demonstrating modular architecture, clean code structure, and scalable backend design.
-            </p>
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-8 h-px bg-gradient-to-r from-blue-600 to-blue-400" />
+              <span className="text-sm font-light tracking-widest text-gray-400">CODE & ARCHITECTURE</span>
+              <div className="w-8 h-px bg-gradient-to-l from-blue-600 to-blue-400" />
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+              Explore My Repository
+            </h2>
           </div>
 
-          <a
-            href="https://github.com"
+          <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+            Demonstrating modular architecture, clean code structure, and scalable backend design patterns.
+          </p>
+
+          <motion.a
+            href="https://github.com/Tunacodin"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 hover:border-purple-500/50 rounded-lg transition-colors group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 group"
           >
-            <Github className="w-5 h-5" />
-            <span>View GitHub Profile</span>
-            <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
+            View GitHub Profile
+            <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </motion.a>
         </motion.div>
       </div>
     </section>
