@@ -3,14 +3,27 @@ import { ExternalLink } from "lucide-react";
 
 export function GitHub() {
   return (
-    <section className="py-32 px-6 bg-black relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-32 px-6 bg-gradient-to-b from-black via-blue-950/20 to-black relative overflow-hidden">
+      {/* Geometric Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute -top-32 -right-32 w-64 h-64 rounded-3xl border border-blue-500/15"
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute -bottom-32 -left-32 w-72 h-72 rounded-3xl border border-blue-400/10"
+          animate={{ rotate: [360, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center space-y-12 border border-gray-800 rounded-lg p-12 md:p-20 hover:border-blue-600/50 hover:bg-blue-600/5 transition-all duration-300"
+          className="text-center space-y-12 border border-gray-800/50 rounded-2xl p-12 md:p-20 bg-gradient-to-br from-gray-900/30 to-black/20 backdrop-blur-sm hover:border-blue-600/40 hover:bg-blue-600/10 transition-all duration-500"
         >
           <div className="space-y-4">
             <div className="flex items-center justify-center gap-3">

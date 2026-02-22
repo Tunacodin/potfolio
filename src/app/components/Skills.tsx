@@ -16,8 +16,21 @@ export function Skills() {
   });
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 bg-black relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} className="py-32 px-6 bg-gradient-to-b from-black via-blue-950/20 to-black relative overflow-hidden">
+      {/* Geometric Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/3 -right-48 w-96 h-96 rounded-3xl border border-blue-500/10"
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 -left-48 w-80 h-80 rounded-3xl border border-blue-400/5"
+          animate={{ rotate: [360, 0] }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}

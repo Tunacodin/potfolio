@@ -15,6 +15,20 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative h-screen w-screen overflow-hidden">
+      {/* Geometric 3D Background Elements */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        <motion.div
+          className="absolute -top-1/3 -right-1/4 w-96 h-96 rounded-3xl border border-blue-500/10 backdrop-blur-3xl"
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute -bottom-1/3 -left-1/4 w-80 h-80 rounded-3xl border border-blue-400/5 backdrop-blur-3xl"
+          animate={{ rotate: [360, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
       {/* Video Background with Parallax */}
       <motion.div
         style={{ scale: videoScale }}
@@ -30,8 +44,12 @@ export function Hero() {
         />
       </motion.div>
       
-      {/* Smooth Dark Overlay - Eventis Style */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black z-0" />
+      {/* Sophisticated Gradient Overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 backdrop-blur-[1px]" />
+      </div>
       
       {/* Content */}
       <motion.div

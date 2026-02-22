@@ -11,7 +11,20 @@ export function About() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 
   return (
-    <section ref={sectionRef} id="about" className="py-32 px-6 bg-black relative overflow-hidden">
+    <section ref={sectionRef} className="relative py-32 px-6 bg-gradient-to-b from-black via-blue-950/20 to-black overflow-hidden">
+      {/* Geometric Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-40 -right-40 w-80 h-80 rounded-3xl border border-blue-500/10 backdrop-blur-3xl"
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-3xl border border-blue-400/5 backdrop-blur-3xl"
+          animate={{ rotate: [360, 0] }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
       <div className="max-w-6xl mx-auto">
         {/* Title Section */}
         <motion.div

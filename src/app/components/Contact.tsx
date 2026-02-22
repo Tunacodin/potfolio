@@ -25,8 +25,21 @@ const contacts = [
 
 export function Contact() {
   return (
-    <section id="contact" className="py-32 px-6 bg-white relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="py-32 px-6 bg-gradient-to-b from-white via-blue-50/20 to-white relative overflow-hidden">
+      {/* Geometric Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/2 -right-40 w-80 h-80 rounded-3xl border border-blue-300/20"
+          animate={{ y: [0, 30, 0] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-0 -left-40 w-72 h-72 rounded-3xl border border-blue-200/15"
+          animate={{ y: [30, 0, 30] }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -59,13 +72,13 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="p-8 md:p-10 border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-lg hover:bg-blue-50/50 transition-all duration-300 group"
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="p-8 md:p-10 border border-gray-200/50 rounded-2xl hover:border-blue-400/60 bg-gradient-to-br from-white/60 to-gray-50/40 backdrop-blur-sm hover:bg-blue-50/70 hover:shadow-xl hover:shadow-blue-200/40 transition-all duration-400 group cursor-pointer"
             >
-              <p className="text-sm font-light text-gray-600 group-hover:text-blue-600 mb-2 tracking-widest">
+              <p className="text-sm font-light text-gray-600 group-hover:text-blue-700 mb-2 tracking-widest uppercase">
                 {contact.label}
               </p>
-              <p className="text-lg md:text-xl font-medium text-black group-hover:text-blue-600 transition-colors">
+              <p className="text-lg md:text-xl font-medium text-black group-hover:text-blue-700 transition-colors">
                 {contact.value}
               </p>
             </motion.a>

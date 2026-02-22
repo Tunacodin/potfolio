@@ -30,8 +30,21 @@ export function TechStack() {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 bg-white relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} className="py-32 px-6 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden">
+      {/* Geometric Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 -right-32 w-64 h-64 rounded-3xl border border-blue-300/20 backdrop-blur-sm"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -left-32 w-64 h-64 rounded-3xl border border-blue-200/15 backdrop-blur-sm"
+          animate={{ y: [20, 0, 20] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -65,10 +78,10 @@ export function TechStack() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
-                    whileHover={{ y: -4 }}
-                    className="p-4 md:p-6 border border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50/50 transition-all duration-300 group"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className="p-4 md:p-6 border border-gray-200/50 rounded-xl hover:border-blue-400/60 bg-gradient-to-br from-white/60 to-gray-50/40 backdrop-blur-sm hover:bg-blue-50/70 hover:shadow-lg hover:shadow-blue-200/30 transition-all duration-400 group cursor-pointer"
                   >
-                    <p className="font-medium text-black group-hover:text-blue-600 transition-colors text-center text-sm">
+                    <p className="font-medium text-black group-hover:text-blue-700 transition-colors text-center text-sm font-light">
                       {tech}
                     </p>
                   </motion.div>
@@ -92,10 +105,10 @@ export function TechStack() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
-                    whileHover={{ y: -4 }}
-                    className="p-4 md:p-6 border border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50/50 transition-all duration-300 group"
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    className="p-4 md:p-5 border border-gray-200/40 rounded-xl hover:border-blue-400/50 bg-gradient-to-br from-white/50 to-gray-50/30 backdrop-blur-sm hover:bg-blue-50/60 hover:shadow-lg hover:shadow-blue-200/20 transition-all duration-400 group cursor-pointer"
                   >
-                    <p className="font-medium text-black group-hover:text-blue-600 transition-colors text-center text-sm">
+                    <p className="font-medium text-black group-hover:text-blue-700 transition-colors text-center text-xs font-light">
                       {tech}
                     </p>
                   </motion.div>

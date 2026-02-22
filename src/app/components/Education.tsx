@@ -2,8 +2,21 @@ import { motion } from "motion/react";
 
 export function Education() {
   return (
-    <section className="py-32 px-6 bg-black relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-32 px-6 bg-gradient-to-b from-black via-blue-950/20 to-black relative overflow-hidden">
+      {/* Geometric Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/2 -right-40 w-72 h-72 rounded-3xl border border-blue-500/10"
+          animate={{ y: [0, 25, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-1/3 -left-40 w-80 h-80 rounded-3xl border border-blue-400/8"
+          animate={{ y: [25, 0, 25] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -27,7 +40,8 @@ export function Education() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="p-10 md:p-12 border border-gray-800 rounded-lg space-y-8 hover:border-blue-600/50 hover:bg-blue-600/5 transition-all duration-300"
+          whileHover={{ y: -4 }}
+          className="p-10 md:p-12 border border-gray-800/50 rounded-2xl space-y-8 bg-gradient-to-br from-gray-900/50 to-black/30 backdrop-blur-sm hover:border-blue-600/50 hover:bg-gradient-to-br hover:from-blue-950/40 hover:to-gray-900/40 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-400"
         >
           <div className="space-y-2">
             <h3 className="text-3xl md:text-4xl font-light text-white">

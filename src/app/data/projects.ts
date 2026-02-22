@@ -6,6 +6,7 @@ export interface Project {
   highlights: string[];
   techStack: string[];
   image: string;
+  video?: string;
   overview?: string;
   problem?: string;
   solution?: string;
@@ -15,6 +16,9 @@ export interface Project {
   impact?: string;
   lessonsLearned?: string;
 }
+
+import n8nVideo from "../components/videos/n8n.mov";
+import slackVideo from "../components/videos/slack.mov";
 
 export const projects: Project[] = [
   {
@@ -95,40 +99,86 @@ export const projects: Project[] = [
   },
   {
     id: "n8n-automation",
-    title: "Business Workflow Automation",
-    description: "Designed automation pipelines to reduce manual operations using webhook triggers and data processing nodes.",
-    role: "Automation Engineer",
+    title: "Sorsana n8n Automation",
+    description: "Enterprise workflow automation platform integrating n8n with Slack and custom APIs for streamlined data processing and team collaboration.",
+    role: "Automation Architect",
     highlights: [
-      "Reduced manual processing time",
-      "Improved reporting efficiency",
-      "Streamlined data workflows",
-      "Enhanced operational reliability"
+      "70% reduction in manual processing",
+      "Real-time Slack notifications",
+      "Multi-system data synchronization",
+      "Comprehensive error monitoring"
     ],
-    techStack: ["n8n", "Webhooks", "REST APIs", "PostgreSQL", "Node.js"],
-    image: "https://images.unsplash.com/photo-1759752393975-7ca7b302fcc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXRvbWF0aW9uJTIwd29ya2Zsb3clMjBzY3JlZW58ZW58MXx8fHwxNzcxNzk1MjM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    overview: "Built comprehensive automation workflows to eliminate repetitive manual tasks, integrate disparate systems, and improve overall operational efficiency.",
-    problem: "Manual data processing and reporting tasks were consuming significant time and prone to human error. Multiple systems needed to communicate but lacked native integrations.",
-    solution: "Designed and implemented automated workflows using n8n to connect systems, process data, and trigger actions based on business rules. Created robust error handling and monitoring.",
+    techStack: ["n8n", "Slack API", "Webhooks", "PostgreSQL", "Node.js"],
+    image: new URL("../components/images/n8n.png", import.meta.url).href,
+    video: n8nVideo,
+    overview: "Built enterprise-grade automation workflows using n8n to orchestrate complex business processes. Integrated Slack for real-time notifications and team communication. Created modular, reusable workflow components.",
+    problem: "Manual data processing consumed 70% of operational time. Multiple systems lacked native integration. Team needed real-time visibility into workflow execution and errors. Error handling was inconsistent across processes.",
+    solution: "Architected n8n workflows with visual workflow design for maintainability. Integrated Slack webhooks for real-time alerts and status updates. Implemented error handling with retry logic and comprehensive logging. Created reusable workflow components for faster deployment.",
     architecture: [
-      "Event-driven workflows with webhook triggers",
-      "Data transformation and validation nodes",
-      "Multi-system integrations via REST APIs",
-      "Error handling and retry mechanisms",
-      "Logging and monitoring for reliability"
+      "Modular workflow components for code reuse",
+      "Event-driven architecture with webhook triggers",
+      "Slack integration for notifications and status",
+      "PostgreSQL for workflow state and audit logs",
+      "Error handling with exponential backoff retry strategy",
+      "Monitoring dashboard with real-time metrics"
     ],
     technicalDecisions: [
-      "n8n for visual workflow design and flexibility",
+      "n8n for visual workflow design and no-code flexibility",
+      "Slack as primary notification and status communication channel",
+      "PostgreSQL for reliable workflow state management",
+      "Custom function nodes for complex business logic",
       "Webhook-based triggers for real-time processing",
-      "PostgreSQL for workflow state management",
-      "Custom function nodes for complex transformations",
-      "Scheduled workflows for batch operations"
+      "Scheduled workflows alongside event-driven processing"
     ],
     tradeoffs: [
-      "Visual workflow tools are great for maintenance but can be limiting for very complex logic",
-      "Webhook reliability depends on network and external services",
-      "Balance between workflow complexity and maintainability"
+      "Visual workflow design improves team productivity but complex logic remains challenging",
+      "Slack integration adds real-time visibility but increases message volumes",
+      "Webhook reliability depends on external service availability",
+      "Centralized error handling provides consistency but requires careful monitoring"
     ],
-    impact: "Reduced manual processing time by 70%. Eliminated data entry errors. Enabled real-time reporting instead of daily batches. Freed team to focus on strategic work instead of repetitive tasks.",
-    lessonsLearned: "Start with simple workflows and iterate. Error handling is as important as happy path. Documentation of workflow logic is crucial for handoff. Monitor workflow execution and have alerting in place."
+    impact: "Reduced operational time by 70%. Eliminated manual data entry errors entirely. Enabled real-time team visibility into process status. Freed team for strategic initiatives. Improved customer data synchronization from 24h to real-time.",
+    lessonsLearned: "Visual workflow tools excel for team collaboration but require clear documentation. Slack notifications are critical for team buy-in and issue resolution. Error handling and monitoring are more important than feature count. Regular workflow audits prevent technical debt accumulation."
+  },
+  {
+    id: "slack-integration",
+    title: "Slack API Integration Layer",
+    description: "Real-time team communication platform with bidirectional Slack API integration, custom bot workflows, and workflow automation triggers.",
+    role: "Integration Engineer",
+    highlights: [
+      "Bidirectional Slack API sync",
+      "Custom bot command handling",
+      "Real-time event streaming",
+      "Comprehensive permission management"
+    ],
+    techStack: ["Slack API", "Node.js", "Express", "WebSockets", "Redis"],
+    image: new URL("../components/images/n8n2.png", import.meta.url).href,
+    video: slackVideo,
+    overview: "Developed a comprehensive Slack integration layer that handles real-time team communication, custom bot interactions, and workflow automation triggers. Enables seamless bidirectional data synchronization with internal systems.",
+    problem: "Team communication was fragmented across multiple tools. Critical alerts and updates were missed. Workflow triggers needed to be executed from Slack without complex manual intervention. Integration was brittle and difficult to maintain.",
+    solution: "Built a robust integration layer using Slack's Real Time Messaging API and event subscriptions. Created custom bot commands for workflow triggering. Implemented WebSocket connections for real-time updates. Added comprehensive error handling and message queuing.",
+    architecture: [
+      "Slack RTM API for real-time message handling",
+      "Event subscriptions for workflow triggers",
+      "Custom slash commands for user interactions",
+      "Redis for message queuing and delivery guarantees",
+      "WebSocket connections for live updates",
+      "Comprehensive permission validation layer"
+    ],
+    technicalDecisions: [
+      "Node.js with Express for HTTP endpoints",
+      "Slack RTM API for real-time messaging",
+      "Redis for reliable message queue",
+      "Custom middleware for permission and security",
+      "Structured logging for debugging",
+      "Exponential backoff for failed messages"
+    ],
+    tradeoffs: [
+      "Real-time connections require persistent server resources",
+      "Slack API rate limits require careful request management",
+      "Complex permission rules slow down message processing",
+      "Message ordering guarantees add complexity"
+    ],
+    impact: "Reduced alert response time from hours to seconds. Unified team communication in single platform. Enabled workflow automation without leaving Slack. Improved team collaboration efficiency by 45%. Reduced support ticket volume through self-service commands.",
+    lessonsLearned: "Real-time APIs require robust error handling and monitoring. Message queuing is essential for reliability. Rate limiting must be built in from the start. User education on bot commands is as important as feature development."
   }
 ];

@@ -13,7 +13,20 @@ export function SelectedWork() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
 
   return (
-    <section ref={sectionRef} id="work" className="py-32 px-6 bg-white relative overflow-hidden">
+    <section ref={sectionRef} id="work" className="py-32 px-6 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden">
+      {/* Geometric Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 -right-32 w-96 h-96 rounded-3xl border border-blue-300/20"
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -left-32 w-80 h-80 rounded-3xl border border-blue-200/15"
+          animate={{ rotate: [360, 0] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
@@ -44,17 +57,44 @@ export function SelectedWork() {
               style={{ opacity: textOpacity }}
             >
               <Link to={`/project/${project.id}`} className="block group">
-                <div className="overflow-hidden rounded-lg border border-gray-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300">
-                  {/* Featured Image */}
+                <div className="overflow-hidden rounded-2xl border border-gray-200/50 hover:border-blue-400/60 bg-gradient-to-br from-white/50 to-gray-50/50 backdrop-blur-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 group relative">
+                  {/* Featured Image / Video Container */}
                   <motion.div
                     whileHover={{ scale: 1.03 }}
-                    className="relative h-80 md:h-96 overflow-hidden bg-gray-100"
+                    className="relative h-80 md:h-96 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200"
                   >
+                    {/* Image Layer */}
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover absolute inset-0 group-hover:opacity-70 transition-opacity duration-500"
                     />
+                    
+                    {/* Video Overlay - Shows on Hover */}
+                    {project.video && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+                      >
+                        <video
+                          src={project.video}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                        />
+                        <motion.div
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="absolute inset-0 border-2 border-blue-400/50 rounded-lg"
+                        />
+                      </motion.div>
+                    )}
+                    
+                    {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/20 transition-all duration-300" />
                   </motion.div>
 

@@ -26,8 +26,21 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section className="py-32 px-6 bg-white relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-32 px-6 bg-gradient-to-b from-white via-blue-50/20 to-white relative overflow-hidden">
+      {/* Geometric Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/3 -right-48 w-80 h-80 rounded-3xl border border-blue-300/20"
+          animate={{ rotate: [-45, 315] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -left-48 w-96 h-96 rounded-3xl border border-blue-200/15"
+          animate={{ rotate: [315, -45] }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -54,7 +67,8 @@ export function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="p-8 md:p-10 border border-gray-200 rounded-lg hover:border-blue-400 hover:shadow-lg transition-all duration-300 group"
+              whileHover={{ y: -4 }}
+              className="p-8 md:p-10 border border-gray-200/50 rounded-2xl hover:border-blue-400/60 bg-gradient-to-br from-white/60 to-gray-50/40 backdrop-blur-sm hover:bg-gradient-to-br hover:from-blue-50/60 hover:to-white/50 hover:shadow-xl hover:shadow-blue-200/30 transition-all duration-400 group"
             >
               <div className="space-y-6">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
