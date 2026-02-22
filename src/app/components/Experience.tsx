@@ -26,16 +26,16 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-white via-blue-50/20 to-white relative overflow-hidden">
+    <section className="py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
       {/* Geometric Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/3 -right-48 w-80 h-80 rounded-3xl border border-blue-300/20"
+          className="absolute top-1/3 -right-48 w-80 h-80 rounded-3xl border border-gray-600/10"
           animate={{ rotate: [-45, 315] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -left-48 w-96 h-96 rounded-3xl border border-blue-200/15"
+          className="absolute bottom-1/4 -left-48 w-96 h-96 rounded-3xl border border-gray-500/5"
           animate={{ rotate: [315, -45] }}
           transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
         />
@@ -50,10 +50,10 @@ export function Experience() {
           className="mb-20 space-y-4"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gradient-to-r from-blue-600 to-blue-400" />
-            <span className="text-sm font-light tracking-widest text-gray-600">EXPERIENCE</span>
+            <div className="w-8 h-px bg-gradient-to-r from-gray-400 to-gray-300" />
+            <span className="text-sm font-light tracking-widest text-gray-400">EXPERIENCE</span>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-black tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight">
             Work Experience
           </h2>
         </motion.div>
@@ -68,23 +68,23 @@ export function Experience() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="p-8 md:p-10 border border-gray-200/50 rounded-2xl hover:border-blue-400/60 bg-gradient-to-br from-white/60 to-gray-50/40 backdrop-blur-sm hover:bg-gradient-to-br hover:from-blue-50/60 hover:to-white/50 hover:shadow-xl hover:shadow-blue-200/30 transition-all duration-400 group"
+              className="p-8 md:p-10 border border-gray-700/40 rounded-2xl hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-900/50 hover:shadow-xl hover:shadow-gray-500/20 transition-all duration-400 group"
             >
               <div className="space-y-6">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                   <div className="space-y-2">
-                    <h3 className="text-2xl md:text-3xl font-medium text-black">
+                    <h3 className="text-2xl md:text-3xl font-medium text-white">
                       {exp.role}
                     </h3>
-                    <p className="text-blue-600 font-light">
+                    <p className="text-gray-400 font-light">
                       {exp.company}
                     </p>
                   </div>
                   <div className="flex flex-col items-start md:items-end gap-1">
-                    <span className="text-sm font-light text-gray-600">
+                    <span className="text-sm font-light text-gray-400">
                       {exp.period}
                     </span>
-                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-700/40 text-gray-300">
                       {exp.type}
                     </span>
                   </div>
@@ -93,8 +93,8 @@ export function Experience() {
                 <ul className="space-y-3 pt-2">
                   {exp.description.map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 bg-blue-600 mt-2 rounded-full flex-shrink-0" />
-                      <p className="text-gray-700 font-light">{item}</p>
+                      <div className="w-1.5 h-1.5 bg-gray-500 mt-2 rounded-full flex-shrink-0" />
+                      <p className="text-gray-300 font-light">{item}</p>
                     </li>
                   ))}
                 </ul>

@@ -13,16 +13,16 @@ export function SelectedWork() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
 
   return (
-    <section ref={sectionRef} id="work" className="py-32 px-6 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden">
+    <section ref={sectionRef} id="work" className="py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
       {/* Geometric Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/4 -right-32 w-96 h-96 rounded-3xl border border-blue-300/20"
+          className="absolute top-1/4 -right-32 w-96 h-96 rounded-3xl border border-gray-600/10"
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/4 -left-32 w-80 h-80 rounded-3xl border border-blue-200/15"
+          className="absolute bottom-1/4 -left-32 w-80 h-80 rounded-3xl border border-gray-500/5"
           animate={{ rotate: [360, 0] }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         />
@@ -37,10 +37,10 @@ export function SelectedWork() {
           className="mb-20 space-y-4"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gradient-to-r from-blue-600 to-blue-400" />
-            <span className="text-sm font-light tracking-widest text-gray-600">SELECTED WORK</span>
+            <div className="w-8 h-px bg-gradient-to-r from-gray-400 to-gray-300" />
+            <span className="text-sm font-light tracking-widest text-gray-400">SELECTED WORK</span>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-black tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight">
             Featured Projects
           </h2>
         </motion.div>
@@ -57,11 +57,11 @@ export function SelectedWork() {
               style={{ opacity: textOpacity }}
             >
               <Link to={`/project/${project.id}`} className="block group">
-                <div className="overflow-hidden rounded-2xl border border-gray-200/50 hover:border-blue-400/60 bg-gradient-to-br from-white/50 to-gray-50/50 backdrop-blur-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 group relative">
+                <div className="overflow-hidden rounded-2xl border border-gray-700/40 hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:shadow-2xl hover:shadow-gray-500/20 transition-all duration-500 group relative">
                   {/* Featured Image / Video Container */}
                   <motion.div
                     whileHover={{ scale: 1.03 }}
-                    className="relative h-80 md:h-96 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200"
+                    className="relative h-80 md:h-96 overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800"
                   >
                     {/* Image Layer */}
                     <img
@@ -89,7 +89,7 @@ export function SelectedWork() {
                         <motion.div
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 2, repeat: Infinity }}
-                          className="absolute inset-0 border-2 border-blue-400/50 rounded-lg"
+                          className="absolute inset-0 border-2 border-gray-400/50 rounded-lg"
                         />
                       </motion.div>
                     )}
@@ -99,22 +99,22 @@ export function SelectedWork() {
                   </motion.div>
 
                   {/* Content */}
-                  <div className="bg-white p-8 md:p-10 space-y-6">
+                  <div className="bg-gray-900/60 p-8 md:p-10 space-y-6">
                     <div className="space-y-2">
-                      <p className="text-xs font-light text-blue-600 tracking-widest uppercase">
+                      <p className="text-xs font-light text-gray-400 tracking-widest uppercase">
                         {project.role}
                       </p>
-                      <h3 className="text-3xl md:text-4xl font-medium text-black group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-3xl md:text-4xl font-medium text-white group-hover:text-gray-200 transition-colors">
                         {project.title}
                       </h3>
                     </div>
 
-                    <p className="text-gray-700 leading-relaxed font-light">
+                    <p className="text-gray-300 leading-relaxed font-light">
                       {project.description}
                     </p>
 
                     {/* Highlights */}
-                    <div className="space-y-2 py-4 border-y border-gray-200">
+                    <div className="space-y-2 py-4 border-y border-gray-700">
                       {project.highlights.slice(0, 2).map((highlight, i) => (
                         <motion.div
                           key={i}
@@ -124,8 +124,8 @@ export function SelectedWork() {
                           transition={{ delay: i * 0.08 }}
                           className="flex items-start gap-3"
                         >
-                          <div className="w-1.5 h-1.5 bg-blue-600 mt-2 rounded-full flex-shrink-0" />
-                          <p className="text-gray-700 font-light">{highlight}</p>
+                          <div className="w-1.5 h-1.5 bg-gray-500 mt-2 rounded-full flex-shrink-0" />
+                          <p className="text-gray-300 font-light">{highlight}</p>
                         </motion.div>
                       ))}
                     </div>
@@ -135,7 +135,7 @@ export function SelectedWork() {
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 border border-gray-300 rounded-full text-gray-700 font-light text-xs hover:border-blue-400 hover:text-blue-600 transition-all"
+                          className="px-3 py-1 border border-gray-600 rounded-full text-gray-300 font-light text-xs hover:border-gray-500 hover:text-gray-200 transition-all"
                         >
                           {tech}
                         </span>
@@ -144,7 +144,7 @@ export function SelectedWork() {
 
                     {/* CTA */}
                     <div className="pt-2">
-                      <span className="inline-block font-light text-blue-600 group-hover:text-blue-700 transition-colors">
+                      <span className="inline-block font-light text-gray-400 group-hover:text-gray-300 transition-colors">
                         View Case Study →
                       </span>
                     </div>

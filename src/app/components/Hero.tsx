@@ -15,15 +15,15 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative h-screen w-screen overflow-hidden">
-      {/* Geometric 3D Background Elements */}
+      {/* Geometric 3D Background Elements - Gray Tones */}
       <div className="absolute inset-0 overflow-hidden z-0">
         <motion.div
-          className="absolute -top-1/3 -right-1/4 w-96 h-96 rounded-3xl border border-blue-500/10 backdrop-blur-3xl"
+          className="absolute -top-1/3 -right-1/4 w-96 h-96 rounded-3xl border border-gray-400/10 backdrop-blur-3xl"
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute -bottom-1/3 -left-1/4 w-80 h-80 rounded-3xl border border-blue-400/5 backdrop-blur-3xl"
+          className="absolute -bottom-1/3 -left-1/4 w-80 h-80 rounded-3xl border border-gray-300/5 backdrop-blur-3xl"
           animate={{ rotate: [360, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />
@@ -44,10 +44,10 @@ export function Hero() {
         />
       </motion.div>
       
-      {/* Sophisticated Gradient Overlay */}
+      {/* Sophisticated Gradient Overlay - Gray */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 via-gray-900/50 to-gray-900" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-800/20 via-transparent to-transparent" />
         <div className="absolute inset-0 backdrop-blur-[1px]" />
       </div>
       
@@ -64,9 +64,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-center gap-3"
           >
-            <div className="w-8 h-px bg-gradient-to-r from-blue-500 to-blue-300" />
+            <div className="w-8 h-px bg-gradient-to-r from-gray-400 to-gray-300" />
             <span className="text-sm md:text-base font-light tracking-widest text-gray-300">
-              MOBILE-FIRST ENGINEER
+              COMPUTER ENGINEER
             </span>
           </motion.div>
 
@@ -77,12 +77,15 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-4"
           >
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-light leading-tight text-white tracking-tight">
+            <motion.h1 
+              className="text-6xl md:text-7xl lg:text-8xl font-light leading-tight tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent"
+              animate={{ backgroundPosition: ["0%", "100%"] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              style={{ backgroundSize: "200% 200%" }}
+            >
               TUNA <br />
-              <span className="bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
-                BOSTANCIBAŞI
-              </span>
-            </h1>
+              BOSTANCIBAŞI
+            </motion.h1>
           </motion.div>
 
           {/* Description */}
@@ -92,10 +95,10 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed"
           >
-            Building scalable mobile applications with domain-driven architecture and clean backend systems.
+            Final-year Computer Engineering student at Pamukkale University. Building scalable mobile applications with React Native and modern web technologies.
           </motion.p>
 
-          {/* CTA Buttons - Eventis Style */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,13 +107,13 @@ export function Hero() {
           >
             <a
               href="#work"
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50"
+              className="px-8 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gray-500/50"
             >
               View Work
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 border border-gray-500 text-white font-medium rounded-full hover:border-white hover:bg-white/10 transition-all duration-300"
+              className="px-8 py-3 border border-gray-500 text-white font-medium rounded-full hover:border-gray-300 hover:bg-white/10 transition-all duration-300"
             >
               Get in Touch
             </a>

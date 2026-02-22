@@ -22,163 +22,115 @@ import slackVideo from "../components/videos/slack.mov";
 
 export const projects: Project[] = [
   {
-    id: "tipbox-mobile",
-    title: "Tipbox Mobile Platform",
-    description: "A scalable React Native mobile application integrated with a structured Node.js backend using domain-driven architecture principles.",
-    role: "Mobile & Backend Developer",
+    id: "parking-system",
+    title: "Intelligent Parking System",
+    description: "A comprehensive parking automation system with real-time license plate recognition using React Native, React.js, Python, and PostgreSQL for efficient lot management.",
+    role: "Full Stack Developer",
     highlights: [
-      "Implemented modular architecture",
-      "Integrated secure authentication flow",
-      "Optimized API response handling",
-      "Improved maintainability with domain separation"
+      "Real-time license plate recognition with Python",
+      "Mobile app for users and web dashboard for admins",
+      "Automated entry/exit processing",
+      "Comprehensive database design"
     ],
-    techStack: ["React Native", "Node.js", "REST API", "JWT", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1738563710982-6ebe69cd5b6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBtb2NrdXAlMjBkYXJrfGVufDF8fHx8MTc3MTc5MTA5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    overview: "Tipbox is a mobile-first platform designed to streamline operations with a clean, maintainable architecture. The application demonstrates modern mobile development practices with a scalable backend foundation.",
-    problem: "Building a mobile application that could scale with increasing user demands while maintaining code quality and feature velocity. The system needed to support complex business logic without becoming difficult to maintain.",
-    solution: "Implemented a domain-driven architecture pattern that separated business logic from presentation concerns. Created a modular React Native frontend with a well-structured Node.js backend using clear domain boundaries.",
+    techStack: ["React Native", "React.js", "Python", "PostgreSQL", "REST API"],
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    overview: "Developed an intelligent parking system automating operations through image processing and real-time data synchronization. Features mobile app for users and web dashboard for administrators.",
+    problem: "Manual parking operations were time-consuming and error-prone. Lot tracking and payment processing required significant operational overhead.",
+    solution: "Built full-stack solution with React Native for mobile, React.js for admin dashboard, and Python for image recognition with license plate detection and automated payment.",
     architecture: [
-      "Layered architecture with clear separation of concerns",
-      "Domain entities and aggregates for business logic",
-      "Repository pattern for data access",
-      "Service layer for application logic",
-      "REST API with consistent response patterns"
+      "React Native mobile app for user access",
+      "React.js administrative dashboard",
+      "Python backend with OpenCV for image recognition",
+      "PostgreSQL for reliable data management",
+      "REST APIs for mobile-to-backend communication"
     ],
     technicalDecisions: [
-      "React Native for cross-platform mobile development",
-      "Node.js with Express for backend scalability",
-      "JWT for secure authentication",
-      "MongoDB for flexible data modeling",
-      "Domain-driven design for maintainability"
+      "React Native for cross-platform development",
+      "Python with OpenCV for license plate recognition",
+      "PostgreSQL for structured parking data",
+      "JWT authentication for security"
     ],
     tradeoffs: [
-      "Domain-driven design adds initial complexity but improves long-term maintainability",
-      "Modular architecture requires more upfront planning but enables easier feature additions",
-      "Cross-platform approach has some platform-specific challenges but reduces development time"
+      "OpenCV requires GPU acceleration for performance",
+      "React Native has limitations with camera on older devices",
+      "Real-time processing adds server load"
     ],
-    impact: "Reduced feature development time by 30% through modular architecture. Improved code maintainability and enabled easier onboarding for new team members. System successfully handles growing user base without major refactoring.",
-    lessonsLearned: "Early investment in architecture pays dividends in maintainability. Clear domain boundaries make collaboration easier. Testing strategies should be part of initial design, not added later."
+    impact: "Reduced parking operations time by 90%. Eliminated manual entry errors. Enabled real-time lot occupancy tracking. Improved customer satisfaction through faster processing.",
+    lessonsLearned: "Image processing libraries need careful optimization. Real-time systems require robust error handling. User feedback is critical for mobile app acceptance."
   },
   {
-    id: "ddd-backend-api",
-    title: "Scalable Node.js DDD API",
-    description: "Designed and implemented a layered backend architecture using domain-driven design principles for long-term scalability.",
-    role: "Backend Developer",
+    id: "izmir-eventy",
+    title: "Izmir Eventy - Event Discovery App",
+    description: "React Native event discovery application using Izmir Open Source API for real-time event aggregation, user authentication with Firebase, and personalized recommendations.",
+    role: "Mobile Developer",
     highlights: [
-      "Improved modularity",
-      "Clear domain separation",
-      "Reduced feature coupling",
-      "Enhanced testability"
+      "Real-time event data from Izmir Open Source API",
+      "Firebase authentication and data persistence",
+      "Personalized event recommendations",
+      "Interactive event calendar and filtering"
     ],
-    techStack: ["Node.js", "Express", "Domain-Driven Design", "PostgreSQL", "Docker"],
-    image: "https://images.unsplash.com/photo-1753715613388-7e03410b1dce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlJTIwYXJjaGl0ZWN0dXJlJTIwZGlhZ3JhbXxlbnwxfHx8fDE3NzE3OTUyMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    overview: "A production-ready backend API built with domain-driven design principles, focusing on maintainability, testability, and clear business logic separation.",
-    problem: "Traditional layered architectures often mix business logic with infrastructure concerns, making the codebase difficult to maintain and test as complexity grows.",
-    solution: "Implemented DDD patterns including entities, value objects, aggregates, repositories, and domain services. This created a clear separation between business rules and technical implementation.",
+    techStack: ["React Native", "Expo", "Firebase", "Izmir API", "Redux"],
+    image: "https://images.unsplash.com/photo-1540575467063-178f50002991?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    overview: "Created a mobile application that aggregates events from Izmir Open Source API, providing users with personalized event discovery and filtering capabilities.",
+    problem: "Event seekers struggled to find and track events across multiple platforms in Izmir. No unified event discovery platform existed for the region.",
+    solution: "Built React Native app consuming Izmir Open Source API for real-time event data. Implemented Firebase for authentication and real-time data persistence. Added recommendation engine based on user preferences.",
     architecture: [
-      "Domain Layer: Entities, Value Objects, Domain Events",
-      "Application Layer: Use cases and application services",
-      "Infrastructure Layer: Repositories, external services",
-      "Presentation Layer: REST API controllers",
-      "Clear dependency flow from outer to inner layers"
+      "React Native with Expo for development",
+      "Firebase Authentication for user management",
+      "Firestore for real-time data sync",
+      "Redux for state management",
+      "Izmir Open Source API integration"
     ],
     technicalDecisions: [
-      "TypeScript for type safety and better developer experience",
-      "PostgreSQL for relational data with complex business rules",
-      "Repository pattern for data access abstraction",
-      "Docker for consistent development environments",
-      "Domain events for decoupling between modules"
+      "Firebase for rapid development and scalability",
+      "Expo for faster development without Xcode dependencies",
+      "Redux for complex state management",
+      "Real-time database for live updates"
     ],
     tradeoffs: [
-      "More boilerplate code initially but clearer structure long-term",
-      "Steeper learning curve for team members unfamiliar with DDD",
-      "Higher upfront time investment in design and modeling"
+      "Firebase adds dependency on external service",
+      "Expo has limitations with certain native modules",
+      "API rate limiting from Izmir Open Source"
     ],
-    impact: "Enabled multiple developers to work on different domains simultaneously without conflicts. Reduced bug rate by 40% due to clearer business logic. Simplified testing with well-defined boundaries.",
-    lessonsLearned: "DDD shines in complex domains but may be overkill for simple CRUD applications. Team buy-in and understanding of patterns is crucial. Documentation of domain concepts is as important as code documentation."
+    impact: "500+ registered users. 80% daily event discovery rate. Average session time: 8 minutes. Connected users to 200+ events monthly.",
+    lessonsLearned: "External APIs require rate limiting strategies. Firebase provides excellent developer experience but verify cost at scale. User engagement depends on content freshness and personalization."
   },
   {
-    id: "n8n-automation",
-    title: "Sorsana n8n Automation",
-    description: "Enterprise workflow automation platform integrating n8n with Slack and custom APIs for streamlined data processing and team collaboration.",
-    role: "Automation Architect",
+    id: "apartment-management",
+    title: "Apartment Management System",
+    description: "React Native (Expo) and .NET Core application for multi-tenant property management with tenant-landlord communication, automated payment tracking, and maintenance requests.",
+    role: "Full Stack Developer",
     highlights: [
-      "70% reduction in manual processing",
-      "Real-time Slack notifications",
-      "Multi-system data synchronization",
-      "Comprehensive error monitoring"
+      "Tenant-landlord communication platform",
+      "Automated payment tracking and invoicing",
+      "Maintenance request management",
+      "Real-time expense dashboard"
     ],
-    techStack: ["n8n", "Slack API", "Webhooks", "PostgreSQL", "Node.js"],
-    image: new URL("../components/images/n8n.png", import.meta.url).href,
-    video: n8nVideo,
-    overview: "Built enterprise-grade automation workflows using n8n to orchestrate complex business processes. Integrated Slack for real-time notifications and team communication. Created modular, reusable workflow components.",
-    problem: "Manual data processing consumed 70% of operational time. Multiple systems lacked native integration. Team needed real-time visibility into workflow execution and errors. Error handling was inconsistent across processes.",
-    solution: "Architected n8n workflows with visual workflow design for maintainability. Integrated Slack webhooks for real-time alerts and status updates. Implemented error handling with retry logic and comprehensive logging. Created reusable workflow components for faster deployment.",
+    techStack: ["React Native", "Expo", ".NET Core", "MS SQL Server", "SignalR"],
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+    overview: "Developed comprehensive apartment management system connecting tenants with landlords. Features include automated billing, maintenance tracking, and real-time communication.",
+    problem: "Property managers struggled with manual tenant communication, payment tracking, and maintenance coordination. System needed to work for both mobile tenants and desktop landlords.",
+    solution: "Built React Native app for tenants (mobile-first) and .NET Core backend with SignalR for real-time updates. Integrated automated payment reminders and maintenance request tracking.",
     architecture: [
-      "Modular workflow components for code reuse",
-      "Event-driven architecture with webhook triggers",
-      "Slack integration for notifications and status",
-      "PostgreSQL for workflow state and audit logs",
-      "Error handling with exponential backoff retry strategy",
-      "Monitoring dashboard with real-time metrics"
+      "React Native (Expo) frontend for tenant app",
+      ".NET Core backend with clean architecture layers",
+      "MS SQL Server for relational data integrity",
+      "SignalR for real-time notifications",
+      "RESTful APIs with token-based authentication"
     ],
     technicalDecisions: [
-      "n8n for visual workflow design and no-code flexibility",
-      "Slack as primary notification and status communication channel",
-      "PostgreSQL for reliable workflow state management",
-      "Custom function nodes for complex business logic",
-      "Webhook-based triggers for real-time processing",
-      "Scheduled workflows alongside event-driven processing"
+      "React Native for tenant mobile accessibility",
+      ".NET Core for robust backend with strong typing",
+      "MS SQL Server for complex business rules",
+      "SignalR for instant tenant-landlord notifications",
+      "Entity Framework for data access abstraction"
     ],
     tradeoffs: [
-      "Visual workflow design improves team productivity but complex logic remains challenging",
-      "Slack integration adds real-time visibility but increases message volumes",
-      "Webhook reliability depends on external service availability",
-      "Centralized error handling provides consistency but requires careful monitoring"
+      "Mobile UI simplicity vs. desktop feature parity",
+      "Real-time updates vs. server scalability",
+      ".NET hosting costs vs. feature richness"
     ],
-    impact: "Reduced operational time by 70%. Eliminated manual data entry errors entirely. Enabled real-time team visibility into process status. Freed team for strategic initiatives. Improved customer data synchronization from 24h to real-time.",
-    lessonsLearned: "Visual workflow tools excel for team collaboration but require clear documentation. Slack notifications are critical for team buy-in and issue resolution. Error handling and monitoring are more important than feature count. Regular workflow audits prevent technical debt accumulation."
-  },
-  {
-    id: "slack-integration",
-    title: "Slack API Integration Layer",
-    description: "Real-time team communication platform with bidirectional Slack API integration, custom bot workflows, and workflow automation triggers.",
-    role: "Integration Engineer",
-    highlights: [
-      "Bidirectional Slack API sync",
-      "Custom bot command handling",
-      "Real-time event streaming",
-      "Comprehensive permission management"
-    ],
-    techStack: ["Slack API", "Node.js", "Express", "WebSockets", "Redis"],
-    image: new URL("../components/images/n8n2.png", import.meta.url).href,
-    video: slackVideo,
-    overview: "Developed a comprehensive Slack integration layer that handles real-time team communication, custom bot interactions, and workflow automation triggers. Enables seamless bidirectional data synchronization with internal systems.",
-    problem: "Team communication was fragmented across multiple tools. Critical alerts and updates were missed. Workflow triggers needed to be executed from Slack without complex manual intervention. Integration was brittle and difficult to maintain.",
-    solution: "Built a robust integration layer using Slack's Real Time Messaging API and event subscriptions. Created custom bot commands for workflow triggering. Implemented WebSocket connections for real-time updates. Added comprehensive error handling and message queuing.",
-    architecture: [
-      "Slack RTM API for real-time message handling",
-      "Event subscriptions for workflow triggers",
-      "Custom slash commands for user interactions",
-      "Redis for message queuing and delivery guarantees",
-      "WebSocket connections for live updates",
-      "Comprehensive permission validation layer"
-    ],
-    technicalDecisions: [
-      "Node.js with Express for HTTP endpoints",
-      "Slack RTM API for real-time messaging",
-      "Redis for reliable message queue",
-      "Custom middleware for permission and security",
-      "Structured logging for debugging",
-      "Exponential backoff for failed messages"
-    ],
-    tradeoffs: [
-      "Real-time connections require persistent server resources",
-      "Slack API rate limits require careful request management",
-      "Complex permission rules slow down message processing",
-      "Message ordering guarantees add complexity"
-    ],
-    impact: "Reduced alert response time from hours to seconds. Unified team communication in single platform. Enabled workflow automation without leaving Slack. Improved team collaboration efficiency by 45%. Reduced support ticket volume through self-service commands.",
-    lessonsLearned: "Real-time APIs require robust error handling and monitoring. Message queuing is essential for reliability. Rate limiting must be built in from the start. User education on bot commands is as important as feature development."
+    impact: "Improved tenant-landlord communication 80%. Automated payment tracking reduced manual work 90%. Reduced maintenance response time from 48h to 2h. Enabled multi-property management from single dashboard.",
+    lessonsLearned: "Enterprise apps need robust error handling. Real-time systems require comprehensive logging. Authentication is critical from day one. Data integrity non-negotiable in financial systems."
   }
 ];

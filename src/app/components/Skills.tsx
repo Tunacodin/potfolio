@@ -16,16 +16,16 @@ export function Skills() {
   });
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 bg-gradient-to-b from-black via-blue-950/20 to-black relative overflow-hidden">
+    <section ref={sectionRef} className="py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
       {/* Geometric Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/3 -right-48 w-96 h-96 rounded-3xl border border-blue-500/10"
+          className="absolute top-1/3 -right-48 w-96 h-96 rounded-3xl border border-gray-600/10"
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute bottom-1/3 -left-48 w-80 h-80 rounded-3xl border border-blue-400/5"
+          className="absolute bottom-1/3 -left-48 w-80 h-80 rounded-3xl border border-gray-500/5"
           animate={{ rotate: [360, 0] }}
           transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
         />
@@ -40,7 +40,7 @@ export function Skills() {
           className="mb-20 space-y-4"
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gradient-to-r from-blue-600 to-blue-400" />
+            <div className="w-8 h-px bg-gradient-to-r from-gray-400 to-gray-300" />
             <span className="text-sm font-light tracking-widest text-gray-400">CAPABILITIES</span>
           </div>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight">
@@ -74,9 +74,9 @@ export function Skills() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                     whileHover={{ y: -2 }}
-                    className="p-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-blue-600/50 rounded-lg transition-all duration-300 group"
+                    className="p-4 bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/40 hover:border-gray-500/60 rounded-lg transition-all duration-300 group"
                   >
-                    <p className="text-gray-300 font-light group-hover:text-blue-400 transition-colors text-sm">
+                    <p className="text-gray-300 font-light group-hover:text-gray-100 transition-colors text-sm">
                       {skill}
                     </p>
                   </motion.div>
@@ -92,7 +92,7 @@ export function Skills() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="h-px bg-gradient-to-r from-blue-600 via-blue-400 to-transparent mt-20 origin-left"
+          className="h-px bg-gradient-to-r from-gray-500 via-gray-400 to-transparent mt-20 origin-left"
         />
       </div>
     </section>
