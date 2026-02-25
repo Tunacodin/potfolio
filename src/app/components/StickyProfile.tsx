@@ -29,10 +29,6 @@ export function StickyProfile() {
         <div className="hidden w-full h-full bg-[#FF6B4A]/20 flex items-center justify-center text-[#0A0A0A] text-4xl font-bold">
           TB
         </div>
-        <div
-          className="absolute inset-0 rounded-xl border-4 border-dashed opacity-90"
-          style={{ borderColor: ACCENT }}
-        />
       </div>
 
       {/* Name & title */}

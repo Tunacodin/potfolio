@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { SectionTitle } from "./section-title";
+import { profile } from "../data/profile";
 
 const ACCENT = "#FF6B4A";
 const INPUT_BG = "#333333";
@@ -11,6 +12,21 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const subject = encodeURIComponent("New portfolio contact");
+    const bodyLines = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Budget: ${form.budget || "-"}`,
+      "",
+      form.message,
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+
+    if (typeof window !== "undefined") {
+      window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    }
+
     setSent(true);
   };
 
@@ -46,7 +62,9 @@ export function Contact() {
                 ✓
               </span>
               <p className="text-white font-semibold text-lg">Message sent!</p>
-              <p className="text-[#888888] text-sm font-light">I'll get back to you soon.</p>
+              <p className="text-[#888888] text-sm font-light">
+                Your email app should have opened. If not, contact me at {profile.email}.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
