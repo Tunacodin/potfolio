@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useRef } from "react";
+import { ChevronRight } from "lucide-react";
 
 const contacts = [
   {
@@ -24,8 +26,20 @@ const contacts = [
 ];
 
 export function Contact() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const offset = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "right" ? offset : -offset,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <section id="contact" className="py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
+    <section id="contact" className="py-24 md:py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
       {/* Geometric Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -39,7 +53,7 @@ export function Contact() {
           transition={{ duration: 12, repeat: Infinity }}
         />
       </div>
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -60,29 +74,57 @@ export function Contact() {
           </p>
         </motion.div>
 
-        {/* Contact Grid */}
-        <div className="grid md:grid-cols-2 gap-6 pt-8">
-          {contacts.map((contact, index) => (
-            <motion.a
-              key={contact.label}
-              href={contact.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={{ y: -6, scale: 1.01 }}
-              className="p-8 md:p-10 border border-gray-700/40 rounded-2xl hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:bg-gray-700/60 hover:shadow-xl hover:shadow-gray-500/20 transition-all duration-400 group cursor-pointer"
-            >
-              <p className="text-sm font-light text-gray-400 group-hover:text-gray-200 mb-2 tracking-widest uppercase">
-                {contact.label}
-              </p>
-              <p className="text-lg md:text-xl font-medium text-gray-200 group-hover:text-white transition-colors">
-                {contact.value}
-              </p>
-            </motion.a>
-          ))}
+        {/* Carousel Container */}
+        <div className="flex items-center gap-4 pt-8">
+          {/* Left Scroll Button */}
+          <motion.button
+            onClick={() => scroll("left")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-shrink-0 p-2 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-300 rotate-180" />
+          </motion.button>
+
+          {/* Carousel */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory flex-1 pb-2 no-scrollbar"
+          >
+            {contacts.map((contact, index) => (
+              <motion.a
+                key={contact.label}
+                href={contact.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ scale: 1.05 }}
+                className="flex-shrink-0 w-full md:w-[calc(50%-12px)] snap-center"
+              >
+                <div className="h-full p-8 border border-gray-700/40 rounded-2xl hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:bg-gray-700/60 hover:shadow-xl hover:shadow-gray-500/20 transition-all duration-400 group cursor-pointer space-y-3">
+                  <p className="text-sm font-light text-gray-400 group-hover:text-gray-200 tracking-widest uppercase">
+                    {contact.label}
+                  </p>
+                  <p className="text-lg md:text-xl font-light text-gray-200 group-hover:text-white line-clamp-2">
+                    {contact.value}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Right Scroll Button */}
+          <motion.button
+            onClick={() => scroll("right")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-shrink-0 p-2 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-300" />
+          </motion.button>
         </div>
       </div>
     </section>

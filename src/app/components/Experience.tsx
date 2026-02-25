@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import { useRef } from "react";
+import { ChevronRight } from "lucide-react";
 
 const experiences = [
   {
@@ -25,8 +27,20 @@ const experiences = [
 ];
 
 export function Experience() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const offset = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "right" ? offset : -offset,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <section className="py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
+    <section className="py-24 md:py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
       {/* Geometric Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -40,7 +54,7 @@ export function Experience() {
           transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
         />
       </div>
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -58,49 +72,74 @@ export function Experience() {
           </h2>
         </motion.div>
 
-        {/* Experience Cards */}
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="p-8 md:p-10 border border-gray-700/40 rounded-2xl hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-900/50 hover:shadow-xl hover:shadow-gray-500/20 transition-all duration-400 group"
-            >
-              <div className="space-y-6">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div className="space-y-2">
-                    <h3 className="text-2xl md:text-3xl font-medium text-white">
-                      {exp.role}
-                    </h3>
-                    <p className="text-gray-400 font-light">
-                      {exp.company}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-start md:items-end gap-1">
-                    <span className="text-sm font-light text-gray-400">
-                      {exp.period}
-                    </span>
-                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-700/40 text-gray-300">
-                      {exp.type}
-                    </span>
-                  </div>
-                </div>
+        {/* Carousel Container */}
+        <div className="flex items-center gap-4">
+          {/* Left Scroll Button */}
+          <motion.button
+            onClick={() => scroll("left")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-shrink-0 p-2 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-300 rotate-180" />
+          </motion.button>
 
-                <ul className="space-y-3 pt-2">
-                  {exp.description.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 bg-gray-500 mt-2 rounded-full flex-shrink-0" />
-                      <p className="text-gray-300 font-light">{item}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+          {/* Carousel */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory flex-1 pb-2 no-scrollbar"
+          >
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex-shrink-0 w-full md:w-[calc(50%-12px)] snap-center"
+              >
+                <div className="h-full p-8 border border-gray-700/40 rounded-2xl hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:bg-gradient-to-br hover:from-gray-800/60 hover:to-gray-900/50 transition-all duration-400 space-y-6">
+                  <div className="flex flex-col justify-between gap-4">
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-light text-white line-clamp-1">
+                        {exp.role}
+                      </h3>
+                      <p className="text-gray-400 font-light text-sm">
+                        {exp.company}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-light text-gray-400">
+                        {exp.period}
+                      </span>
+                      <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-700/40 text-gray-300">
+                        {exp.type}
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-2">
+                    {exp.description.slice(0, 2).map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <div className="w-1 h-1 bg-gray-500 mt-2 rounded-full flex-shrink-0" />
+                        <p className="text-gray-300 font-light text-sm line-clamp-2">{item}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right Scroll Button */}
+          <motion.button
+            onClick={() => scroll("right")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex-shrink-0 p-2 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5 text-gray-300" />
+          </motion.button>
         </div>
       </div>
     </section>
