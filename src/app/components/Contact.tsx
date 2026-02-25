@@ -1,131 +1,121 @@
+import { useState } from "react";
 import { motion } from "motion/react";
-import { useRef } from "react";
-import { ChevronRight } from "lucide-react";
+import { SectionTitle } from "./section-title";
 
-const contacts = [
-  {
-    label: "Email",
-    value: "contact@tunabostanci.com",
-    href: "mailto:contact@tunabostanci.com"
-  },
-  {
-    label: "LinkedIn",
-    value: "linkedin.com/in/tunabostanci",
-    href: "https://linkedin.com/in/tunabostanci"
-  },
-  {
-    label: "GitHub",
-    value: "github.com/tunabostanci",
-    href: "https://github.com/tunabostanci"
-  },
-  {
-    label: "Schedule",
-    value: "Book a meeting",
-    href: "https://calendly.com"
-  }
-];
+const ACCENT = "#FF6B4A";
+const INPUT_BG = "#333333";
 
 export function Contact() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [form, setForm] = useState({ name: "", email: "", budget: "", message: "" });
+  const [sent, setSent] = useState(false);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const offset = 400;
-      scrollContainerRef.current.scrollBy({
-        left: direction === "right" ? offset : -offset,
-        behavior: "smooth"
-      });
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSent(true);
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 bg-gradient-to-b from-gray-900 via-gray-800/20 to-gray-900 relative overflow-hidden">
-      {/* Geometric Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section
+      id="contact"
+      className="w-full py-16 md:py-20"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+        {/* Left: title only */}
         <motion.div
-          className="absolute top-1/2 -right-40 w-80 h-80 rounded-3xl border border-gray-600/10"
-          animate={{ y: [0, 30, 0] }}
-          transition={{ duration: 10, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute bottom-0 -left-40 w-72 h-72 rounded-3xl border border-gray-500/5"
-          animate={{ y: [30, 0, 30] }}
-          transition={{ duration: 12, repeat: Infinity }}
-        />
-      </div>
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-20 space-y-6"
+          transition={{ duration: 0.5 }}
+          className="w-full md:max-w-[320px] shrink-0"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gradient-to-r from-gray-400 to-gray-300" />
-            <span className="text-sm font-light tracking-widest text-gray-400">GET IN TOUCH</span>
-          </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-tight">
-            Let's Connect
-          </h2>
-          <p className="text-lg text-gray-300 font-light max-w-2xl">
-            Open to remote product engineering roles and collaboration opportunities.
-          </p>
+          <SectionTitle line1="LET'S WORK" line2="TOGETHER" />
         </motion.div>
 
-        {/* Carousel Container */}
-        <div className="flex items-center gap-4 pt-8">
-          {/* Left Scroll Button */}
-          <motion.button
-            onClick={() => scroll("left")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex-shrink-0 p-2 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 text-gray-300 rotate-180" />
-          </motion.button>
-
-          {/* Carousel */}
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory flex-1 pb-2 no-scrollbar"
-          >
-            {contacts.map((contact, index) => (
-              <motion.a
-                key={contact.label}
-                href={contact.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                whileHover={{ scale: 1.05 }}
-                className="flex-shrink-0 w-full md:w-[calc(50%-12px)] snap-center"
-              >
-                <div className="h-full p-8 border border-gray-700/40 rounded-2xl hover:border-gray-500/60 bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm hover:bg-gray-700/60 hover:shadow-xl hover:shadow-gray-500/20 transition-all duration-400 group cursor-pointer space-y-3">
-                  <p className="text-sm font-light text-gray-400 group-hover:text-gray-200 tracking-widest uppercase">
-                    {contact.label}
-                  </p>
-                  <p className="text-lg md:text-xl font-light text-gray-200 group-hover:text-white line-clamp-2">
-                    {contact.value}
-                  </p>
+        {/* Right: form */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex-1 w-full min-w-0 max-w-lg"
+        >
+          {sent ? (
+            <div className="flex flex-col items-center justify-center gap-4 py-16">
+              <span className="text-5xl" style={{ color: ACCENT }}>
+                ✓
+              </span>
+              <p className="text-white font-semibold text-lg">Message sent!</p>
+              <p className="text-[#888888] text-sm font-light">I'll get back to you soon.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[#AAAAAA] text-sm font-medium">Name</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your Name"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="rounded-lg px-4 py-3 text-white text-sm font-light placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#FF6B4A] transition-colors border-0"
+                    style={{ background: INPUT_BG }}
+                  />
                 </div>
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Right Scroll Button */}
-          <motion.button
-            onClick={() => scroll("right")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex-shrink-0 p-2 rounded-full border border-gray-600 hover:border-gray-400 transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 text-gray-300" />
-          </motion.button>
-        </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-[#AAAAAA] text-sm font-medium">Email</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Your@email.com"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="rounded-lg px-4 py-3 text-white text-sm font-light placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#FF6B4A] transition-colors border-0"
+                    style={{ background: INPUT_BG }}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[#AAAAAA] text-sm font-medium">Budget</label>
+                <select
+                  value={form.budget}
+                  onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                  className="rounded-lg px-4 py-3 text-sm font-light focus:outline-none focus:ring-2 focus:ring-[#FF6B4A] transition-colors appearance-none border-0 w-full"
+                  style={{
+                    background: INPUT_BG,
+                    color: form.budget ? "#fff" : "#888888",
+                  }}
+                >
+                  <option value="">Select...</option>
+                  <option value="<1k">&lt; $1k</option>
+                  <option value="1k-3k">$1k – $3k</option>
+                  <option value="3k-5k">$3k – $5k</option>
+                  <option value=">5k">&gt; $5k</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-[#AAAAAA] text-sm font-medium">Message</label>
+                <textarea
+                  required
+                  rows={5}
+                  placeholder="Message"
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="rounded-lg px-4 py-3 text-white text-sm font-light placeholder-[#888888] focus:outline-none focus:ring-2 focus:ring-[#FF6B4A] transition-colors resize-none border-0 w-full"
+                  style={{ background: INPUT_BG }}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-lg font-semibold text-sm text-white hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: ACCENT }}
+              >
+                Submit
+              </button>
+            </form>
+          )}
+        </motion.div>
       </div>
     </section>
   );

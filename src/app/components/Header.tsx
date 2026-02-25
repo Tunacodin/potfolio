@@ -1,81 +1,83 @@
-import { Link } from "react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Menu, X, Home, FolderOpen, GraduationCap, Briefcase, Wrench, PenLine } from "lucide-react";
+
+const navLinks = [
+  { label: "Home", href: "#", icon: Home },
+  { label: "Projects", href: "#work", icon: FolderOpen },
+  { label: "Experience", href: "#experience", icon: Briefcase },
+  { label: "Education", href: "#education", icon: GraduationCap },
+  { label: "Tools", href: "#tools", icon: Wrench },
+  { label: "Blog", href: "#blog", icon: PenLine },
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] bg-gray-900/95 backdrop-blur-md border-b border-gray-700/30">
-      <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-        <Link to="/" className="font-light text-2xl text-white hover:text-gray-300 transition-colors">
-          T.B
-        </Link>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-12">
-          <a href="#work" className="text-sm font-light text-gray-300 hover:text-white transition-colors tracking-wide">
-            Work
-          </a>
-          <a href="#about" className="text-sm font-light text-gray-300 hover:text-white transition-colors tracking-wide">
-            About
-          </a>
-          <a href="#contact" className="text-sm font-light text-gray-300 hover:text-white transition-colors tracking-wide">
-            Contact
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-2 border border-gray-500 hover:border-gray-300 text-gray-300 hover:text-white rounded-lg text-sm font-light transition-all duration-300"
-          >
-            Get in Touch
-          </a>
+    <header
+      className="fixed top-0 left-0 right-0 z-[100] border-b backdrop-blur-md"
+      style={{
+        background: "rgba(10, 10, 10, 0.9)",
+        borderColor: "rgba(255,255,255,0.06)",
+      }}
+    >
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-center relative">
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+                aria-label={link.label}
+              >
+                <Icon className="w-5 h-5" />
+              </a>
+            );
+          })}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 hover:bg-gray-800 rounded-lg transition-colors"
+        <motion.button
+          onClick={() => setMenuOpen((o) => !o)}
+          className="md:hidden absolute right-6 top-1/2 -translate-y-1/2 p-2 text-white"
           aria-label="Toggle menu"
+          whileTap={{ scale: 0.95 }}
         >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-gray-900/98 backdrop-blur-md border-b border-gray-700/30 md:hidden">
-            <div className="flex flex-col gap-4 p-6">
-              <a
-                href="#work"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-sm font-light text-gray-300 hover:text-white transition-colors py-2 tracking-wide"
-              >
-                Work
-              </a>
-              <a
-                href="#about"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-sm font-light text-gray-300 hover:text-white transition-colors py-2 tracking-wide"
-              >
-                About
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="text-sm font-light text-gray-300 hover:text-white transition-colors py-2 tracking-wide"
-              >
-                Contact
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="px-6 py-2 border border-gray-500 hover:border-gray-300 text-gray-300 hover:text-white rounded-lg text-sm font-light transition-all duration-300 text-center"
-              >
-                Get in Touch
-              </a>
-            </div>
-          </div>
-        )}
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </motion.button>
       </nav>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden overflow-hidden border-t border-white/[0.06]"
+            style={{ background: "rgba(10, 10, 10, 0.98)" }}
+          >
+            <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 text-sm font-light text-[#888] hover:text-white py-2 transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

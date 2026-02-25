@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
-import { SectionTitle } from "./section-title";
 import { ArrowUpRight } from "lucide-react";
-import { experiences } from "../data/experience";
+import { SectionTitle } from "./section-title";
+import { blogArticles } from "../data/blogArticles";
 
 const ACCENT = "#FF6B4A";
 
-export function Experience() {
+export function Blog() {
   return (
     <section
-      id="experience"
+      id="blog"
       className="w-full py-16 md:py-20"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
@@ -20,14 +20,14 @@ export function Experience() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <SectionTitle line1="PROFESSIONAL" line2="EXPERIENCE" />
+          <SectionTitle line1="DESIGN" line2="THOUGHTS" />
         </motion.div>
 
-        <div className="flex flex-col gap-6">
-          {experiences.map((exp, i) => (
+        <div className="flex flex-col gap-8">
+          {blogArticles.map((article, i) => (
             <motion.a
-              key={`${exp.company}-${exp.period}`}
-              href={exp.href}
+              key={article.id}
+              href={article.href ?? "#"}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -35,20 +35,18 @@ export function Experience() {
               className="group flex flex-col sm:flex-row sm:items-start gap-4 py-6 border-b border-white/[0.06] hover:border-white/10 transition-colors"
             >
               <div className="flex-1 min-w-0">
-                <h3 className="text-white font-semibold text-lg mb-0.5 group-hover:opacity-90">
-                  {exp.company}
+                <h3 className="text-white font-semibold text-lg mb-2 group-hover:text-[#FF6B4A] transition-colors">
+                  {article.title}
                 </h3>
-                {exp.role && (
-                  <p className="text-[#FF6B4A] text-sm font-medium mb-1">{exp.role}</p>
-                )}
-                <p className="text-[#888888] text-xs font-light mb-2">
-                  {exp.location} · {exp.period}
+                <p className="text-[#888888] text-sm font-light leading-relaxed">
+                  {article.description}
                 </p>
-                <p className="text-[#B8B8B8] text-sm font-light leading-relaxed">
-                  {exp.description}
-                </p>
+                <div className="flex items-center gap-4 mt-3 text-[#888888] text-xs font-light">
+                  <span>{article.date}</span>
+                  <span>{article.readTime}</span>
+                </div>
               </div>
-              <span className="shrink-0 self-start sm:self-center" style={{ color: ACCENT }}>
+              <span className="shrink-0" style={{ color: ACCENT }}>
                 <ArrowUpRight className="w-5 h-5" />
               </span>
             </motion.a>
