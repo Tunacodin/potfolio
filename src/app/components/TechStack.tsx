@@ -143,15 +143,15 @@ function CategoryCard({
           src="/projects_ss/expo.png"
           alt=""
           aria-hidden
-          initial={{ opacity: 0, x: 24, y: 24, rotate: -8 }}
-          whileInView={{ opacity: 0.22, x: 0, y: 0, rotate: -8 }}
+          initial={{ opacity: 0, x: 12, y: 12, rotate: -6 }}
+          whileInView={{ opacity: 0.16, x: 0, y: 0, rotate: -6 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 1.1, ease: EASE_OUT_EXPO as any, delay: 0.2 }}
           className="absolute pointer-events-none select-none"
           style={{
-            right: -40,
-            bottom: -28,
-            width: "min(60%, 320px)",
+            right: 16,
+            bottom: 16,
+            width: "clamp(80px, 22%, 140px)",
             height: "auto",
             filter: "brightness(0) invert(1)",
             zIndex: 0,
