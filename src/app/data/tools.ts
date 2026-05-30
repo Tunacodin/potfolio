@@ -17,8 +17,8 @@ export type PremiumToolsByCategory = {
 /** CORE — RN, Expo, Router, TS */
 export const core: ToolItem[] = [
   { id: "react-native",  name: "React Native 0.83", description: "Cross-platform mobile",    image: "https://cdn.simpleicons.org/react/61DAFB" },
-  { id: "expo",          name: "Expo SDK 55",        description: "Managed workflow & EAS",   image: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/expo.svg" },
-  { id: "expo-router",   name: "Expo Router",        description: "File-based navigation",    image: "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/expo.svg" },
+  { id: "expo",          name: "Expo SDK 55",        description: "Managed workflow & EAS",   image: "https://cdn.simpleicons.org/expo/FFFFFF" },
+  { id: "expo-router",   name: "Expo Router",        description: "File-based navigation",    image: "https://cdn.simpleicons.org/expo/FFFFFF" },
   { id: "typescript",    name: "TypeScript",         description: "Typed JavaScript",         image: "https://cdn.simpleicons.org/typescript/3178C6" },
 ];
 
