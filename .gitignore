@@ -6,3 +6,8 @@ dist/
 *.mov
 *.mp4
 .git/
+.vercel
+.env*.local
+.agents/
+skills-lock.json
+/projects_ss/

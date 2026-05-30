@@ -1,47 +1,73 @@
+import type { Localized } from "../i18n/dictionary";
+
 export type Experience = {
   company: string;
-  location: string;
-  period: string;
-  role?: string;
-  description: string;
+  location: Localized;
+  period: Localized;
+  role?: Localized;
+  description: Localized;
   href?: string;
 };
 
 export const experiences: Experience[] = [
   {
+    company: "Divizyon",
+    location: {
+      en: "Open Innovation Platform",
+      tr: "Open Innovation Platformu",
+    },
+    period: {
+      en: "Feb 2026 – Present",
+      tr: "Şubat 2026 – Halen",
+    },
+    role: {
+      en: "Community Lead",
+      tr: "Topluluk Lideri",
+    },
+    description: {
+      en: "Leading a 3-discipline community (digital product, experience design, content production) — running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.",
+      tr: "Üç disipline (dijital ürün, deneyim tasarımı, içerik üretimi) ait bir topluluğun liderliğini yürütüyor; etkinlik, oturum ve sprint organizasyonlarını koordine ediyor, prototipten ürüne giden sprintleri planlıyor ve mentor süreçlerini uçtan uca yönetiyor.",
+    },
+    href: "#",
+  },
+  {
     company: "Füzyonist",
-    location: "Konya",
-    period: "2025 – Present",
-    role: "Mobile/Backend Developer",
-    description:
-      "A social evaluation platform where users review and rate products based on real experiences. Developed mobile application using React Native. Designed backend services with Node.js for review, rating, and user interaction systems.",
-    href: "#",
-  },
-  {
-    company: "OmTun Labs",
-    location: "Remote",
-    period: "2024 – Present",
-    role: "Co-Founder & AI Workflow Engineer",
-    description:
-      "Created AI-assisted tooling using Claude Code and LangChain-inspired patterns for multi-step reasoning and task evaluation. Built CLI and automated connectors to orchestrate complex tasks, improve pipeline efficiency, and reduce manual intervention. Collaborated with cross-functional stakeholders to document logic structures and evaluation criteria.",
-    href: "#",
-  },
-  {
-    company: "Phinia Delphi Technology",
-    location: "İzmir",
-    period: "2024",
-    role: "Mobile Developer Intern",
-    description:
-      "Contributed to React Native mobile application development. Assisted API integrations and debugging processes. Supported UI refinement and performance optimization.",
+    location: {
+      en: "Multi-disciplinary consulting agency",
+      tr: "Çok disiplinli danışmanlık ajansı",
+    },
+    period: {
+      en: "Oct 2025 – Mar 2026",
+      tr: "Ekim 2025 – Mart 2026",
+    },
+    role: {
+      en: "Mobile Developer",
+      tr: "Mobil Geliştirici",
+    },
+    description: {
+      en: "Built mobile applications for client MVP and product development projects using React Native. Contributed to mobile delivery in cross-functional teams with Agile / iterative methodology.",
+      tr: "Müşteri MVP'leri ve ürün geliştirme projelerinde React Native ile mobil uygulamalar geliştirdi. Agile / iteratif metodolojiyle cross-functional ekiplerde mobil delivery süreçlerine aktif katkı verdi.",
+    },
     href: "#",
   },
   {
     company: "KodPit Software",
-    location: "Denizli",
-    period: "2023",
-    role: "Mobile Developer Intern",
-    description:
-      "Received foundational training in React Native development. Built basic cross-platform components and API-connected features. Learned Git-based collaborative workflows.",
+    location: {
+      en: "Denizli",
+      tr: "Denizli",
+    },
+    period: {
+      en: "2023 (4 months)",
+      tr: "2023 (4 ay)",
+    },
+    role: {
+      en: "Mobile Developer Intern",
+      tr: "Mobil Geliştirici Stajyeri",
+    },
+    description: {
+      en: "Implemented mobile screens and REST API integrations for client projects using React Native.",
+      tr: "Müşteri projelerinde React Native ile mobil ekranları ve REST API entegrasyonlarını geliştirdi.",
+    },
     href: "#",
   },
 ];
