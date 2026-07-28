@@ -21,6 +21,7 @@ function PhoneMockup({
   const bezel = "#0B0C0F";
   const innerBg = mode === "dark" ? "#0B0C0F" : "#FFFFFF";
   const islandWidth = width * 0.32;
+  const statusBarHeight = Math.round(width * 0.115);
 
   return (
     <div
@@ -54,6 +55,12 @@ function PhoneMockup({
           loading="lazy"
           decoding="async"
         />
+        {/* Status-bar cover — hides the baked-in status bar/notch, plain white band */}
+        <div
+          aria-hidden
+          className="absolute top-0 left-0 right-0 z-[9]"
+          style={{ height: statusBarHeight, background: innerBg }}
+        />
         <div
           aria-hidden
           className="absolute left-1/2 -translate-x-1/2 z-10"
@@ -71,10 +78,117 @@ function PhoneMockup({
 }
 
 /* ────────────────────────────────────────────── */
+/* BrowserMockup — macOS-style desktop/web window */
+/* ────────────────────────────────────────────── */
+function BrowserMockup({
+  src,
+  mode,
+  width = 420,
+  fit = "cover",
+}: {
+  src: string;
+  mode: "dark" | "light";
+  width?: number;
+  fit?: "cover" | "contain";
+}) {
+  const bezel = "#0B0C0F";
+  const innerBg = mode === "dark" ? "#0B0C0F" : "#FFFFFF";
+  const barHeight = Math.round(width * 0.058);
+  const dot = Math.max(6, Math.round(width * 0.018));
+
+  return (
+    <div
+      className="relative select-none"
+      style={{
+        width,
+        aspectRatio: "16 / 10",
+        borderRadius: 16,
+        background: bezel,
+        padding: 4,
+        boxShadow:
+          "0 30px 60px -22px rgba(11,12,15,0.40), 0 10px 22px -12px rgba(11,12,15,0.22), inset 0 0 0 1px rgba(255,255,255,0.06)",
+      }}
+    >
+      <div
+        className="relative w-full h-full overflow-hidden flex flex-col"
+        style={{ borderRadius: 12, background: innerBg }}
+      >
+        {/* Toolbar */}
+        <div
+          className="flex items-center gap-2 shrink-0"
+          style={{
+            height: barHeight,
+            paddingLeft: 12,
+            paddingRight: 12,
+            background: mode === "dark" ? "#15171C" : "#F1F1F3",
+            borderBottom: `1px solid ${mode === "dark" ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"}`,
+          }}
+        >
+          <span style={{ width: dot, height: dot, borderRadius: dot, background: "#FF5F57" }} />
+          <span style={{ width: dot, height: dot, borderRadius: dot, background: "#FEBC2E" }} />
+          <span style={{ width: dot, height: dot, borderRadius: dot, background: "#28C840" }} />
+        </div>
+        {/* Viewport */}
+        <div className="relative flex-1 overflow-hidden">
+          <img
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full"
+            style={{ objectFit: fit, objectPosition: "center top" }}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ────────────────────────────────────────────── */
 /* PhoneStage — quiet fade-rise, no rotation/3D   */
 /* ────────────────────────────────────────────── */
 function PhoneStage({ project }: { project: Project }) {
   const count = project.screenshots.length;
+  const webShots = project.webShots ?? [];
+
+  // Mixed: browser hero + up to 2 phones overlapping (desktop/web + mobile projects)
+  if (webShots.length > 0) {
+    const phones = project.screenshots.slice(0, 2);
+    const phonePos = [
+      { x: 150, y: 52, from: 66, z: 3, w: 150 },
+      { x: 250, y: -46, from: -32, z: 2, w: 132 },
+    ];
+    return (
+      <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
+        <motion.div
+          className="absolute"
+          initial={{ opacity: 0, x: -66, y: 16 }}
+          whileInView={{ opacity: 1, x: -66, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
+          style={{ zIndex: 1 }}
+        >
+          <BrowserMockup src={webShots[0]} mode={project.mode} width={380} fit={project.imageFit ?? "cover"} />
+        </motion.div>
+        {phones.map((src, i) => {
+          const p = phonePos[i];
+          return (
+            <motion.div
+              key={i}
+              className="absolute"
+              initial={{ opacity: 0, x: p.x, y: p.from }}
+              whileInView={{ opacity: 1, x: p.x, y: p.y }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: EASE_OUT_QUART as any }}
+              style={{ zIndex: p.z }}
+            >
+              <PhoneMockup src={src} mode={project.mode} width={p.w} fit={project.imageFit} />
+            </motion.div>
+          );
+        })}
+      </div>
+    );
+  }
 
   // Single phone
   if (count === 1) {

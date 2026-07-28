@@ -9,6 +9,8 @@ export type Project = {
   status?: Localized;
   techStack: string[];
   screenshots: string[];
+  /** Desktop/web captures rendered inside a browser frame instead of a phone. */
+  webShots?: string[];
   brand: string;
   mode: "dark" | "light";
   imageFit?: "cover" | "contain";
@@ -43,9 +45,12 @@ export const projects: Project[] = [
       `${SS}/sorsana1%20(1).jpeg`,
       `${SS}/sorsana1%20(5).jpeg`,
     ],
+    webShots: [
+      `${SS}/sorsana_admin.png`,
+    ],
     brand: "#7C3AED",
     mode: "light",
-    href: "#",
+    href: "https://sorsanaapp.com/",
   },
   {
     id: "tipbox",
@@ -135,30 +140,68 @@ export const projects: Project[] = [
     href: "#",
   },
   {
-    id: "elite-mindset",
-    title: "Elite Mindset",
+    id: "verona",
+    title: "Verona",
     tagline: {
-      en: "Daily inspiration & quote sharing",
-      tr: "Günlük ilham & alıntı paylaşımı",
+      en: "Management system for an art school",
+      tr: "Sanat okulu için yönetim sistemi",
     },
     description: {
-      en: "Daily inspiration and quote sharing app with category-based discovery and favorites. Built on Expo and React Native with a focused single-task UX.",
-      tr: "Kategori bazlı keşif ve favorileme özellikleriyle günlük ilham ve alıntı paylaşımı için bir uygulama. Expo ve React Native üzerinde, tek odak noktasına yoğunlaşan bir UX yaklaşımıyla kurgulandı.",
+      en: "Management system for Verona Sanat's art school — instructors, students, courses (music/dance/stage/workshop), session-based scheduling and payment tracking, moving the studio off paper ledgers. A shared Supabase backend powers both an Expo mobile app and an Electron desktop panel; session billing, instructor contracts and printable records.",
+      tr: "Verona Sanat'ın sanat okulu için yönetim sistemi — eğitmen, öğrenci, kurs (müzik/dans/sahne/atölye), seans bazlı ders planlama ve ödeme takibini kağıt defterden dijitale taşıyor. Ortak Supabase backend'i hem Expo mobil uygulamayı hem Electron masaüstü panelini besliyor; seans bazlı ücretlendirme, eğitmen sözleşmeleri ve yazdırılabilir kayıtlar.",
     },
     role: {
-      en: "Lead Mobile Developer",
-      tr: "Lead Mobile Developer",
+      en: "Full-stack · Desktop + Mobile",
+      tr: "Full-stack · Masaüstü + Mobil",
     },
     status: {
-      en: "Closed testing · iOS + Android",
-      tr: "Kapalı test · iOS + Android",
+      en: "In development · Desktop + Mobile",
+      tr: "Geliştiriliyor · Masaüstü + Mobil",
     },
-    techStack: ["Expo", "React Native", "Reanimated", "AsyncStorage"],
+    techStack: ["Expo Router", "React Native", "Supabase", "Electron", "Reanimated", "TypeScript"],
     screenshots: [
-      `${SS}/elite_mindset.png`,
+      `${SS}/verona1.png`,
+      `${SS}/verona2.png`,
     ],
-    brand: "#A78BFA",
-    mode: "dark",
+    webShots: [
+      `${SS}/verona_web1.png`,
+      `${SS}/verona_web2.png`,
+    ],
+    brand: "#9E2E30",
+    mode: "light",
+    href: "#",
+  },
+  {
+    id: "yalin-depo",
+    title: "Yalın Depo",
+    tagline: {
+      en: "Smart warehouse & stock management for lean production",
+      tr: "Yalın üretim için akıllı depo & stok yönetimi",
+    },
+    description: {
+      en: "Warehouse optimization platform built on lean principles — a real-time 3D warehouse view (Three.js), color-coded shelves (fast/steady/slow flow), critical-stock alerts, barcode scanning, consumption analytics and automatic suggestions that route each part to the right shelf. React Native app + React/Three.js web dashboard on a shared Supabase backend. Tracks 2600+ SKUs across 12 shelves.",
+      tr: "Yalın üretim prensipleriyle kurgulanan bir depo optimizasyon platformu — gerçek zamanlı 3D depo görünümü (Three.js), renk kodlu raf sistemi (hızlı/dengeli/yavaş akış), kritik stok uyarıları, barkod tarama, tüketim analitiği ve her parçayı doğru rafa yönlendiren otomatik öneriler. Ortak Supabase backend üzerinde React Native uygulaması + React/Three.js web paneli. 2600+ ürün çeşidi, 12 raf üzerinde takip ediliyor.",
+    },
+    role: {
+      en: "Full-stack · Mobile + Web",
+      tr: "Full-stack · Mobil + Web",
+    },
+    status: {
+      en: "In development · Mobile + Web",
+      tr: "Geliştiriliyor · Mobil + Web",
+    },
+    techStack: ["Expo SDK 54", "React Native", "Supabase", "expo-sqlite", "expo-camera", "Three.js"],
+    screenshots: [
+      `${SS}/yalin1.jpg`,
+      `${SS}/yalin2.jpg`,
+      `${SS}/yalin3.jpg`,
+    ],
+    webShots: [
+      `${SS}/yalin_web1.png`,
+      `${SS}/yalin_web2.png`,
+    ],
+    brand: "#F97316",
+    mode: "light",
     href: "#",
   },
 ];
