@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { projects, type Project } from "../data/projects";
 import { ArrowUpRight } from "lucide-react";
-import { staggerContainer, fadeUp } from "../lib/motion";
+import { EASE_OUT_QUART, staggerContainer, fadeUp } from "../lib/motion";
 import { useLang } from "../i18n/context";
 
 /* ────────────────────────────────────────────── */
@@ -153,10 +153,10 @@ function PhoneStage({ project }: { project: Project }) {
   const MockupImg = ({ src, h, x, y, z, delay }: { src: string; h: number; x: number; y: number; z: number; delay: number }) => (
     <motion.div
       className="absolute"
-      initial={{ x, y: y + 24 }}
+      initial={{ x, y: y + 48 }}
       whileInView={{ x, y }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay, ease: EASE_OUT_QUART as any }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, delay, ease: EASE_OUT_QUART as any }}
       style={{ zIndex: z, height: h }}
     >
       <img src={src} alt="" className="h-full w-auto object-contain select-none" draggable={false} loading="lazy" decoding="async" />
@@ -171,10 +171,10 @@ function PhoneStage({ project }: { project: Project }) {
         <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
           <motion.div
             className="absolute"
-            initial={{ x: -132, y: 24 }}
+            initial={{ x: -132, y: 48 }}
             whileInView={{ x: -132, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: EASE_OUT_QUART as any }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
             style={{ zIndex: 1 }}
           >
             <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />

@@ -97,12 +97,12 @@ export const projects: Project[] = [
     mockupAngled: `${SS}/mockups/savely-angled.png`,
     title: "Savely",
     tagline: {
-      en: "Goal-based savings & social food feed",
-      tr: "Hedef bazlı tasarruf ve sosyal akış",
+      en: "All your saves from every platform, in one place",
+      tr: "Tüm platformlardaki kayıtların tek çatı altında",
     },
     description: {
-      en: "A personal finance app that reframes saving from an abstract effort into a measurable journey by tying it to concrete goals. Users define their targets, track progress in real time, and draw motivation from a social feed — building saving into a sustainable, long-term habit.",
-      tr: "Tasarrufu somut hedeflerle ilişkilendirerek soyut bir çabadan ölçülebilir bir sürece dönüştüren bir kişisel finans uygulaması. Kullanıcılar birikim hedeflerini tanımlar, ilerlemelerini gerçek zamanlı izler ve sosyal akış üzerinden birbirlerinden ilham alarak tasarrufu sürdürülebilir bir alışkanlığa dönüştürür.",
+      en: "An app that consolidates the items you save across multiple social media and digital platforms into a single hub. It makes scattered saves organizable, reviewable and trackable — turning everything you collect into a meaningful, easily accessible archive.",
+      tr: "Birden fazla sosyal medya ve dijital platformdan yapılan kaydetme işlemlerini tek bir çatı altında toplayan bir uygulama. Dağınık biçimde biriken kayıtları düzenlenebilir, değerlendirilebilir ve takip edilebilir hâle getirerek kullanıcının biriktirdiği tüm içeriği anlamlı ve erişilebilir bir arşive dönüştürüyor.",
     },
     role: {
       en: "Lead Mobile Developer",
@@ -194,8 +194,8 @@ export const projects: Project[] = [
       tr: "Yalın üretim için akıllı depo & stok yönetimi",
     },
     description: {
-      en: "A smart warehouse platform built on lean principles — a real-time 3D warehouse view, shelves color-coded by flow speed, critical-stock alerts, fast barcode counting and automatic suggestions that route every part to the right shelf. It keeps 12 shelves and 2,600+ items manageable from one screen, accurately and fast.",
-      tr: "Yalın üretim prensipleriyle kurgulanan bir akıllı depo yönetim platformu — gerçek zamanlı 3B depo görünümü, akış hızına göre renk kodlu raflar, kritik stok uyarıları, barkodla hızlı sayım ve her parçayı doğru rafa yönlendiren otomatik öneriler. 12 raf ve 2.600'den fazla ürünü tek ekrandan, hatasız ve hızlı yönetilebilir kılıyor.",
+      en: "A smart inventory management platform built on lean manufacturing principles that digitizes warehouse operations end to end. With a real-time 3D warehouse view, shelves classified by flow speed, critical-stock alerts, rapid barcode counting and an automatic recommendation engine that routes each item to its optimal location, it enables 2,600+ products across 12 shelves to be managed from a single point with high accuracy.",
+      tr: "Yalın üretim ilkeleri üzerine kurgulanan, depo operasyonlarını uçtan uca dijitalleştiren bir akıllı stok yönetim platformu. Gerçek zamanlı üç boyutlu depo görünümü, akış hızına göre sınıflandırılmış raf sistemi, kritik stok uyarıları, barkodla hızlı sayım ve her ürünü en uygun konuma yönlendiren otomatik öneri mekanizmasıyla 2.600'ü aşkın ürünün 12 raf üzerinde tek merkezden, yüksek doğrulukla yönetilmesini sağlıyor.",
     },
     role: {
       en: "Full-stack · Mobile + Web",
