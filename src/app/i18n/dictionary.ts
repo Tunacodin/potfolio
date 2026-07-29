@@ -30,8 +30,9 @@ export const dictionary = {
     githubHandle:  { en: "github / @Tunacodin", tr: "github / @Tunacodin" },
     stats: {
       yearsRn:     { en: "React Native",    tr: "React Native" },
+      yearsUnit:   { en: "yrs",             tr: "Yıl" },
       appsShipped: { en: "Products built",      tr: "Geliştirilen ürünler" },
-      internships: { en: "Mobile internships", tr: "Mobil staj" },
+      companyExp:  { en: "Company experience", tr: "Şirket Deneyimi" },
     },
   },
 

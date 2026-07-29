@@ -79,15 +79,18 @@ function WordReveal({
 function StatCell({
   end,
   suffix,
+  unit,
   label,
   index,
 }: {
-  end: number;
+  end?: number;
   suffix?: string;
+  unit?: string;
   label: string;
   index: number;
 }) {
-  const { ref, val } = useCountUp(end, 1.4);
+  const { ref, val } = useCountUp(end ?? 0, 1.4);
+  const hasNumber = end !== undefined;
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -106,23 +109,43 @@ function StatCell({
       <span className="num-stamp" style={{ color: "var(--ink-4)" }}>
         / {String(index + 1).padStart(2, "0")}
       </span>
-      <div
-        className="font-display font-semibold leading-none tabular-nums mt-1"
-        style={{
-          fontSize: "clamp(1.6rem,3vw,2.2rem)",
-          letterSpacing: "-0.05em",
-          color: "var(--ink)",
-        }}
-      >
-        <span ref={ref}>{Math.round(val)}</span>
-        {suffix && <span style={{ color: "var(--cobalt)" }}>{suffix}</span>}
-      </div>
-      <div
-        className="font-sans text-[13px] mt-1"
-        style={{ color: "var(--ink-3)" }}
-      >
-        {label}
-      </div>
+      {hasNumber ? (
+        <>
+          <div
+            className="font-display font-semibold leading-none tabular-nums mt-1"
+            style={{
+              fontSize: "clamp(1.6rem,3vw,2.2rem)",
+              letterSpacing: "-0.05em",
+              color: "var(--ink)",
+            }}
+          >
+            <span ref={ref}>{Math.round(val)}</span>
+            {suffix && <span style={{ color: "var(--cobalt)" }}>{suffix}</span>}
+            {unit && (
+              <span className="ml-1.5" style={{ fontSize: "0.55em", color: "var(--ink-3)" }}>
+                {unit}
+              </span>
+            )}
+          </div>
+          <div
+            className="font-sans text-[13px] mt-1"
+            style={{ color: "var(--ink-3)" }}
+          >
+            {label}
+          </div>
+        </>
+      ) : (
+        <div
+          className="font-display font-semibold leading-tight mt-1"
+          style={{
+            fontSize: "clamp(1.4rem,2.6vw,2rem)",
+            letterSpacing: "-0.04em",
+            color: "var(--ink)",
+          }}
+        >
+          {label}
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -271,10 +294,11 @@ export function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, ease: EASE_OUT_EXPO as any }}
-            className="col-span-12 bento-card grid grid-cols-2 overflow-hidden"
+            className="col-span-12 bento-card grid grid-cols-3 overflow-hidden"
           >
-            <StatCell index={0} end={5}  suffix="+" label={pick(t.hero.stats.yearsRn)} />
+            <StatCell index={0} end={5}  suffix="+" unit={pick(t.hero.stats.yearsUnit)} label={pick(t.hero.stats.yearsRn)} />
             <StatCell index={1} end={6}  suffix="+" label={pick(t.hero.stats.appsShipped)} />
+            <StatCell index={2} end={3}             label={pick(t.hero.stats.companyExp)} />
           </motion.div>
         </div>
       </div>
