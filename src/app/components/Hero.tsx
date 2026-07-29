@@ -46,6 +46,7 @@ function RichText({ source }: { source: string }) {
 }
 
 export const CV_DOWNLOAD_PATH = "/Tuna_Bostancibasi_CV_EN_Minimal.pdf";
+export const CV_DOWNLOAD_PATH_TR = "/Tuna_Bostancibasi_CV_TR.pdf";
 
 function WordReveal({
   text,
@@ -117,7 +118,7 @@ function StatCell({
         {suffix && <span style={{ color: "var(--cobalt)" }}>{suffix}</span>}
       </div>
       <div
-        className="font-sans text-[11px] mt-1"
+        className="font-sans text-[13px] mt-1"
         style={{ color: "var(--ink-3)" }}
       >
         {label}
@@ -128,7 +129,7 @@ function StatCell({
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const { t, pick } = useLang();
+  const { t, pick, lang } = useLang();
 
   return (
     <section ref={ref} id="top" className="relative w-full px-5 md:px-10 pb-6">
@@ -186,7 +187,7 @@ export function Hero() {
             >
               <motion.div variants={fadeUp(8)}>
                 <MagneticButton
-                  href={CV_DOWNLOAD_PATH}
+                  href={lang === "tr" ? CV_DOWNLOAD_PATH_TR : CV_DOWNLOAD_PATH}
                   download
                   strength={0.28}
                   className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-full font-sans text-sm font-medium"

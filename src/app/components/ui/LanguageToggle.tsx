@@ -30,7 +30,7 @@ export function LanguageToggle({ variant = "light" }: { variant?: Variant }) {
             type="button"
             onClick={() => setLang(l)}
             aria-pressed={active}
-            className="relative px-2.5 py-1 font-mono text-[10px] tracking-widest uppercase font-semibold rounded-full"
+            className="relative px-3 py-1 font-mono text-[13px] tracking-wider uppercase font-semibold rounded-full"
             style={{
               color: active ? activeText : inactiveText,
               minWidth: 28,

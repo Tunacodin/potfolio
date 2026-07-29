@@ -36,10 +36,10 @@ export const dictionary = {
   },
 
   work: {
-    label:    { en: "02 — Selected work", tr: "02 — Seçili projeler" },
+    label:    { en: "02 — Products built", tr: "02 — Geliştirilen ürünler" },
     badge:    { en: "closed testing",     tr: "kapalı test" },
-    headPre:  { en: "Apps I've",          tr: "Yayına" },
-    headPost: { en: "shipped.",           tr: "aldıklarım." },
+    headPre:  { en: "Products",           tr: "Geliştirilen" },
+    headPost: { en: "built.",             tr: "Ürünler" },
     tagline: {
       en: "Real screenshots from production builds — architecture, signing and store submission owned end-to-end.",
       tr: "Production build'lerden gerçek ekran görüntüleri — mimari, imzalama ve mağaza yayını uçtan uca tarafımdan yürütüldü.",

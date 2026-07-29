@@ -40,7 +40,7 @@ function MagneticEmail() {
           />
           <div className="flex flex-col min-w-0">
             <span
-              className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+              className="font-mono text-[12px] tracking-wider uppercase font-semibold"
               style={{ color: "rgba(250,250,247,0.55)" }}
             >
               {pick(t.contact.dropALine)}
@@ -137,7 +137,7 @@ export function Contact() {
         >
           <motion.span
             variants={fadeUp(8)}
-            className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+            className="font-mono text-[12px] tracking-wider uppercase font-semibold"
             style={{ color: "rgba(250,250,247,0.55)" }}
           >
             {pick(t.contact.label)}
@@ -155,7 +155,7 @@ export function Contact() {
               style={{ background: "var(--citron)" }}
             />
             <span
-              className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+              className="font-mono text-[12px] tracking-wider uppercase font-semibold"
               style={{ color: "var(--citron)" }}
             >
               {pick(t.contact.booking)}
@@ -208,7 +208,7 @@ export function Contact() {
               }}
             >
               <span
-                className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+                className="font-mono text-[12px] tracking-wider uppercase font-semibold"
                 style={{ color: "rgba(250,250,247,0.45)" }}
               >
                 {item.label}
@@ -272,7 +272,7 @@ export function Contact() {
                     {name}
                   </span>
                   <span
-                    className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+                    className="font-mono text-[12px] tracking-wider uppercase font-semibold"
                     style={{ color: "rgba(250,250,247,0.45)" }}
                   >
                     {tag}

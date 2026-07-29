@@ -164,8 +164,8 @@
 /* Monospace caps tag */
 .tag-mono {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
   font-weight: 500;
@@ -174,7 +174,7 @@
 /* Numeric stamp */
 .num-stamp {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.02em;
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
@@ -192,8 +192,8 @@
 /* Section number block */
 .section-num {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   color: var(--cobalt);
   font-weight: 600;
 }
@@ -204,8 +204,8 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   padding: 4px 10px;
   background: var(--cobalt-soft);

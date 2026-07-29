@@ -55,7 +55,7 @@ export function Blog() {
                 {/* Top */}
                 <div className="flex items-start justify-between">
                   <span
-                    className="font-mono text-[10px] tracking-widest uppercase font-semibold inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+                    className="font-mono text-[12px] tracking-wider uppercase font-semibold inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
                     style={{
                       background: i === 0 ? "rgba(255,255,255,0.18)" : "var(--cobalt-soft)",
                       color: i === 0 ? "#FFFFFF" : "var(--cobalt-deep)",
@@ -98,7 +98,7 @@ export function Blog() {
                 </p>
 
                 <div
-                  className="flex items-center justify-between pt-5 border-t font-mono text-[10px] tracking-widest uppercase"
+                  className="flex items-center justify-between pt-5 border-t font-mono text-[12px] tracking-wider uppercase"
                   style={{
                     borderColor: i === 0 ? "rgba(255,255,255,0.18)" : "var(--line)",
                     color: i === 0 ? "rgba(255,255,255,0.7)" : "var(--ink-3)",

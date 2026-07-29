@@ -314,14 +314,15 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
       >
         <div className="flex items-center gap-3 mb-3">
           <span
-            className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+            className="font-mono text-[12px] tracking-wider uppercase font-semibold"
             style={{ color: project.brand }}
           >
             / {String(index + 1).padStart(2, "0")}
           </span>
           {project.status && (
             <span
-              className="font-mono text-[10px] tracking-widest uppercase font-semibold inline-flex items-center gap-1.5"
+              lang="en"
+              className="font-mono text-[12px] tracking-wider uppercase font-semibold inline-flex items-center gap-1.5"
               style={{ color: "var(--ink-3)" }}
             >
               <span
@@ -379,7 +380,8 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
               {project.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="font-mono text-[10px] tracking-wider uppercase px-2 py-0.5 border"
+                  lang="en"
+                  className="font-mono text-[12px] tracking-wide uppercase px-2 py-0.5 border"
                   style={{
                     color: "var(--ink-2)",
                     borderColor: "var(--line-strong)",
@@ -468,7 +470,7 @@ export function SelectedWork() {
           </motion.div>
           <motion.span
             variants={fadeUp(8)}
-            className="font-sans text-xs max-w-[260px] text-right"
+            className="font-sans text-sm max-w-[300px] text-right"
             style={{ color: "var(--ink-3)" }}
           >
             {pick(t.work.tagline)}

@@ -163,7 +163,7 @@ function CategoryCard({
       <div className="flex items-start justify-between gap-3 relative z-10">
         <div className="flex flex-col gap-1">
           <span
-            className="font-mono text-[10px] tracking-widest uppercase font-semibold tabular-nums"
+            className="font-mono text-[12px] tracking-wider uppercase font-semibold tabular-nums"
             style={{ color: theme.stamp }}
           >
             / 0{index + 1}
@@ -185,7 +185,7 @@ function CategoryCard({
           </span>
         </div>
         <span
-          className="font-mono text-[10px] tracking-widest uppercase font-semibold px-2 py-1 rounded-full shrink-0"
+          className="font-mono text-[12px] tracking-wider uppercase font-semibold px-2 py-1 rounded-full shrink-0"
           style={{
             background: theme.chipBg,
             border: `1px solid ${theme.chipBorder}`,

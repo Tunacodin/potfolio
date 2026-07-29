@@ -58,7 +58,7 @@ export function Header() {
             >
               <a
                 href={link.href}
-                className="font-sans text-[13px] px-3 py-1.5 rounded-full transition-all"
+                className="font-sans text-[15px] px-3 py-1.5 rounded-full transition-all"
                 style={{ color: "var(--ink-2)" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "var(--card)";
@@ -96,8 +96,8 @@ export function Header() {
                 e.currentTarget.style.color = "var(--ink-2)";
               }}
             >
-              <Icon className="w-3 h-3" style={{ color: "var(--ink-4)" }} />
-              <span className="font-sans text-[12px]">{label}</span>
+              <Icon className="w-3.5 h-3.5" style={{ color: "var(--ink-4)" }} />
+              <span className="font-sans text-[13.5px]">{label}</span>
             </motion.a>
           ))}
           <motion.div

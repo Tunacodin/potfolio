@@ -32,7 +32,7 @@ export function Education() {
             >
               <div className="flex items-start justify-between gap-4">
                 <span
-                  className="font-mono text-[11px] tracking-widest uppercase font-semibold inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+                  className="font-mono text-[12px] tracking-wider uppercase font-semibold inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
                   style={{ background: "rgba(255,255,255,0.18)", color: "#FFFFFF" }}
                 >
                   <span
@@ -65,7 +65,7 @@ export function Education() {
                     </span>
                   )}
                   <span
-                    className="font-mono text-[11px] tracking-widest uppercase"
+                    className="font-mono text-[12px] tracking-wider uppercase"
                     style={{ color: "rgba(255,255,255,0.7)" }}
                   >
                     · {edu.place}
@@ -122,7 +122,7 @@ export function Education() {
                       {lang.name}
                     </span>
                     <span
-                      className="font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full"
+                      className="font-mono text-[12px] tracking-wider uppercase px-2.5 py-1 rounded-full"
                       style={{
                         background: lang.level === "Native" ? "var(--citron)" : "var(--cobalt-soft)",
                         color: lang.level === "Native" ? "var(--ink)" : "var(--cobalt-deep)",

@@ -17,7 +17,7 @@ function BackToTop({ label }: { label: string }) {
     >
       <motion.span style={{ x, y, display: "inline-flex" }} className="items-center gap-2">
         <ArrowUp className="w-3 h-3" />
-        <span className="font-mono text-[10px] tracking-widest uppercase font-semibold">
+        <span className="font-mono text-[12px] tracking-wider uppercase font-semibold">
           {label}
         </span>
       </motion.span>
@@ -68,7 +68,7 @@ export function Footer() {
             {profile.name}
           </span>
           <span
-            className="block font-mono text-[10px] tracking-widest uppercase mt-1"
+            className="block font-mono text-[12px] tracking-wider uppercase mt-1"
             style={{ color: "rgba(250,250,247,0.45)" }}
           >
             {pick(t.footer.brandSubtitle)}
@@ -84,7 +84,7 @@ export function Footer() {
           className="col-span-6 md:col-span-3 flex flex-col gap-1"
         >
           <span
-            className="font-mono text-[10px] tracking-widest uppercase font-semibold mb-1"
+            className="font-mono text-[12px] tracking-wider uppercase font-semibold mb-1"
             style={{ color: "rgba(250,250,247,0.40)" }}
           >
             {pick(t.footer.elsewhere)}
@@ -111,7 +111,7 @@ export function Footer() {
           className="col-span-6 md:col-span-2 flex flex-col gap-1"
         >
           <span
-            className="font-mono text-[10px] tracking-widest uppercase font-semibold mb-1"
+            className="font-mono text-[12px] tracking-wider uppercase font-semibold mb-1"
             style={{ color: "rgba(250,250,247,0.40)" }}
           >
             {pick(t.footer.navigate)}
@@ -146,13 +146,13 @@ export function Footer() {
       >
         <div className="max-w-[1240px] mx-auto px-5 md:px-10 py-3 flex flex-wrap items-center justify-between gap-2">
           <span
-            className="font-mono text-[10px] tracking-widest uppercase"
+            className="font-mono text-[12px] tracking-wider uppercase"
             style={{ color: "rgba(250,250,247,0.40)" }}
           >
             © {year} — {profile.name}
           </span>
           <span
-            className="font-mono text-[10px] tracking-widest uppercase"
+            className="font-mono text-[12px] tracking-wider uppercase"
             style={{ color: "rgba(250,250,247,0.40)" }}
           >
             {pick(t.footer.craftedIn)}

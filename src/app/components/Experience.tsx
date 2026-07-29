@@ -77,7 +77,8 @@ function ExperienceCard({
         </h3>
         {role && (
           <span
-            className="font-mono text-[10px] tracking-widest uppercase font-semibold mt-1.5 inline-block"
+            lang="en"
+            className="font-mono text-[12px] tracking-wider uppercase font-semibold mt-1.5 inline-block"
             style={{ color: "var(--cobalt)" }}
           >
             / {role}
@@ -173,7 +174,7 @@ export function Experience() {
               </span>
               <div className="flex flex-col">
                 <span
-                  className="font-mono text-[10px] tracking-widest uppercase font-semibold"
+                  className="font-mono text-[12px] tracking-wider uppercase font-semibold"
                   style={{ color: "var(--ink-2)" }}
                 >
                   {pick(t.experience.eduLabel)}
@@ -217,7 +218,7 @@ export function Experience() {
               {profile.languages.map((l, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[10px] tracking-widest uppercase font-semibold"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[12px] tracking-wider uppercase font-semibold"
                   style={{
                     background: "rgba(11,12,15,0.08)",
                     color: "var(--ink)",
