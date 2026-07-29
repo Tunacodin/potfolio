@@ -400,7 +400,7 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
             href={project.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 mt-5 pl-2 pr-4 py-2 rounded-full font-sans text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:outline-none"
+            className="group inline-flex items-center gap-2 mt-5 pl-2 pr-4 py-2 rounded-2xl font-sans text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:outline-none"
             style={{
               color: "#FFFFFF",
               background: project.brand,

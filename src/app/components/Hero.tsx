@@ -190,7 +190,7 @@ export function Hero() {
                   href={lang === "tr" ? CV_DOWNLOAD_PATH_TR : CV_DOWNLOAD_PATH}
                   download
                   strength={0.28}
-                  className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-full font-sans text-sm font-medium"
+                  className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl font-sans text-sm font-medium"
                   style={{ background: "var(--ink)", color: "var(--paper)" }}
                 >
                   <Download className="w-4 h-4" />
