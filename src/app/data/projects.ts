@@ -133,8 +133,8 @@ export const projects: Project[] = [
       tr: "Animasyonlu duvar kağıtları & görsel keşif",
     },
     description: {
-      en: "Animated wallpaper and visual discovery app with curated content, gesture-driven Bottom Sheet and high-performance Expo Image rendering. NativeWind styling system throughout.",
-      tr: "Küratörlü içeriklerle animasyonlu duvar kağıdı ve görsel keşif sunan bir uygulama. Jest tabanlı Bottom Sheet, yüksek performanslı Expo Image render'ı ve baştan sona NativeWind stil sistemi.",
+      en: "A discovery app that brings phone screens to life with animated wallpapers. Users glide through a curated collection and set the perfect look for any mood with a single tap.",
+      tr: "Telefon ekranını canlı, animasyonlu duvar kâğıtlarıyla kişiselleştiren bir keşif uygulaması. Özenle seçilmiş içerikler arasında akıcı bir deneyimle gezinip her ruh hâline uygun görünümü tek dokunuşla uygulama imkânı sunuyor.",
     },
     role: {
       en: "Lead Mobile Developer",
@@ -164,8 +164,8 @@ export const projects: Project[] = [
       tr: "Sanat okulu için yönetim sistemi",
     },
     description: {
-      en: "Management system for Verona Sanat's art school — instructors, students, courses (music/dance/stage/workshop), session-based scheduling and payment tracking, moving the studio off paper ledgers. A shared Supabase backend powers both an Expo mobile app and an Electron desktop panel; session billing, instructor contracts and printable records.",
-      tr: "Verona Sanat'ın sanat okulu için yönetim sistemi — eğitmen, öğrenci, kurs (müzik/dans/sahne/atölye), seans bazlı ders planlama ve ödeme takibini kağıt defterden dijitale taşıyor. Ortak Supabase backend'i hem Expo mobil uygulamayı hem Electron masaüstü panelini besliyor; seans bazlı ücretlendirme, eğitmen sözleşmeleri ve yazdırılabilir kayıtlar.",
+      en: "A single platform that runs an entire art school — instructors, students, music/dance/stage/workshop classes, session scheduling, billing and contracts. It moves the studio off paper ledgers into one organized, reliable system reachable from both mobile and desktop.",
+      tr: "Bir sanat okulunun tüm işleyişini tek yerden yöneten bir platform — eğitmenler, öğrenciler, müzik/dans/sahne/atölye dersleri, seans planlama, ücretlendirme ve sözleşme takibi. Stüdyoyu kağıt defterlerden kurtarıp mobil ve masaüstünden erişilen düzenli, güvenilir bir sisteme taşıyor.",
     },
     role: {
       en: "Full-stack · Desktop + Mobile",
@@ -194,8 +194,8 @@ export const projects: Project[] = [
       tr: "Yalın üretim için akıllı depo & stok yönetimi",
     },
     description: {
-      en: "Warehouse optimization platform built on lean principles — a real-time 3D warehouse view (Three.js), color-coded shelves (fast/steady/slow flow), critical-stock alerts, barcode scanning, consumption analytics and automatic suggestions that route each part to the right shelf. React Native app + React/Three.js web dashboard on a shared Supabase backend. Tracks 2600+ SKUs across 12 shelves.",
-      tr: "Yalın üretim prensipleriyle kurgulanan bir depo optimizasyon platformu — gerçek zamanlı 3D depo görünümü (Three.js), renk kodlu raf sistemi (hızlı/dengeli/yavaş akış), kritik stok uyarıları, barkod tarama, tüketim analitiği ve her parçayı doğru rafa yönlendiren otomatik öneriler. Ortak Supabase backend üzerinde React Native uygulaması + React/Three.js web paneli. 2600+ ürün çeşidi, 12 raf üzerinde takip ediliyor.",
+      en: "A smart warehouse platform built on lean principles — a real-time 3D warehouse view, shelves color-coded by flow speed, critical-stock alerts, fast barcode counting and automatic suggestions that route every part to the right shelf. It keeps 12 shelves and 2,600+ items manageable from one screen, accurately and fast.",
+      tr: "Yalın üretim prensipleriyle kurgulanan bir akıllı depo yönetim platformu — gerçek zamanlı 3B depo görünümü, akış hızına göre renk kodlu raflar, kritik stok uyarıları, barkodla hızlı sayım ve her parçayı doğru rafa yönlendiren otomatik öneriler. 12 raf ve 2.600'den fazla ürünü tek ekrandan, hatasız ve hızlı yönetilebilir kılıyor.",
     },
     role: {
       en: "Full-stack · Mobile + Web",

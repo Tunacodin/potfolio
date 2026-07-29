@@ -149,14 +149,15 @@ function PhoneStage({ project }: { project: Project }) {
   const mockup = project.mockup;
   const angled = project.mockupAngled;
 
-  // Opaque entrance — no opacity fade (prevents stacked mockups showing through each other).
-  const MockupImg = ({ src, h, x, y, from, z, delay }: { src: string; h: number; x: number; y: number; from: number; z: number; delay: number }) => (
+  // Fully-opaque spring slide-in — no opacity fade. Each mockup flies in from a
+  // direction (fx/fy offset) and settles into place with a subtle overshoot.
+  const MockupImg = ({ src, h, x, y, z, delay, fx = 0, fy = 60, rot = 0 }: { src: string; h: number; x: number; y: number; z: number; delay: number; fx?: number; fy?: number; rot?: number }) => (
     <motion.div
       className="absolute"
-      initial={{ x, y: from, scale: 0.94 }}
-      whileInView={{ x, y, scale: 1 }}
+      initial={{ x: x + fx, y: y + fy, rotate: rot }}
+      whileInView={{ x, y, rotate: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: EASE_OUT_QUART as any }}
+      transition={{ type: "spring", stiffness: 78, damping: 14, delay }}
       style={{ zIndex: z, height: h }}
     >
       <img src={src} alt="" className="h-full w-auto object-contain select-none" draggable={false} loading="lazy" decoding="async" />
@@ -171,16 +172,16 @@ function PhoneStage({ project }: { project: Project }) {
         <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
           <motion.div
             className="absolute"
-            initial={{ x: -132, y: 16, scale: 0.94 }}
-            whileInView={{ x: -132, y: 0, scale: 1 }}
+            initial={{ x: -132, y: 90 }}
+            whileInView={{ x: -132, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: EASE_OUT_QUART as any }}
+            transition={{ type: "spring", stiffness: 78, damping: 15 }}
             style={{ zIndex: 1 }}
           >
             <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />
           </motion.div>
-          {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} from={-14} z={2} delay={0.18} />}
-          {angled && <MockupImg src={angled} h={360} x={228} y={14} from={40} z={3} delay={0.1} />}
+          {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} fx={130} fy={70} rot={6} z={2} delay={0.16} />}
+          {angled && <MockupImg src={angled} h={360} x={228} y={14} fx={170} fy={90} rot={9} z={3} delay={0.08} />}
         </div>
       );
     }
