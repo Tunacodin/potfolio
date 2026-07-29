@@ -9,7 +9,7 @@ Konya, Türkiye · +90 538 722 72 58 · bostancibasituna58@gmail.com
 
 ## Profile
 
-Product-minded React Native & Expo engineer with **5+ years** shipping mobile apps end-to-end — from architecture and state design to EAS builds, code signing, and store releases. I own the full stack: extending a single Supabase backend across **mobile, web (React / Three.js), and desktop (Electron)**, and have delivered production apps across social, fintech, and warehouse-operations domains. I care about fast, resilient UI, clean data flow, and turning ambiguous product ideas into released software.
+Computer Engineer working in mobile product development. I have contributed to technical development and product processes across projects in diverse domains — education technology, finance, inventory management, and digital platforms. I aim to build user-centered, scalable, and sustainable solutions.
 
 ---
 
