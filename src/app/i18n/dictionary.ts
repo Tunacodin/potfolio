@@ -22,8 +22,8 @@ export const dictionary = {
     line3Prefix:  { en: "",                    tr: "" },
     line3Accent:  { en: "React Native.",       tr: "dönüştürüyorum." },
     intro: {
-      en: "React Native & Expo developer with __HL__5+ years__/HL__ of hands-on experience. Shipped __INK__Sorsana, Savely & Lively__/INK__ to TestFlight and Google Play. Currently leading a 3-discipline community at an Open Innovation Platform.",
-      tr: "__HL__5+ yıl__/HL__ saha deneyimine sahip React Native & Expo geliştiricisiyim. __INK__Sorsana, Savely ve Lively__/INK__ uygulamalarını TestFlight ve Google Play kapalı testine çıkardım. Şu sıra bir Open Innovation Platform'da üç disiplinli bir topluluğa liderlik ediyorum.",
+      en: "React Native & Expo developer with __HL__5+ years__/HL__ of hands-on experience. Shipped __INK__Sorsana, Savely & Lively__/INK__ to TestFlight and Google Play. After gaining experience across three different teams, I now work as a __INK__freelance developer__/INK__.",
+      tr: "__HL__5+ yıl__/HL__ saha deneyimine sahip React Native & Expo geliştiricisiyim. __INK__Sorsana, Savely ve Lively__/INK__ uygulamalarını TestFlight ve Google Play kapalı testine çıkardım. Üç farklı ekipte edindiğim deneyimin ardından, şu anda __INK__freelance geliştirici__/INK__ olarak çalışıyorum.",
     },
     ctaDownloadCV: { en: "Download CV",  tr: "CV İndir" },
     ctaSeeWork:    { en: "See work",     tr: "Projelere bak" },

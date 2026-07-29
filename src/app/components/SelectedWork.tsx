@@ -468,13 +468,6 @@ export function SelectedWork() {
               <span style={{ color: "var(--ink-3)" }}>{pick(t.work.headPost)}</span>
             </h2>
           </motion.div>
-          <motion.span
-            variants={fadeUp(8)}
-            className="font-sans text-sm max-w-[300px] text-right"
-            style={{ color: "var(--ink-3)" }}
-          >
-            {pick(t.work.tagline)}
-          </motion.span>
         </motion.div>
 
         <div>

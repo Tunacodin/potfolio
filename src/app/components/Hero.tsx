@@ -204,22 +204,6 @@ export function Hero() {
                 </MagneticButton>
               </motion.div>
 
-              <motion.div variants={fadeUp(8)}>
-                <MagneticButton
-                  href="#work"
-                  strength={0.18}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full border font-sans text-sm font-medium"
-                  style={{
-                    borderColor: "var(--line-strong)",
-                    color: "var(--ink)",
-                    background: "var(--card-soft)",
-                  }}
-                >
-                  <span>{pick(t.hero.ctaSeeWork)}</span>
-                  <span aria-hidden>→</span>
-                </MagneticButton>
-              </motion.div>
-
               <motion.a
                 variants={fadeUp(8)}
                 href={profile.links.github}
@@ -287,11 +271,10 @@ export function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, ease: EASE_OUT_EXPO as any }}
-            className="col-span-12 bento-card grid grid-cols-3 overflow-hidden"
+            className="col-span-12 bento-card grid grid-cols-2 overflow-hidden"
           >
             <StatCell index={0} end={5}  suffix="+" label={pick(t.hero.stats.yearsRn)} />
-            <StatCell index={1} end={4}              label={pick(t.hero.stats.appsShipped)} />
-            <StatCell index={2} end={2}              label={pick(t.hero.stats.internships)} />
+            <StatCell index={1} end={6}  suffix="+" label={pick(t.hero.stats.appsShipped)} />
           </motion.div>
         </div>
       </div>

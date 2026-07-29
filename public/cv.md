@@ -9,7 +9,7 @@ Denizli, Türkiye · +90 538 722 72 58 · bostancibasituna58@gmail.com
 
 ## Profile
 
-React Native and Expo developer with **2+ years of hands-on experience**, now shipping across **mobile, web, and desktop** on a shared backend. As co-founder of **OmTun Labs**, shipped **Sorsana**, **Savely**, and **Wallpaper Collection** to TestFlight and Google Play closed testing, and delivered cross-platform products — **Verona** (Expo mobile + Electron desktop) and **Yalın Depo** (React Native app + React/Three.js web dashboard). Also contributed React Native and full-stack work to **Tipbox**, a blockchain-based platform.
+React Native and Expo developer with **5+ years of hands-on experience**. As co-founder of **OmTun Labs**, shipped **Sorsana**, **Savely**, and **Wallpaper Collection** to TestFlight and Google Play closed testing. Contributed React Native and full-stack work to **Tipbox**, a blockchain-based platform.
 
 ---
 
