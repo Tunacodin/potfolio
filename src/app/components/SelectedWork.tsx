@@ -167,8 +167,9 @@ function PhoneStage({ project }: { project: Project }) {
   const angled = project.mockupAngled;
 
   // Design-space size of each mockup composition; the stage scales down to fit narrow screens.
-  const DESIGN_H = 440;
-  const designW = webShots.length > 0 ? 720 : 480;
+  // Width must fully contain the widest element's extent so nothing is clipped on wide screens.
+  const DESIGN_H = 470;
+  const designW = webShots.length > 0 ? 780 : 510;
   const { ref: fitRef, scale } = useFitScale(designW);
 
   // Quiet slide-up — no opacity fade. Small rise into place, no overshoot/rotation.
@@ -209,7 +210,7 @@ function PhoneStage({ project }: { project: Project }) {
       </>
     );
     return (
-      <div ref={fitRef} className="relative w-full flex items-center justify-center overflow-hidden" style={{ height: DESIGN_H * scale }}>
+      <div ref={fitRef} className="relative w-full flex items-center justify-center" style={{ height: DESIGN_H * scale }}>
         <div style={{ width: designW, height: DESIGN_H, transform: `scale(${scale})`, transformOrigin: "center center" }}>
           <div className="relative w-full h-full flex items-center justify-center">{content}</div>
         </div>
