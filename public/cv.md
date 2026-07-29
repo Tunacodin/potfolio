@@ -2,27 +2,31 @@
 
 **Mobile & Cross-Platform Developer · React Native / Expo · Full-stack**
 
-Denizli, Türkiye · +90 538 722 72 58 · bostancibasituna58@gmail.com
+Konya, Türkiye · +90 538 722 72 58 · bostancibasituna58@gmail.com
 [tunabostancibasi.com](https://tunabostancibasi.com) · [github.com/Tunacodin](https://github.com/Tunacodin) · [linkedin.com/in/tuna-bostancibasi](https://linkedin.com/in/tuna-bostancibasi)
 
 ---
 
 ## Profile
 
-React Native and Expo developer with **5+ years of hands-on experience**. As co-founder of **OmTun Labs**, shipped **Sorsana**, **Savely**, and **Wallpaper Collection** to TestFlight and Google Play closed testing. Contributed React Native and full-stack work to **Tipbox**, a blockchain-based platform.
+Product-minded React Native & Expo engineer with **5+ years** shipping mobile apps end-to-end — from architecture and state design to EAS builds, code signing, and store releases. I own the full stack: extending a single Supabase backend across **mobile, web (React / Three.js), and desktop (Electron)**, and have delivered production apps across social, fintech, and warehouse-operations domains. I care about fast, resilient UI, clean data flow, and turning ambiguous product ideas into released software.
 
 ---
 
 ## Experience
 
-### OmTun Labs — Co-Founder & Mobile Developer
+### Divizyon — Community Lead
 
-*Denizli · 2023 – Present*
+*Open Innovation Platform · Feb 2026 – Present*
 
-- Co-founded a software venture; owned the architecture and delivery of mobile products end-to-end.
-- Shipped **Sorsana**, **Savely**, and **Wallpaper Collection** to TestFlight and Google Play closed testing.
-- Expanded delivery to **web** (React, Vite, Three.js) and **desktop** (Electron), sharing a single Supabase backend across mobile, web, and desktop.
-- Managed EAS Build pipelines, iOS code signing, Android keystore, and store submissions end-to-end.
+- Leading a 3-discipline community (digital product, experience design, content production) — running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.
+
+### Füzyonist — Mobile Developer
+
+*Multi-disciplinary consulting agency · Oct 2025 – Mar 2026*
+
+- Built mobile applications for client MVP and product development projects using React Native.
+- Contributed to mobile delivery in cross-functional teams with Agile / iterative methodology.
 
 ### Phinia Delphi Technology — React Native Intern
 

@@ -171,10 +171,6 @@ export const projects: Project[] = [
       en: "Full-stack · Desktop + Mobile",
       tr: "Full-stack · Masaüstü + Mobil",
     },
-    status: {
-      en: "In development · Desktop + Mobile",
-      tr: "Geliştiriliyor · Masaüstü + Mobil",
-    },
     techStack: ["Expo Router", "React Native", "Supabase", "Electron", "Reanimated", "TypeScript"],
     screenshots: [
       `${SS}/verona1.png`,
@@ -204,10 +200,6 @@ export const projects: Project[] = [
     role: {
       en: "Full-stack · Mobile + Web",
       tr: "Full-stack · Mobil + Web",
-    },
-    status: {
-      en: "In development · Mobile + Web",
-      tr: "Geliştiriliyor · Mobil + Web",
     },
     techStack: ["Expo SDK 54", "React Native", "Supabase", "expo-sqlite", "expo-camera", "Three.js"],
     screenshots: [
