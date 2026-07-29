@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { projects, type Project } from "../data/projects";
 import { ArrowUpRight } from "lucide-react";
-import { EASE_OUT_QUART, staggerContainer, fadeUp } from "../lib/motion";
+import { staggerContainer, fadeUp } from "../lib/motion";
 import { useLang } from "../i18n/context";
 
 /* ────────────────────────────────────────────── */
@@ -149,15 +149,14 @@ function PhoneStage({ project }: { project: Project }) {
   const mockup = project.mockup;
   const angled = project.mockupAngled;
 
-  // Fully-opaque spring slide-in — no opacity fade. Each mockup flies in from a
-  // direction (fx/fy offset) and settles into place with a subtle overshoot.
-  const MockupImg = ({ src, h, x, y, z, delay, fx = 0, fy = 60, rot = 0 }: { src: string; h: number; x: number; y: number; z: number; delay: number; fx?: number; fy?: number; rot?: number }) => (
+  // Quiet slide-up — no opacity fade. Small rise into place, no overshoot/rotation.
+  const MockupImg = ({ src, h, x, y, z, delay }: { src: string; h: number; x: number; y: number; z: number; delay: number }) => (
     <motion.div
       className="absolute"
-      initial={{ x: x + fx, y: y + fy, rotate: rot }}
-      whileInView={{ x, y, rotate: 0 }}
+      initial={{ x, y: y + 24 }}
+      whileInView={{ x, y }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ type: "spring", stiffness: 78, damping: 14, delay }}
+      transition={{ duration: 0.55, delay, ease: EASE_OUT_QUART as any }}
       style={{ zIndex: z, height: h }}
     >
       <img src={src} alt="" className="h-full w-auto object-contain select-none" draggable={false} loading="lazy" decoding="async" />
@@ -172,24 +171,24 @@ function PhoneStage({ project }: { project: Project }) {
         <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
           <motion.div
             className="absolute"
-            initial={{ x: -132, y: 90 }}
+            initial={{ x: -132, y: 24 }}
             whileInView={{ x: -132, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ type: "spring", stiffness: 78, damping: 15 }}
+            transition={{ duration: 0.55, ease: EASE_OUT_QUART as any }}
             style={{ zIndex: 1 }}
           >
             <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />
           </motion.div>
-          {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} fx={130} fy={70} rot={6} z={2} delay={0.16} />}
-          {angled && <MockupImg src={angled} h={360} x={228} y={14} fx={170} fy={90} rot={9} z={3} delay={0.08} />}
+          {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} z={2} delay={0.1} />}
+          {angled && <MockupImg src={angled} h={360} x={228} y={14} z={3} delay={0.05} />}
         </div>
       );
     }
     // Mobile-only: angled phone in front, straight phone behind
     return (
       <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
-        {mockup && <MockupImg src={mockup} h={360} x={-120} y={-16} from={4} z={2} delay={0.12} />}
-        {angled && <MockupImg src={angled} h={430} x={70} y={10} from={30} z={3} delay={0} />}
+        {mockup && <MockupImg src={mockup} h={360} x={-120} y={-16} z={2} delay={0.08} />}
+        {angled && <MockupImg src={angled} h={430} x={70} y={10} z={3} delay={0} />}
       </div>
     );
   }
@@ -198,17 +197,17 @@ function PhoneStage({ project }: { project: Project }) {
   if (webShots.length > 0) {
     const phones = project.screenshots.slice(0, 2);
     const phonePos = [
-      { x: 150, y: 52, from: 66, z: 3, w: 150 },
-      { x: 250, y: -46, from: -32, z: 2, w: 132 },
+      { x: 150, y: 52, fx: 120, fy: 80, rot: 8, z: 3, w: 150 },
+      { x: 250, y: -46, fx: 170, fy: -60, rot: 10, z: 2, w: 132 },
     ];
     return (
       <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
         <motion.div
           className="absolute"
-          initial={{ x: -66, y: 16, scale: 0.94 }}
-          whileInView={{ x: -66, y: 0, scale: 1 }}
+          initial={{ x: -66, y: 90 }}
+          whileInView={{ x: -66, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: EASE_OUT_QUART as any }}
+          transition={{ type: "spring", stiffness: 78, damping: 15 }}
           style={{ zIndex: 1 }}
         >
           <BrowserMockup src={webShots[0]} mode={project.mode} width={380} fit={project.imageFit ?? "cover"} />
@@ -219,10 +218,10 @@ function PhoneStage({ project }: { project: Project }) {
             <motion.div
               key={i}
               className="absolute"
-              initial={{ x: p.x, y: p.from, scale: 0.94 }}
-              whileInView={{ x: p.x, y: p.y, scale: 1 }}
+              initial={{ x: p.x + p.fx, y: p.y + p.fy, rotate: p.rot }}
+              whileInView={{ x: p.x, y: p.y, rotate: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.1 + i * 0.08, ease: EASE_OUT_QUART as any }}
+              transition={{ type: "spring", stiffness: 78, damping: 14, delay: 0.08 + i * 0.08 }}
               style={{ zIndex: p.z }}
             >
               <PhoneMockup src={src} mode={project.mode} width={p.w} fit={project.imageFit} />
@@ -238,10 +237,10 @@ function PhoneStage({ project }: { project: Project }) {
     return (
       <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 90, rotate: 5 }}
+          whileInView={{ y: 0, rotate: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
+          transition={{ type: "spring", stiffness: 78, damping: 14 }}
         >
           <PhoneMockup src={project.screenshots[0]} mode={project.mode} width={220} fit={project.imageFit} />
         </motion.div>
@@ -249,11 +248,11 @@ function PhoneStage({ project }: { project: Project }) {
     );
   }
 
-  // 3 phones — final positions set as layout, only opacity + tiny rise on entry
+  // 3 phones — outer phones spring in from the sides, center drops from below. No fade.
   const positions = [
-    { x: -130, y: 20,  rotate: -10, z: 1, scale: 0.92 },
-    { x: 0,    y: -14, rotate: 0,   z: 3, scale: 1.0  },
-    { x: 130,  y: 20,  rotate: 10,  z: 1, scale: 0.92 },
+    { x: -130, y: 20,  rotate: -10, z: 1, scale: 0.92, fx: -170, fy: 30 },
+    { x: 0,    y: -14, rotate: 0,   z: 3, scale: 1.0,  fx: 0,    fy: 90 },
+    { x: 130,  y: 20,  rotate: 10,  z: 1, scale: 0.92, fx: 170,  fy: 30 },
   ];
 
   return (
@@ -265,10 +264,10 @@ function PhoneStage({ project }: { project: Project }) {
             key={i}
             className="absolute"
             initial={{
-              x: p.x,
-              y: p.y + 18,
+              x: p.x + p.fx,
+              y: p.y + p.fy,
               rotate: p.rotate,
-              scale: p.scale * 0.95,
+              scale: p.scale,
             }}
             whileInView={{
               x: p.x,
@@ -278,9 +277,10 @@ function PhoneStage({ project }: { project: Project }) {
             }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{
-              duration: 0.65,
-              delay: i * 0.08,
-              ease: EASE_OUT_QUART as any,
+              type: "spring",
+              stiffness: 80,
+              damping: 15,
+              delay: i * 0.07,
             }}
             style={{ zIndex: p.z }}
           >

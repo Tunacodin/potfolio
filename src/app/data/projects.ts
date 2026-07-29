@@ -36,8 +36,8 @@ export const projects: Project[] = [
       tr: "Öğrenciler için sosyal soru-cevap platformu",
     },
     description: {
-      en: "A social learning platform where students snap a photo of any question and get clear, step-by-step answers from peers and AI in seconds. It turns problem-solving from a lonely task into a shared community experience.",
-      tr: "Öğrencilerin takıldıkları soruyu görselle paylaşıp saniyeler içinde akranlarından ve yapay zekâdan adım adım açıklamalı çözümler aldığı sosyal bir öğrenme platformu. Soru çözmeyi tek başına yapılan bir iş olmaktan çıkarıp toplulukla paylaşılan bir deneyime dönüştürüyor.",
+      en: "A social learning platform where students share the questions they encounter as images and instantly benefit from both peer-driven and AI-assisted solutions. It transforms solitary studying into an interactive, community-based experience — turning knowledge into a value that grows as it is shared.",
+      tr: "Öğrencilerin karşılaştıkları soruları görselleriyle paylaşarak hem akranlarından hem de yapay zekâ destekli çözümlerden anında yararlanabildiği sosyal bir öğrenme platformu. Bireysel çalışmayı topluluk temelli, etkileşimli bir öğrenme deneyimine dönüştürerek bilgiyi paylaşıldıkça büyüyen bir değere çeviriyor.",
     },
     role: {
       en: "Lead Mobile Developer",
@@ -71,8 +71,8 @@ export const projects: Project[] = [
       tr: "Blockchain tabanlı ürün deneyimi paylaşımı",
     },
     description: {
-      en: "A community platform where people share honest product experiences and get rewarded for their contributions. It makes trustworthy reviews valuable, building a knowledge pool shoppers can rely on before they buy.",
-      tr: "Kullanıcıların gerçek ürün deneyimlerini paylaştığı ve bu katkıları karşılığında ödüller kazandığı bir topluluk platformu. Dürüst deneyimleri değerli kılarak insanların satın almadan önce güvenebileceği bir bilgi havuzu oluşturuyor.",
+      en: "A community platform where users share genuine product experiences and see their contributions transparently rewarded on-chain. By turning trustworthy opinions into a valuable asset, it lets consumers ground their purchasing decisions in solid, verifiable insight.",
+      tr: "Kullanıcıların gerçek ürün deneyimlerini paylaştığı ve bu katkılarının blokzincir üzerinde şeffaf biçimde ödüllendirildiği bir topluluk platformu. Güvenilir kullanıcı görüşlerini değerli bir varlığa dönüştürerek tüketicilerin satın alma kararlarını sağlam ve doğrulanabilir bilgiye dayandırmasını sağlıyor.",
     },
     role: {
       en: "React Native + Full-stack",
@@ -101,8 +101,8 @@ export const projects: Project[] = [
       tr: "Hedef bazlı tasarruf ve sosyal akış",
     },
     description: {
-      en: "A finance app that makes saving tangible by tying it to real goals. People set targets, watch their progress, and draw inspiration from a social feed — turning saving money into a habit that actually sticks.",
-      tr: "Tasarrufu somut hedeflere bağlayarak motive edici hâle getiren bir finans uygulaması. Kullanıcılar birikim hedefleri koyar, ilerlemesini takip eder ve sosyal akıştan ilham alır — para biriktirmeyi kalıcı bir alışkanlığa dönüştürür.",
+      en: "A personal finance app that reframes saving from an abstract effort into a measurable journey by tying it to concrete goals. Users define their targets, track progress in real time, and draw motivation from a social feed — building saving into a sustainable, long-term habit.",
+      tr: "Tasarrufu somut hedeflerle ilişkilendirerek soyut bir çabadan ölçülebilir bir sürece dönüştüren bir kişisel finans uygulaması. Kullanıcılar birikim hedeflerini tanımlar, ilerlemelerini gerçek zamanlı izler ve sosyal akış üzerinden birbirlerinden ilham alarak tasarrufu sürdürülebilir bir alışkanlığa dönüştürür.",
     },
     role: {
       en: "Lead Mobile Developer",
@@ -133,8 +133,8 @@ export const projects: Project[] = [
       tr: "Animasyonlu duvar kağıtları & görsel keşif",
     },
     description: {
-      en: "A discovery app that brings phone screens to life with animated wallpapers. Users glide through a curated collection and set the perfect look for any mood with a single tap.",
-      tr: "Telefon ekranını canlı, animasyonlu duvar kâğıtlarıyla kişiselleştiren bir keşif uygulaması. Özenle seçilmiş içerikler arasında akıcı bir deneyimle gezinip her ruh hâline uygun görünümü tek dokunuşla uygulama imkânı sunuyor.",
+      en: "A visual discovery app that lets users personalize their device screens with a curated library of animated wallpapers. Through fluid browsing and a rich content archive, it makes finding and applying a look that matches each user's aesthetic effortless.",
+      tr: "Kullanıcıların cihaz ekranlarını özenle seçilmiş, animasyonlu duvar kâğıtlarıyla kişiselleştirdiği bir görsel keşif uygulaması. Akıcı bir gezinme deneyimi ve zengin içerik arşiviyle, her kullanıcının kendi estetik tercihine uygun görünümü zahmetsizce bulup uygulamasını sağlıyor.",
     },
     role: {
       en: "Lead Mobile Developer",
@@ -164,8 +164,8 @@ export const projects: Project[] = [
       tr: "Sanat okulu için yönetim sistemi",
     },
     description: {
-      en: "A single platform that runs an entire art school — instructors, students, music/dance/stage/workshop classes, session scheduling, billing and contracts. It moves the studio off paper ledgers into one organized, reliable system reachable from both mobile and desktop.",
-      tr: "Bir sanat okulunun tüm işleyişini tek yerden yöneten bir platform — eğitmenler, öğrenciler, müzik/dans/sahne/atölye dersleri, seans planlama, ücretlendirme ve sözleşme takibi. Stüdyoyu kağıt defterlerden kurtarıp mobil ve masaüstünden erişilen düzenli, güvenilir bir sisteme taşıyor.",
+      en: "A versatile digital platform that centralizes the entire operation of Verona Sanat Merkezi — tracking students, instructors and courses under one roof, with role-based access that lets both instructors and administrators manage their own domains. From session scheduling to billing, it runs every step of the operation seamlessly across mobile and desktop.",
+      tr: "Verona Sanat Merkezi'nin tüm yönetim süreçlerini; kursiyer, eğitmen ve kurs takibini tek çatı altında toplayan çok yönlü bir dijital platform. Rol bazlı yetkilendirmeyle hem eğitmenlerin hem de yöneticilerin kendi sorumluluk alanlarını kontrol edebildiği, seans planlamasından ücretlendirmeye kadar operasyonun her adımını mobil ve masaüstünde bütünleşik biçimde yürüten bir sistem.",
     },
     role: {
       en: "Full-stack · Desktop + Mobile",
