@@ -476,9 +476,6 @@ export function SelectedWork() {
           <motion.div variants={fadeUp(8)}>
             <div className="flex items-center gap-3 mb-2">
               <span className="section-num">{pick(t.work.label)}</span>
-              <span className="tag-mono" style={{ color: "var(--ink-4)" }}>
-                {projects.length}
-              </span>
             </div>
             <h2
               className="font-display font-semibold leading-[0.92]"
