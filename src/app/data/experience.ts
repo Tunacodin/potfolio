@@ -28,7 +28,7 @@ export const experiences: Experience[] = [
       en: "Leading a 3-discipline community (digital product, experience design, content production) — running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.",
       tr: "Üç disipline (dijital ürün, deneyim tasarımı, içerik üretimi) ait bir topluluğun liderliğini yürütüyor; etkinlik, oturum ve sprint organizasyonlarını koordine ediyor, prototipten ürüne giden sprintleri planlıyor ve mentor süreçlerini uçtan uca yönetiyor.",
     },
-    href: "#",
+    href: "https://www.divizyon.org/",
   },
   {
     company: "Füzyonist",
@@ -48,26 +48,6 @@ export const experiences: Experience[] = [
       en: "Built mobile applications for client MVP and product development projects using React Native. Contributed to mobile delivery in cross-functional teams with Agile / iterative methodology.",
       tr: "Müşteri MVP'leri ve ürün geliştirme projelerinde React Native ile mobil uygulamalar geliştirdi. Agile / iteratif metodolojiyle cross-functional ekiplerde mobil delivery süreçlerine aktif katkı verdi.",
     },
-    href: "#",
-  },
-  {
-    company: "KodPit Software",
-    location: {
-      en: "Denizli",
-      tr: "Denizli",
-    },
-    period: {
-      en: "2023 (4 months)",
-      tr: "2023 (4 ay)",
-    },
-    role: {
-      en: "Mobile Developer Intern",
-      tr: "Mobil Geliştirici Stajyeri",
-    },
-    description: {
-      en: "Implemented mobile screens and REST API integrations for client projects using React Native.",
-      tr: "Müşteri projelerinde React Native ile mobil ekranları ve REST API entegrasyonlarını geliştirdi.",
-    },
-    href: "#",
+    href: "https://fuzyon.ist/",
   },
 ];

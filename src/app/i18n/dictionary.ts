@@ -30,7 +30,7 @@ export const dictionary = {
     githubHandle:  { en: "github / @Tunacodin", tr: "github / @Tunacodin" },
     stats: {
       yearsRn:     { en: "Years RN / Expo",    tr: "Yıl · RN / Expo" },
-      appsShipped: { en: "Apps shipped",       tr: "Yayına alınan ürün" },
+      appsShipped: { en: "Products built",      tr: "Geliştirilen ürünler" },
       internships: { en: "Mobile internships", tr: "Mobil staj" },
     },
   },
@@ -45,6 +45,7 @@ export const dictionary = {
       tr: "Production build'lerden gerçek ekran görüntüleri — mimari, imzalama ve mağaza yayını uçtan uca tarafımdan yürütüldü.",
     },
     viewCase:   { en: "View case study", tr: "İncelemeyi aç" },
+    visitSite:  { en: "Visit {title}",   tr: "{title}'yı ziyaret et" },
     roleLabel:  { en: "Role",            tr: "Rol" },
     stackLabel: { en: "Stack",           tr: "Stack" },
   },

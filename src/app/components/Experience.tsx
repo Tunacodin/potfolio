@@ -21,6 +21,8 @@ function ExperienceCard({
   return (
     <motion.a
       href={exp.href}
+      target={exp.href && exp.href !== "#" ? "_blank" : undefined}
+      rel={exp.href && exp.href !== "#" ? "noopener noreferrer" : undefined}
       variants={fadeUp(10)}
       onMouseMove={onMouseMove}
       whileHover={{ y: -3 }}

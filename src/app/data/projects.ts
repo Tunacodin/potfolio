@@ -9,12 +9,18 @@ export type Project = {
   status?: Localized;
   techStack: string[];
   screenshots: string[];
+  /** Pre-composited device mockup (phone frame baked in); rendered as-is, no CSS frame. */
+  mockup?: string;
+  /** Angled/perspective mockup variant, shown in front of the straight one. */
+  mockupAngled?: string;
   /** Desktop/web captures rendered inside a browser frame instead of a phone. */
   webShots?: string[];
   brand: string;
   mode: "dark" | "light";
   imageFit?: "cover" | "contain";
   href?: string;
+  /** App/brand icon shown on the visit button. */
+  icon?: string;
 };
 
 const SS = "/projects_ss";
@@ -22,6 +28,8 @@ const SS = "/projects_ss";
 export const projects: Project[] = [
   {
     id: "sorsana",
+    mockup: `${SS}/mockups/sorsana.png`,
+    mockupAngled: `${SS}/mockups/sorsana-angled.png`,
     title: "Sorsana",
     tagline: {
       en: "Social Q&A platform for students",
@@ -51,9 +59,12 @@ export const projects: Project[] = [
     brand: "#7C3AED",
     mode: "light",
     href: "https://sorsanaapp.com/",
+    icon: "/sorsana_icon.svg",
   },
   {
     id: "tipbox",
+    mockup: `${SS}/mockups/tipbox.png`,
+    mockupAngled: `${SS}/mockups/tipbox-angled.png`,
     title: "Tipbox",
     tagline: {
       en: "Blockchain-based product experience sharing",
@@ -82,6 +93,8 @@ export const projects: Project[] = [
   },
   {
     id: "savely",
+    mockup: `${SS}/mockups/savely.png`,
+    mockupAngled: `${SS}/mockups/savely-angled.png`,
     title: "Savely",
     tagline: {
       en: "Goal-based savings & social food feed",
@@ -112,6 +125,8 @@ export const projects: Project[] = [
   },
   {
     id: "lively",
+    mockup: `${SS}/mockups/lively.png`,
+    mockupAngled: `${SS}/mockups/lively-angled.png`,
     title: "Lively",
     tagline: {
       en: "Animated wallpapers & visual discovery",
@@ -141,6 +156,8 @@ export const projects: Project[] = [
   },
   {
     id: "verona",
+    mockup: `${SS}/mockups/verona.png`,
+    mockupAngled: `${SS}/mockups/verona-angled.png`,
     title: "Verona",
     tagline: {
       en: "Management system for an art school",
@@ -173,6 +190,8 @@ export const projects: Project[] = [
   },
   {
     id: "yalin-depo",
+    mockup: `${SS}/mockups/yalin-depo.png`,
+    mockupAngled: `${SS}/mockups/yalin-depo-angled.png`,
     title: "Yalın Depo",
     tagline: {
       en: "Smart warehouse & stock management for lean production",

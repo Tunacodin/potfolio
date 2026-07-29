@@ -101,7 +101,6 @@ function BrowserMockup({
       className="relative select-none"
       style={{
         width,
-        aspectRatio: "16 / 10",
         borderRadius: 16,
         background: bezel,
         padding: 4,
@@ -110,7 +109,7 @@ function BrowserMockup({
       }}
     >
       <div
-        className="relative w-full h-full overflow-hidden flex flex-col"
+        className="relative w-full overflow-hidden flex flex-col"
         style={{ borderRadius: 12, background: innerBg }}
       >
         {/* Toolbar */}
@@ -128,17 +127,14 @@ function BrowserMockup({
           <span style={{ width: dot, height: dot, borderRadius: dot, background: "#FEBC2E" }} />
           <span style={{ width: dot, height: dot, borderRadius: dot, background: "#28C840" }} />
         </div>
-        {/* Viewport */}
-        <div className="relative flex-1 overflow-hidden">
-          <img
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full"
-            style={{ objectFit: fit, objectPosition: "center top" }}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
+        {/* Viewport — image at its natural ratio, full width, never cropped */}
+        <img
+          src={src}
+          alt=""
+          className="block w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   );
@@ -150,8 +146,53 @@ function BrowserMockup({
 function PhoneStage({ project }: { project: Project }) {
   const count = project.screenshots.length;
   const webShots = project.webShots ?? [];
+  const mockup = project.mockup;
+  const angled = project.mockupAngled;
 
-  // Mixed: browser hero + up to 2 phones overlapping (desktop/web + mobile projects)
+  const MockupImg = ({ src, h, x, y, from, z, delay }: { src: string; h: number; x: number; y: number; from: number; z: number; delay: number }) => (
+    <motion.div
+      className="absolute"
+      initial={{ opacity: 0, x, y: from }}
+      whileInView={{ opacity: 1, x, y }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, delay, ease: EASE_OUT_QUART as any }}
+      style={{ zIndex: z, height: h }}
+    >
+      <img src={src} alt="" className="h-full w-auto object-contain select-none" draggable={false} loading="lazy" decoding="async" />
+    </motion.div>
+  );
+
+  // Pre-composited device mockups (phone frame baked in) — angled variant in front, straight behind
+  if (mockup || angled) {
+    // Mixed: browser hero + angled/straight phones (web + mobile projects)
+    if (webShots.length > 0) {
+      return (
+        <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
+          <motion.div
+            className="absolute"
+            initial={{ opacity: 0, x: -132, y: 16 }}
+            whileInView={{ opacity: 1, x: -132, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
+            style={{ zIndex: 1 }}
+          >
+            <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />
+          </motion.div>
+          {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} from={-14} z={2} delay={0.18} />}
+          {angled && <MockupImg src={angled} h={360} x={228} y={14} from={40} z={3} delay={0.1} />}
+        </div>
+      );
+    }
+    // Mobile-only: angled phone in front, straight phone behind
+    return (
+      <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
+        {mockup && <MockupImg src={mockup} h={360} x={-120} y={-16} from={4} z={2} delay={0.12} />}
+        {angled && <MockupImg src={angled} h={430} x={70} y={10} from={30} z={3} delay={0} />}
+      </div>
+    );
+  }
+
+  // Mixed: browser hero + up to 2 phones overlapping (fallback — raw screenshots)
   if (webShots.length > 0) {
     const phones = project.screenshots.slice(0, 2);
     const phonePos = [
@@ -352,19 +393,31 @@ function ProjectShowcase({ project, index }: { project: Project; index: number }
           </div>
         </div>
 
-        <a
-          href={project.href ?? "#"}
-          className="group inline-flex items-center gap-2 mt-4 font-sans text-sm font-medium"
-          style={{ color: "var(--ink)" }}
-        >
-          <span className="link-underline">{pick(t.work.viewCase)}</span>
-          <span
-            className="inline-flex items-center justify-center w-6 h-6"
-            style={{ background: project.brand, color: "#0B0C0F" }}
+        {project.href && project.href !== "#" && (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 mt-5 pl-2 pr-4 py-2 rounded-full font-sans text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:outline-none"
+            style={{
+              color: "#FFFFFF",
+              background: project.brand,
+            }}
           >
-            <ArrowUpRight className="w-3 h-3" />
-          </span>
-        </a>
+            {project.icon && (
+              <img
+                src={project.icon}
+                alt=""
+                aria-hidden
+                className="w-6 h-6 rounded-md shrink-0"
+              />
+            )}
+            <span>
+              {pick(t.work.visitSite).replace("{title}", project.title)}
+            </span>
+            <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        )}
       </motion.div>
 
       {/* Phone stage */}
