@@ -13,7 +13,7 @@ export const dictionary = {
   },
 
   header: {
-    altMobileBrand: { en: "Tuna", tr: "Tuna" },
+    altMobileBrand: { en: "Tuna Bostancıbaşı", tr: "Tuna Bostancıbaşı" },
   },
 
   hero: {
@@ -29,7 +29,7 @@ export const dictionary = {
     ctaSeeWork:    { en: "See work",     tr: "Projelere bak" },
     githubHandle:  { en: "github / @Tunacodin", tr: "github / @Tunacodin" },
     stats: {
-      yearsRn:     { en: "Years RN / Expo",    tr: "Yıl · RN / Expo" },
+      yearsRn:     { en: "React Native",    tr: "React Native" },
       appsShipped: { en: "Products built",      tr: "Geliştirilen ürünler" },
       internships: { en: "Mobile internships", tr: "Mobil staj" },
     },

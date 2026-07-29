@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { projects, type Project } from "../data/projects";
 import { ArrowUpRight } from "lucide-react";
 import { EASE_OUT_QUART, staggerContainer, fadeUp } from "../lib/motion";
@@ -140,6 +141,22 @@ function BrowserMockup({
   );
 }
 
+/* Scale a fixed-design composition down to fit its container width (responsive). */
+function useFitScale(designWidth: number) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => setScale(Math.min(1, el.clientWidth / designWidth));
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [designWidth]);
+  return { ref, scale };
+}
+
 /* ────────────────────────────────────────────── */
 /* PhoneStage — quiet fade-rise, no rotation/3D   */
 /* ────────────────────────────────────────────── */
@@ -148,6 +165,11 @@ function PhoneStage({ project }: { project: Project }) {
   const webShots = project.webShots ?? [];
   const mockup = project.mockup;
   const angled = project.mockupAngled;
+
+  // Design-space size of each mockup composition; the stage scales down to fit narrow screens.
+  const DESIGN_H = 440;
+  const designW = webShots.length > 0 ? 720 : 480;
+  const { ref: fitRef, scale } = useFitScale(designW);
 
   // Quiet slide-up — no opacity fade. Small rise into place, no overshoot/rotation.
   const MockupImg = ({ src, h, x, y, z, delay }: { src: string; h: number; x: number; y: number; z: number; delay: number }) => (
@@ -165,30 +187,32 @@ function PhoneStage({ project }: { project: Project }) {
 
   // Pre-composited device mockups (phone frame baked in) — angled variant in front, straight behind
   if (mockup || angled) {
-    // Mixed: browser hero + angled/straight phones (web + mobile projects)
-    if (webShots.length > 0) {
-      return (
-        <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
-          <motion.div
-            className="absolute"
-            initial={{ x: -132, y: 48 }}
-            whileInView={{ x: -132, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
-            style={{ zIndex: 1 }}
-          >
-            <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />
-          </motion.div>
-          {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} z={2} delay={0.1} />}
-          {angled && <MockupImg src={angled} h={360} x={228} y={14} z={3} delay={0.05} />}
-        </div>
-      );
-    }
-    // Mobile-only: angled phone in front, straight phone behind
-    return (
-      <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
+    const content = webShots.length > 0 ? (
+      <>
+        <motion.div
+          className="absolute"
+          initial={{ x: -132, y: 48 }}
+          whileInView={{ x: -132, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
+          style={{ zIndex: 1 }}
+        >
+          <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />
+        </motion.div>
+        {mockup && <MockupImg src={mockup} h={300} x={110} y={-30} z={2} delay={0.1} />}
+        {angled && <MockupImg src={angled} h={360} x={228} y={14} z={3} delay={0.05} />}
+      </>
+    ) : (
+      <>
         {mockup && <MockupImg src={mockup} h={360} x={-120} y={-16} z={2} delay={0.08} />}
         {angled && <MockupImg src={angled} h={430} x={70} y={10} z={3} delay={0} />}
+      </>
+    );
+    return (
+      <div ref={fitRef} className="relative w-full flex items-center justify-center overflow-hidden" style={{ height: DESIGN_H * scale }}>
+        <div style={{ width: designW, height: DESIGN_H, transform: `scale(${scale})`, transformOrigin: "center center" }}>
+          <div className="relative w-full h-full flex items-center justify-center">{content}</div>
+        </div>
       </div>
     );
   }
@@ -453,7 +477,7 @@ export function SelectedWork() {
             <div className="flex items-center gap-3 mb-2">
               <span className="section-num">{pick(t.work.label)}</span>
               <span className="tag-mono" style={{ color: "var(--ink-4)" }}>
-                {projects.length} · {pick(t.work.badge)}
+                {projects.length}
               </span>
             </div>
             <h2

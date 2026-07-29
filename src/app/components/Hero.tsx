@@ -250,7 +250,7 @@ export function Hero() {
                     className="font-display font-semibold text-lg"
                     style={{ color: "var(--ink)", letterSpacing: "-0.03em" }}
                   >
-                    Tuna B.
+                    Tuna BOSTANCIBAŞI
                   </div>
                 </div>
                 <span
