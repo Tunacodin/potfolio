@@ -149,13 +149,14 @@ function PhoneStage({ project }: { project: Project }) {
   const mockup = project.mockup;
   const angled = project.mockupAngled;
 
+  // Opaque entrance — no opacity fade (prevents stacked mockups showing through each other).
   const MockupImg = ({ src, h, x, y, from, z, delay }: { src: string; h: number; x: number; y: number; from: number; z: number; delay: number }) => (
     <motion.div
       className="absolute"
-      initial={{ opacity: 0, x, y: from }}
-      whileInView={{ opacity: 1, x, y }}
+      initial={{ x, y: from, scale: 0.94 }}
+      whileInView={{ x, y, scale: 1 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: EASE_OUT_QUART as any }}
+      transition={{ duration: 0.7, delay, ease: EASE_OUT_QUART as any }}
       style={{ zIndex: z, height: h }}
     >
       <img src={src} alt="" className="h-full w-auto object-contain select-none" draggable={false} loading="lazy" decoding="async" />
@@ -170,10 +171,10 @@ function PhoneStage({ project }: { project: Project }) {
         <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
           <motion.div
             className="absolute"
-            initial={{ opacity: 0, x: -132, y: 16 }}
-            whileInView={{ opacity: 1, x: -132, y: 0 }}
+            initial={{ x: -132, y: 16, scale: 0.94 }}
+            whileInView={{ x: -132, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
+            transition={{ duration: 0.7, ease: EASE_OUT_QUART as any }}
             style={{ zIndex: 1 }}
           >
             <BrowserMockup src={webShots[0]} mode={project.mode} width={410} />
@@ -203,10 +204,10 @@ function PhoneStage({ project }: { project: Project }) {
       <div className="relative h-[380px] md:h-[440px] flex items-center justify-center">
         <motion.div
           className="absolute"
-          initial={{ opacity: 0, x: -66, y: 16 }}
-          whileInView={{ opacity: 1, x: -66, y: 0 }}
+          initial={{ x: -66, y: 16, scale: 0.94 }}
+          whileInView={{ x: -66, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: EASE_OUT_QUART as any }}
+          transition={{ duration: 0.7, ease: EASE_OUT_QUART as any }}
           style={{ zIndex: 1 }}
         >
           <BrowserMockup src={webShots[0]} mode={project.mode} width={380} fit={project.imageFit ?? "cover"} />
@@ -217,10 +218,10 @@ function PhoneStage({ project }: { project: Project }) {
             <motion.div
               key={i}
               className="absolute"
-              initial={{ opacity: 0, x: p.x, y: p.from }}
-              whileInView={{ opacity: 1, x: p.x, y: p.y }}
+              initial={{ x: p.x, y: p.from, scale: 0.94 }}
+              whileInView={{ x: p.x, y: p.y, scale: 1 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: EASE_OUT_QUART as any }}
+              transition={{ duration: 0.7, delay: 0.1 + i * 0.08, ease: EASE_OUT_QUART as any }}
               style={{ zIndex: p.z }}
             >
               <PhoneMockup src={src} mode={project.mode} width={p.w} fit={project.imageFit} />
@@ -263,14 +264,12 @@ function PhoneStage({ project }: { project: Project }) {
             key={i}
             className="absolute"
             initial={{
-              opacity: 0,
               x: p.x,
               y: p.y + 18,
               rotate: p.rotate,
-              scale: p.scale,
+              scale: p.scale * 0.95,
             }}
             whileInView={{
-              opacity: 1,
               x: p.x,
               y: p.y,
               rotate: p.rotate,
@@ -278,7 +277,7 @@ function PhoneStage({ project }: { project: Project }) {
             }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{
-              duration: 0.55,
+              duration: 0.65,
               delay: i * 0.08,
               ease: EASE_OUT_QUART as any,
             }}

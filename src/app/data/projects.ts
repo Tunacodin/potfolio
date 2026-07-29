@@ -36,8 +36,8 @@ export const projects: Project[] = [
       tr: "Öğrenciler için sosyal soru-cevap platformu",
     },
     description: {
-      en: "Peer-based question solving platform — students post questions with images, get AI-augmented explanations, react and discuss. Shipped to TestFlight and Google Play closed testing.",
-      tr: "Öğrencilerin görsellerle soru paylaşıp AI destekli açıklamalar aldığı, tepki verip tartışabildiği akran tabanlı bir soru çözüm platformu. TestFlight ve Google Play kapalı testine çıkarıldı.",
+      en: "A social learning platform where students snap a photo of any question and get clear, step-by-step answers from peers and AI in seconds. It turns problem-solving from a lonely task into a shared community experience.",
+      tr: "Öğrencilerin takıldıkları soruyu görselle paylaşıp saniyeler içinde akranlarından ve yapay zekâdan adım adım açıklamalı çözümler aldığı sosyal bir öğrenme platformu. Soru çözmeyi tek başına yapılan bir iş olmaktan çıkarıp toplulukla paylaşılan bir deneyime dönüştürüyor.",
     },
     role: {
       en: "Lead Mobile Developer",
@@ -71,8 +71,8 @@ export const projects: Project[] = [
       tr: "Blockchain tabanlı ürün deneyimi paylaşımı",
     },
     description: {
-      en: "Blockchain-based platform where users share product experiences and earn on-chain rewards. Contributed React Native screens, Web3 integration and full-stack work alongside the team.",
-      tr: "Kullanıcıların ürün deneyimlerini paylaşarak on-chain ödüller kazandığı blockchain tabanlı bir platform. React Native ekranları, Web3 entegrasyonu ve full-stack tarafında takıma katkı verildi.",
+      en: "A community platform where people share honest product experiences and get rewarded for their contributions. It makes trustworthy reviews valuable, building a knowledge pool shoppers can rely on before they buy.",
+      tr: "Kullanıcıların gerçek ürün deneyimlerini paylaştığı ve bu katkıları karşılığında ödüller kazandığı bir topluluk platformu. Dürüst deneyimleri değerli kılarak insanların satın almadan önce güvenebileceği bir bilgi havuzu oluşturuyor.",
     },
     role: {
       en: "React Native + Full-stack",
@@ -101,8 +101,8 @@ export const projects: Project[] = [
       tr: "Hedef bazlı tasarruf ve sosyal akış",
     },
     description: {
-      en: "Financial goal & social savings app — Apple Sign-In, Supabase backend, signed Android release. Custom feed components with image-rich content cards and Reanimated transitions.",
-      tr: "Finansal hedef takibi ve sosyal tasarruf için bir uygulama — Apple Sign-In, Supabase backend ve imzalı Android sürüm. Görsel zengin içerik kartları için özel feed bileşenleri ve Reanimated geçişler geliştirildi.",
+      en: "A finance app that makes saving tangible by tying it to real goals. People set targets, watch their progress, and draw inspiration from a social feed — turning saving money into a habit that actually sticks.",
+      tr: "Tasarrufu somut hedeflere bağlayarak motive edici hâle getiren bir finans uygulaması. Kullanıcılar birikim hedefleri koyar, ilerlemesini takip eder ve sosyal akıştan ilham alır — para biriktirmeyi kalıcı bir alışkanlığa dönüştürür.",
     },
     role: {
       en: "Lead Mobile Developer",
