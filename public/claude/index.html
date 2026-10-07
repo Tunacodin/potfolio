@@ -21,6 +21,8 @@
     --cobalt: #1F3FFF;
     --cobalt-deep: #0E27B8;
     --cobalt-soft: #E2E7FF;
+    --r: 14px;
+    --r-s: 8px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -50,7 +52,7 @@
   .apply {
     display: flex; justify-content: space-between; align-items: center;
     margin-top: 24px; padding: 18px 20px;
-    background: var(--cobalt); color: #fff; text-decoration: none;
+    background: var(--cobalt); color: #fff; text-decoration: none; border-radius: var(--r);
     font-size: 20px; font-weight: 700;
   }
   .apply:active { background: var(--cobalt-deep); }
@@ -69,7 +71,7 @@
   .yes li, .no li { padding-left: 30px; position: relative; }
   .yes li::before, .no li::before {
     position: absolute; left: 0; top: 12px; width: 20px; height: 20px;
-    display: grid; place-items: center; font-size: 13px; font-weight: 700;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700; border-radius: 50%;
   }
   .yes li::before { content: "✓"; background: var(--cobalt-soft); color: var(--cobalt); }
   .no li::before { content: "!"; background: var(--soft); color: var(--ink); }
@@ -77,7 +79,7 @@
   ol li { counter-increment: s; padding-left: 40px; position: relative; }
   ol li::before {
     content: counter(s); position: absolute; left: 0; top: 10px;
-    width: 28px; height: 28px; display: grid; place-items: center;
+    width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--r-s);
     background: var(--ink); color: #fff; font-weight: 700;
   }
   .checked { font-size: 13px; color: var(--muted); margin-top: 8px; }
@@ -87,7 +89,7 @@
   .btn {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px 18px; text-decoration: none; font-weight: 600;
-    border: 1px solid var(--ink); background: var(--paper);
+    border: 1px solid var(--ink); background: var(--paper); border-radius: var(--r);
   }
   .btn.dark { background: var(--ink); color: #fff; }
 </style>
