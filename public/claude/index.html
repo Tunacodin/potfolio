@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Claude for Startups: başvuru ve şartlar | Tuna Bostancıbaşı</title>
+<meta name="description" content="Girişimine 1 yıl ücretsiz Claude Team ve 1.000 dolar API kredisi. Başvuru linki, katılım şartları ve verilenler tek sayfada." />
+<meta property="og:title" content="Claude for Startups: başvuru ve şartlar" />
+<meta property="og:description" content="1 yıl ücretsiz Claude Team, 1.000 dolar API kredisi. Kimler başvurabilir, nasıl başvurulur." />
+<meta property="og:url" content="https://tunabostancibasi.com/claude/" />
+<link rel="icon" href="https://tunabostancibasi.com/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0B0C0F;
+    --paper: #FFFFFF;
+    --soft: #F4F5F7;
+    --line: #E3E5EA;
+    --muted: #5B606B;
+    --cobalt: #1F3FFF;
+    --cobalt-deep: #0E27B8;
+    --cobalt-soft: #E2E7FF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .me { font-family: "Space Grotesk", sans-serif; font-weight: 700; text-decoration: none; }
+  .me-link { font-size: 14px; color: var(--muted); text-decoration: none; }
+
+  .hero { padding: 32px 0 28px; }
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .lead { margin-top: 12px; font-size: 18px; }
+  .lead b { color: var(--cobalt); }
+  .apply {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 24px; padding: 18px 20px;
+    background: var(--cobalt); color: #fff; text-decoration: none;
+    font-family: "Space Grotesk", sans-serif; font-size: 20px; font-weight: 700;
+  }
+  .apply:active { background: var(--cobalt-deep); }
+  .apply span { font-size: 24px; }
+  .official { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+  section { border-top: 1px solid var(--line); padding: 24px 0; }
+  h2 { font-family: "Space Grotesk", sans-serif; font-size: 22px; margin-bottom: 12px; }
+  ul, ol { list-style: none; }
+  li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  li strong { display: block; font-weight: 600; }
+  li small { display: block; color: var(--muted); font-size: 15px; }
+  .gift li { display: grid; grid-template-columns: 108px 1fr; gap: 12px; align-items: baseline; }
+  .gift .v { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px; color: var(--cobalt); }
+  .yes li, .no li { padding-left: 30px; position: relative; }
+  .yes li::before, .no li::before {
+    position: absolute; left: 0; top: 12px; width: 20px; height: 20px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700;
+  }
+  .yes li::before { content: "✓"; background: var(--cobalt-soft); color: var(--cobalt); }
+  .no li::before { content: "!"; background: var(--soft); color: var(--ink); }
+  ol { counter-reset: s; }
+  ol li { counter-increment: s; padding-left: 40px; position: relative; }
+  ol li::before {
+    content: counter(s); position: absolute; left: 0; top: 10px;
+    width: 28px; height: 28px; display: grid; place-items: center;
+    background: var(--ink); color: #fff; font-family: "Space Grotesk", sans-serif; font-weight: 700;
+  }
+  .checked { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .end { background: var(--soft); border-top: 1px solid var(--line); padding: 28px 0 40px; }
+  .end .wrap { display: grid; gap: 10px; }
+  .btn {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--ink); background: var(--paper);
+  }
+  .btn.dark { background: var(--ink); color: #fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="me" href="https://tunabostancibasi.com/">Tuna Bostancıbaşı</a>
+    <a class="me-link" href="https://tunabostancibasi.com/">Projelerim →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Claude for Startups</h1>
+    <p class="lead">Girişimine <b>1 yıl ücretsiz Claude Team</b> ve <b>1.000 dolar API kredisi</b>.</p>
+    <a class="apply" href="https://platform.claude.com/offers/startups-application" target="_blank" rel="noopener">Başvuru formunu aç <span>→</span></a>
+    <a class="official" href="https://claude.com/programs/startups" target="_blank" rel="noopener">Programın resmi sayfası</a>
+  </div>
+
+  <section>
+    <h2>Ne veriliyor?</h2>
+    <ul class="gift">
+      <li><span class="v">1 yıl</span><span><strong>Ücretsiz Claude Team</strong><small>5 kişiye kadar. Daha önce Team kullanmamış olman gerekiyor.</small></span></li>
+      <li><span class="v">$1.000</span><span><strong>API kredisi</strong><small>Onaydan sonra 6 ay içinde kullanılır.</small></span></li>
+      <li><span class="v">$45.000</span><span><strong>Araç indirimleri</strong><small>Anthropic'in iş ortaklarının araçlarında, bu tutara kadar.</small></span></li>
+      <li><span class="v">+</span><span><strong>Anthropic ekibiyle görüşme</strong><small>İki haftada bir 45 dakika. Ayrıca daha yüksek API kullanım sınırı.</small></span></li>
+      <li><span class="v">$100.000</span><span><strong>Yatırım aldıysan ek kredi</strong><small>Anthropic'in anlaşmalı yatırım fonlarından birinden yatırım aldıysan, bu tutara kadar.</small></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kimler başvurabilir?</h2>
+    <ul class="yes">
+      <li><strong>Girişimin son 5 yılda kurulduysa</strong><small>Daha eskiyse, son 2 yılda yatırım aldıysan yine başvurabilirsin.</small></li>
+      <li><strong>Şirket e-postan varsa</strong><small>Sitenin alan adıyla biten bir adres (ad@sirketin.com). Gmail ve Hotmail kabul edilmiyor.</small></li>
+      <li><strong>Claude ile bir şey yapıyorsan</strong><small>Ürününde ya da iş akışında Claude kullanıyor veya kullanmayı planlıyor olman yeterli.</small></li>
+      <li><strong>Türkiye'den başvurabilirsin</strong><small>Yasaklı ülke listesinde Türkiye yok.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Nasıl başvurulur?</h2>
+    <ol>
+      <li><strong>Claude Console hesabı aç</strong><small>platform.claude.com adresinden, şirket e-postanla.</small></li>
+      <li><strong>Başvuru formunu doldur</strong><small>Şirketinin sitesini ve e-postanı yaz.</small></li>
+      <li><strong>Ne yaptığını 2-3 cümleyle anlat</strong><small>Claude'u nerede kullandığını açıkça yaz.</small></li>
+      <li><strong>Sonucu bekle</strong><small>Çoğu başvuru birkaç dakikada sonuçlanıyor. Kalanlar 2-3 iş günü içinde inceleniyor.</small></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Bilmen gerekenler</h2>
+    <ul class="no">
+      <li><strong>Kredi 6 ayda biter</strong><small>Kullanmadığın kısım yanar. Claude Team ise 1 yıl sürer.</small></li>
+      <li><strong>Onay garanti değil</strong><small>Kararı Anthropic veriyor.</small></li>
+      <li><strong>Adın duyurulabilir</strong><small>Anthropic, kabul edilen şirketin adını ve logosunu müşterisi olarak paylaşabilir.</small></li>
+      <li><strong>Son başvuru tarihi yok</strong><small>Başvurular sürekli açık. Program her an değişebilir, erken başvurmak mantıklı.</small></li>
+    </ul>
+    <p class="checked">Bilgiler 8 Ekim 2026'da programın resmi sayfasından kontrol edildi.</p>
+  </section>
+</main>
+
+<div class="end">
+  <div class="wrap">
+    <a class="btn dark" href="https://platform.claude.com/offers/startups-application" target="_blank" rel="noopener">Başvuru formunu aç <span>→</span></a>
+    <a class="btn" href="https://tunabostancibasi.com/claude/index.html" download="claude-for-startups.html">Bu sayfayı indir <span>↓</span></a>
+    <a class="btn" href="https://tunabostancibasi.com/">Diğer projelerime bak <span>→</span></a>
+  </div>
+</div>
+
+</body>
+</html>
