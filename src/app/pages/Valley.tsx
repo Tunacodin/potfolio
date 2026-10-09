@@ -61,6 +61,19 @@ function Film({ lang, pick, toggle }: LangProps) {
   const sound = useRef<Ambience | null>(null);
   const [soundOn, setSoundOn] = useState(false);
   const [stop, setStop] = useState(0);
+
+  // sound is on by default (unless the visitor turned it off before); it starts on the first gesture
+  useEffect(() => {
+    let off = false;
+    try { off = localStorage.getItem("vadi-sound") === "off"; } catch { /* storage blocked */ }
+    if (off) return;
+    sound.current ??= new Ambience();
+    if (!sound.current.enabled) setSoundOn(sound.current.toggle());
+    const wake = () => sound.current?.wake();
+    const evs = ["pointerdown", "keydown", "touchend", "wheel"] as const;
+    evs.forEach((e) => addEventListener(e, wake, { passive: true }));
+    return () => evs.forEach((e) => removeEventListener(e, wake));
+  }, []);
   // product images load only once the film nears the clearing, so they never compete with the start
   const [near, setNear] = useState(false);
   const st = useRef<ScrollTrigger | null>(null);
@@ -336,7 +349,9 @@ function Film({ lang, pick, toggle }: LangProps) {
 
   const toggleSound = () => {
     sound.current ??= new Ambience();
-    setSoundOn(sound.current.toggle());
+    const on = sound.current.toggle();
+    setSoundOn(on);
+    try { localStorage.setItem("vadi-sound", on ? "on" : "off"); } catch { /* storage blocked */ }
   };
   const goto = (at: number) => {
     const s = st.current;

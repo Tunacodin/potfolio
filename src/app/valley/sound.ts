@@ -90,6 +90,11 @@ export class Ambience {
     return this.on;
   }
 
+  /** Browsers keep audio suspended until a user gesture; call from one to let sound start. */
+  wake() {
+    if (this.on && this.ctx?.state === "suspended") void this.ctx.resume();
+  }
+
   /** Scroll speed in px/s; gusts with motion, settles at rest. */
   gust(v: number) {
     if (!this.on || !this.ctx) return;
