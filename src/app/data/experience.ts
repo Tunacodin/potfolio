@@ -25,7 +25,7 @@ export const experiences: Experience[] = [
       tr: "Topluluk Lideri",
     },
     description: {
-      en: "Leading a 3-discipline community (digital product, experience design, content production) — running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.",
+      en: "Leading a 3-discipline community (digital product, experience design, content production), running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.",
       tr: "Üç disipline (dijital ürün, deneyim tasarımı, içerik üretimi) ait bir topluluğun liderliğini yürütüyor; etkinlik, oturum ve sprint organizasyonlarını koordine ediyor, prototipten ürüne giden sprintleri planlıyor ve mentor süreçlerini uçtan uca yönetiyor.",
     },
     href: "https://www.divizyon.org/",

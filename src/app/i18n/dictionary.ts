@@ -6,148 +6,64 @@ export const DEFAULT_LANG: Lang = "tr";
 
 export const dictionary = {
   nav: {
-    work:       { en: "Work",       tr: "Projeler" },
-    stack:      { en: "Stack",      tr: "Stack" },
+    work:       { en: "Products",   tr: "Ürünler" },
     experience: { en: "Experience", tr: "Deneyim" },
     contact:    { en: "Contact",    tr: "İletişim" },
-  },
-
-  header: {
-    altMobileBrand: { en: "Tuna Bostancıbaşı", tr: "Tuna Bostancıbaşı" },
+    cv:         { en: "Download CV", tr: "CV indir" },
+    home:       { en: "Back to top", tr: "Başa dön" },
   },
 
   hero: {
-    line1:        { en: "Mobile products,",   tr: "İhtiyaçları" },
-    line2:        { en: "shipped end-to-end.", tr: "çözüme" },
-    line3Prefix:  { en: "",                    tr: "" },
-    line3Accent:  { en: "React Native.",       tr: "dönüştürüyorum." },
+    name: { en: "Tuna Bostancıbaşı", tr: "Tuna Bostancıbaşı" },
+    sub: {
+      en: "Mobile developer. I took {n} products from idea to working app.",
+      tr: "Mobil geliştiriciyim. {n} ürünü fikirden çalışan uygulamaya taşıdım.",
+    },
+    open: { en: "Open {title}", tr: "{title} ürününe git" },
+    cta:  { en: "See the products", tr: "Ürünlere bak" },
+    prev: { en: "Previous product", tr: "Önceki ürün" },
+    next: { en: "Next product", tr: "Sonraki ürün" },
+    drag: { en: "Drag", tr: "Sürükle" },
+    view: { en: "View", tr: "İncele" },
+  },
+
+  about: {
     intro: {
-      en: "React Native & Expo developer with __HL__5+ years__/HL__ of hands-on experience. Shipped __INK__Sorsana, Savely & Lively__/INK__ to TestFlight and Google Play. After gaining experience across three different teams, I now work as a __INK__freelance developer__/INK__.",
-      tr: "__HL__5+ yıl__/HL__ saha deneyimine sahip React Native & Expo geliştiricisiyim. __INK__Sorsana, Savely ve Lively__/INK__ uygulamalarını TestFlight ve Google Play kapalı testine çıkardım. Üç farklı ekipte edindiğim deneyimin ardından, şu anda __INK__freelance geliştirici__/INK__ olarak çalışıyorum.",
+      en: "I'm a React Native and Expo developer with 5+ years of hands-on experience. I shipped Sorsana, Savely and Lively to TestFlight and Google Play testing. After working across three different teams, I now build products as a freelance developer.",
+      tr: "5 yılı aşkın saha deneyimine sahip bir React Native ve Expo geliştiricisiyim. Sorsana, Savely ve Lively'yi TestFlight ve Google Play kapalı testine çıkardım. Üç farklı ekipte edindiğim deneyimin ardından şu anda serbest geliştirici olarak ürünler geliştiriyorum.",
     },
-    ctaDownloadCV: { en: "Download CV",  tr: "CV İndir" },
-    ctaSeeWork:    { en: "See work",     tr: "Projelere bak" },
-    githubHandle:  { en: "github / @Tunacodin", tr: "github / @Tunacodin" },
-    stats: {
-      yearsRn:     { en: "React Native",    tr: "React Native" },
-      yearsUnit:   { en: "yrs",             tr: "Yıl" },
-      appsShipped: { en: "Products built",      tr: "Geliştirilen ürünler" },
-      companyExp:  { en: "Company experience", tr: "Şirket Deneyimi" },
-    },
+    portraitAlt: { en: "Portrait of Tuna Bostancıbaşı", tr: "Tuna Bostancıbaşı portresi" },
+    stats: [
+      { value: 5, suffix: "+", label: { en: "Years with React Native", tr: "Yıl React Native deneyimi" } },
+      { value: 8, suffix: "",  label: { en: "Products built",          tr: "Geliştirilen ürün" } },
+      { value: 3, suffix: "",  label: { en: "Companies",               tr: "Şirket deneyimi" } },
+    ],
   },
 
   work: {
-    label:    { en: "02 — Products built", tr: "02 — Geliştirilen ürünler" },
-    badge:    { en: "closed testing",     tr: "kapalı test" },
-    headPre:  { en: "Products",           tr: "Geliştirilen" },
-    headPost: { en: "built.",             tr: "Ürünler" },
-    tagline: {
-      en: "Real screenshots from production builds — architecture, signing and store submission owned end-to-end.",
-      tr: "Production build'lerden gerçek ekran görüntüleri — mimari, imzalama ve mağaza yayını uçtan uca tarafımdan yürütüldü.",
-    },
-    viewCase:   { en: "View case study", tr: "İncelemeyi aç" },
-    visitSite:  { en: "Visit {title}",   tr: "{title}'yı ziyaret et" },
-    roleLabel:  { en: "Role",            tr: "Rol" },
-    stackLabel: { en: "Stack",           tr: "Stack" },
-  },
-
-  stack: {
-    label:    { en: "03 — Stack",        tr: "03 — Stack" },
-    headPre:  { en: "What I use",        tr: "Yetkinlik" },
-    headPost: { en: "every day.",        tr: "alanlarım." },
-    countSuffix:   { en: "tools",        tr: "araç" },
-    categoryLabel: { en: "categories",   tr: "kategori" },
-    categories: {
-      core: {
-        title:    { en: "Core",                       tr: "Core" },
-        subtitle: { en: "Cross-platform foundation",  tr: "Cross-platform temel" },
-      },
-      stateForms: {
-        title:    { en: "State & Forms",                  tr: "State & Form" },
-        subtitle: { en: "Data, validation, persistence", tr: "Veri, validasyon, depolama" },
-      },
-      backend: {
-        title:    { en: "Backend",                tr: "Backend" },
-        subtitle: { en: "APIs, auth, services",   tr: "API, auth, servisler" },
-      },
-      uiAnimation: {
-        title:    { en: "UI / Motion",               tr: "UI / Motion" },
-        subtitle: { en: "Design system + animation", tr: "Tasarım sistemi + animasyon" },
-      },
-      delivery: {
-        title:    { en: "Delivery",              tr: "Delivery" },
-        subtitle: { en: "Build, sign, distribute", tr: "Build · İmza · Dağıtım" },
-      },
-      languages: {
-        title:    { en: "Languages",       tr: "Diller" },
-        subtitle: { en: "Daily writing",   tr: "Her gün yazdıklarım" },
-      },
-    },
+    heading: { en: "Products I've built.", tr: "Geliştirdiğim ürünler." },
+    visit:   { en: "Visit {title}",        tr: "{title} sitesine git" },
   },
 
   experience: {
-    label:        { en: "04 — Experience", tr: "04 — Deneyim" },
-    headPre:      { en: "Where I've",      tr: "Çalıştığım" },
-    headPost:     { en: "worked.",         tr: "yerler." },
-    rangeChip:    { en: "2023 — Present",  tr: "2023 — Halen" },
-    eduLabel:     { en: "05 — Education",  tr: "05 — Eğitim" },
-    locOngoing:   { en: "ongoing",         tr: "halen" },
-    locCompleted: { en: "completed",       tr: "tamamlandı" },
+    heading:   { en: "Experience.", tr: "Deneyim." },
+    education: { en: "Education",   tr: "Eğitim" },
   },
 
   contact: {
-    label:   { en: "§ 06 — Contact",      tr: "§ 06 — İletişim" },
-    booking: { en: "Booking — Q2 2026",   tr: "Müsait — 2026 Q2" },
+    heading: { en: "Let's build your next product together.", tr: "Bir sonraki ürünü birlikte yapalım." },
     intro: {
-      en: "Open to product collaborations, mobile builds, AI-assisted prototypes and longer engagements. Replies usually arrive within 24 hours.",
-      tr: "Ürün iş birliklerine, mobil geliştirme işlerine, AI destekli prototip projelerine ve uzun soluklu iş ortaklıklarına açığım. Genellikle 24 saat içinde dönüş yaparım.",
+      en: "Open to product partnerships, mobile builds, AI-assisted prototypes and long-term work. I reply within 24 hours.",
+      tr: "Ürün ortaklıklarına, mobil uygulama geliştirmeye, yapay zekâ destekli prototiplere ve uzun soluklu işlere açığım. 24 saat içinde dönüş yaparım.",
     },
-    dropALine: { en: "Drop a line",       tr: "Mesaj at" },
-    meta: {
-      region:    { en: "Region",          tr: "Konum" },
-      phone:     { en: "Phone",           tr: "Telefon" },
-      response:  { en: "Response",        tr: "Yanıt süresi" },
-      status:    { en: "Status",          tr: "Durum" },
-    },
-    metaValues: {
-      under24h:  { en: "Under 24h",       tr: "24 saat içinde" },
-      open:      { en: "Open",            tr: "Müsait" },
-    },
-    socials: {
-      linkedin:  { en: "Professional",    tr: "Profesyonel" },
-      github:    { en: "Code",            tr: "Kod" },
-      website:   { en: "Personal",        tr: "Kişisel" },
-    },
-    marquee: {
-      en: [
-        "Available for work",
-        "Q2 2026",
-        "React Native",
-        "Expo",
-        "n8n",
-        "AI pipelines",
-        "Mobile",
-        "Backend",
-      ],
-      tr: [
-        "Yeni projelere açığım",
-        "2026 Q2",
-        "React Native",
-        "Expo",
-        "n8n",
-        "AI pipelines",
-        "Mobil",
-        "Backend",
-      ],
-    },
+    copy:     { en: "Copy",     tr: "Kopyala" },
+    copied:   { en: "Copied",   tr: "Kopyalandı" },
+    phone:    { en: "Phone",    tr: "Telefon" },
+    location: { en: "Location", tr: "Konum" },
+    elsewhere:{ en: "Elsewhere", tr: "Bağlantılar" },
   },
 
   footer: {
-    brandSubtitle: { en: "Mobile engineer · React Native / Expo", tr: "Mobil geliştirici · React Native / Expo" },
-    elsewhere:     { en: "Elsewhere",  tr: "Sosyal" },
-    navigate:      { en: "Navigate",   tr: "Sayfalar" },
-    backToTop:     { en: "Back to top",tr: "En üste" },
-    craftedIn:     { en: "Crafted in Konya, Türkiye", tr: "Konya'da hazırlandı" },
-    copyright:     { en: "©",          tr: "©" },
+    rights: { en: "All rights reserved.", tr: "Tüm hakları saklıdır." },
   },
 } as const;

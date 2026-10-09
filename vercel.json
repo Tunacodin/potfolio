@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/vadi", "destination": "/index.html" }]
+}

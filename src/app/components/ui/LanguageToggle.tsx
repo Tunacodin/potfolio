@@ -2,25 +2,15 @@ import { motion } from "motion/react";
 import { useLang } from "../../i18n/context";
 import type { Lang } from "../../i18n/dictionary";
 
-type Variant = "light" | "dark";
-
-export function LanguageToggle({ variant = "light" }: { variant?: Variant }) {
+export function LanguageToggle() {
   const { lang, setLang } = useLang();
-  const langs: Lang[] = ["en", "tr"];
-
-  const isDark = variant === "dark";
-  const bg = isDark ? "rgba(255,255,255,0.06)" : "var(--card-soft)";
-  const border = isDark ? "rgba(255,255,255,0.12)" : "var(--line-strong)";
-  const activeBg = isDark ? "var(--paper)" : "var(--ink)";
-  const activeText = isDark ? "var(--ink)" : "var(--paper)";
-  const inactiveText = isDark ? "rgba(250,250,247,0.55)" : "var(--ink-3)";
+  const langs: Lang[] = ["tr", "en"];
 
   return (
     <div
-      className="relative inline-flex items-center p-0.5 rounded-full"
-      style={{ background: bg, border: `1px solid ${border}` }}
+      className="relative inline-flex items-center rounded-full border border-line-strong p-[3px]"
       role="group"
-      aria-label="Language"
+      aria-label="Dil / Language"
     >
       {langs.map((l) => {
         const active = l === lang;
@@ -30,19 +20,14 @@ export function LanguageToggle({ variant = "light" }: { variant?: Variant }) {
             type="button"
             onClick={() => setLang(l)}
             aria-pressed={active}
-            className="relative px-3 py-1 font-mono text-[13px] tracking-wider uppercase font-semibold rounded-full"
-            style={{
-              color: active ? activeText : inactiveText,
-              minWidth: 28,
-              zIndex: 1,
-            }}
+            className="relative z-[1] h-8 min-w-10 rounded-full px-2.5 text-[13px] font-semibold transition-colors duration-300"
+            style={{ color: active ? "var(--paper)" : "var(--ink)" }}
           >
             {active && (
               <motion.span
                 layoutId="lang-pill"
-                className="absolute inset-0 rounded-full"
-                style={{ background: activeBg, zIndex: -1 }}
-                transition={{ type: "spring", stiffness: 320, damping: 26 }}
+                className="absolute inset-0 -z-[1] rounded-full bg-ink"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
             {l.toUpperCase()}

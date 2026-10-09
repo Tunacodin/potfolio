@@ -36,7 +36,7 @@ export const profile = {
     },
     {
       name:  { en: "English", tr: "İngilizce" } as Localized,
-      level: { en: "B2",      tr: "B2 — Orta-İleri" } as Localized,
+      level: { en: "B2",      tr: "B2, Orta-İleri" } as Localized,
     },
   ],
 };

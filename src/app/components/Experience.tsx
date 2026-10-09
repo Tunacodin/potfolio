@@ -1,239 +1,93 @@
-import { motion } from "motion/react";
-import { ArrowUpRight, GraduationCap } from "lucide-react";
+import { useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useLang } from "../i18n/context";
 import { experiences } from "../data/experience";
 import { profile } from "../data/profile";
-import { staggerContainer, fadeUp, useSpotlight } from "../lib/motion";
-import { useLang } from "../i18n/context";
-
-function ExperienceCard({
-  exp,
-  featured = false,
-}: {
-  exp: (typeof experiences)[number];
-  featured?: boolean;
-}) {
-  const { onMouseMove } = useSpotlight();
-  const { pick } = useLang();
-  const period = pick(exp.period);
-  const location = pick(exp.location);
-  const role = exp.role ? pick(exp.role) : undefined;
-  const description = pick(exp.description);
-  return (
-    <motion.a
-      href={exp.href}
-      target={exp.href && exp.href !== "#" ? "_blank" : undefined}
-      rel={exp.href && exp.href !== "#" ? "noopener noreferrer" : undefined}
-      variants={fadeUp(10)}
-      onMouseMove={onMouseMove}
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
-      className={`group spotlight bento-card flex flex-col gap-3 ${
-        featured ? "p-6 md:p-7" : "p-5 md:p-6"
-      }`}
-    >
-      <div className="flex items-start justify-between gap-3 relative z-10">
-        <div className="flex items-baseline gap-3">
-          <span
-            className="font-display font-semibold leading-none tabular-nums"
-            style={{
-              fontSize: featured ? "clamp(1.6rem,2.4vw,2rem)" : "1.35rem",
-              letterSpacing: "-0.035em",
-              color: "var(--cobalt)",
-            }}
-          >
-            {period.split(" ")[0]}
-          </span>
-          <span className="tag-mono" style={{ color: "var(--ink-4)" }}>
-            {location}
-          </span>
-        </div>
-        <motion.span
-          whileHover={{ rotate: 45 }}
-          transition={{ type: "spring", stiffness: 320, damping: 18 }}
-          className="w-8 h-8 rounded-full grid place-items-center shrink-0"
-          style={{
-            background: "var(--card-soft)",
-            color: "var(--ink)",
-            border: "1px solid var(--line-strong)",
-          }}
-        >
-          <ArrowUpRight className="w-3.5 h-3.5" />
-        </motion.span>
-      </div>
-
-      <div className="relative z-10">
-        <h3
-          className="font-display font-semibold"
-          style={{
-            fontSize: featured
-              ? "clamp(1.4rem,2vw,1.7rem)"
-              : "clamp(1.1rem,1.6vw,1.3rem)",
-            letterSpacing: "-0.03em",
-            color: "var(--ink)",
-            lineHeight: 1.05,
-          }}
-        >
-          {exp.company}
-        </h3>
-        {role && (
-          <span
-            lang="en"
-            className="font-mono text-[12px] tracking-wider uppercase font-semibold mt-1.5 inline-block"
-            style={{ color: "var(--cobalt)" }}
-          >
-            / {role}
-          </span>
-        )}
-      </div>
-
-      <p
-        className={`font-sans leading-relaxed relative z-10 ${
-          featured ? "text-sm line-clamp-4" : "text-xs line-clamp-3"
-        }`}
-        style={{ color: "var(--ink-3)" }}
-      >
-        {description}
-      </p>
-    </motion.a>
-  );
-}
+import { gsap, MQ, useGSAP } from "../lib/scroll";
+import { RevealText } from "./ui/RevealText";
 
 export function Experience() {
-  const { t, pick } = useLang();
-  // Heuristic: most recent experience is featured
-  const [featured, ...rest] = experiences;
+  const { t, pick, lang } = useLang();
+  const root = useRef<HTMLElement>(null);
   const edu = profile.education[0];
 
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MQ.motion, () => {
+        gsap.utils.toArray<HTMLElement>(".xp-row", root.current).forEach((row) => {
+          gsap.from(row.querySelectorAll(".xp-fade"), {
+            y: 32,
+            opacity: 0,
+            duration: 1.1,
+            ease: "expo.out",
+            stagger: 0.08,
+            scrollTrigger: { trigger: row, start: "top 88%", once: true },
+          });
+        });
+      });
+      return () => mm.revert();
+    },
+    { scope: root, dependencies: [lang], revertOnUpdate: true },
+  );
+
+  const rows = [
+    ...experiences.map((x) => ({
+      key: x.company,
+      period: pick(x.period),
+      name: x.company,
+      href: x.href,
+      sub: [x.role && pick(x.role), pick(x.location)].filter(Boolean).join(" · "),
+      body: pick(x.description),
+    })),
+    {
+      key: edu.school,
+      period: pick(edu.period),
+      name: edu.school,
+      href: undefined,
+      sub: `${pick(t.experience.education)} · ${pick(edu.place)}`,
+      body: pick(edu.degree),
+    },
+  ];
+
   return (
-    <section id="experience" className="w-full px-5 md:px-10 py-10 md:py-14">
-      <div className="max-w-[1240px] mx-auto">
-        {/* Soft header (no divider line) */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={staggerContainer(0, 0.06)}
-          className="flex flex-wrap items-end justify-between gap-3 mb-6"
-        >
-          <motion.div variants={fadeUp(8)} className="flex items-center gap-3">
-            <span className="section-num">{pick(t.experience.label)}</span>
-            <h2
-              className="font-display font-semibold leading-[0.95]"
-              style={{
-                fontSize: "clamp(1.4rem,2.4vw,1.8rem)",
-                letterSpacing: "-0.035em",
-                color: "var(--ink)",
-              }}
-            >
-              {pick(t.experience.headPre)}{" "}
-              <span style={{ color: "var(--ink-3)" }}>{pick(t.experience.headPost)}</span>
-            </h2>
-          </motion.div>
-          <motion.span variants={fadeUp(8)} className="chip-cobalt">
-            {pick(t.experience.rangeChip)}
-          </motion.span>
-        </motion.div>
+    <section ref={root} id="experience" className="px-[var(--gutter)] pb-32 lg:pb-44">
+      <RevealText text={pick(t.experience.heading)} className="t-title" />
 
-        {/* Intentional 12-col bento */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={staggerContainer(0.04, 0.06)}
-          className="grid grid-cols-12 gap-3"
-        >
-          {/* Featured experience (most recent) */}
-          <div className="col-span-12 md:col-span-7">
-            <ExperienceCard exp={featured} featured />
-          </div>
-
-          {/* Other experience */}
-          <div className="col-span-12 md:col-span-5 flex flex-col gap-3">
-            {rest.map((exp) => (
-              <ExperienceCard key={`${exp.company}-${exp.period}`} exp={exp} />
-            ))}
-          </div>
-
-          {/* Education — full-width horizontal band */}
-          <motion.div
-            variants={fadeUp(10)}
-            whileHover={{ y: -2 }}
-            transition={{ type: "spring", stiffness: 280, damping: 22 }}
-            className="col-span-12 bento-card-citron p-5 md:p-6 grid grid-cols-12 items-center gap-4 md:gap-6"
+      <ol className="mt-14 border-b border-line lg:mt-20">
+        {rows.map((r) => (
+          <li
+            key={r.key}
+            className="xp-row group relative grid gap-3 border-t border-line py-9 lg:grid-cols-12 lg:gap-x-[var(--gutter)] lg:py-12"
           >
-            {/* Left — Section label */}
-            <div className="col-span-12 md:col-span-3 flex items-center gap-3">
-              <span
-                className="w-10 h-10 rounded-full grid place-items-center shrink-0"
-                style={{ background: "rgba(11,12,15,0.10)" }}
-              >
-                <GraduationCap
-                  className="w-4 h-4"
-                  style={{ color: "var(--ink)" }}
-                />
-              </span>
-              <div className="flex flex-col">
-                <span
-                  className="font-mono text-[12px] tracking-wider uppercase font-semibold"
-                  style={{ color: "var(--ink-2)" }}
-                >
-                  {pick(t.experience.eduLabel)}
-                </span>
-                <span
-                  className="font-display font-semibold tabular-nums"
-                  style={{
-                    fontSize: "1.1rem",
-                    letterSpacing: "-0.025em",
-                    color: "var(--ink)",
-                  }}
-                >
-                  {pick(edu.period)}
-                </span>
-              </div>
-            </div>
-
-            {/* Middle — School + degree */}
-            <div className="col-span-12 md:col-span-6">
-              <h3
-                className="font-display font-semibold"
-                style={{
-                  fontSize: "clamp(1.2rem,1.8vw,1.5rem)",
-                  letterSpacing: "-0.03em",
-                  color: "var(--ink)",
-                  lineHeight: 1.1,
-                }}
-              >
-                {edu.school}
+            {/* Ink fill that rises behind the row on hover; bleeds a little past the text column. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-3 inset-y-0 origin-bottom lg:-inset-x-5 scale-y-0 bg-ink transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-y-100"
+              style={{ borderRadius: "var(--r-md)" }}
+            />
+            <p className="xp-fade t-num relative text-[15px] font-medium text-ink-2 transition-colors duration-500 group-hover:text-on-ink-2 lg:col-span-2 lg:pt-2.5">
+              {r.period}
+            </p>
+            <div className="relative transition-colors duration-500 group-hover:text-paper lg:col-span-5">
+              <h3 className="xp-fade t-heading">
+                {r.href ? (
+                  <a href={r.href} target="_blank" rel="noreferrer" className="inline-flex items-start gap-2">
+                    {r.name}
+                    <ArrowUpRight className="mt-[0.12em] size-[0.55em] shrink-0" strokeWidth={2} />
+                  </a>
+                ) : (
+                  r.name
+                )}
               </h3>
-              <p
-                className="font-sans text-[13px] mt-1"
-                style={{ color: "var(--ink-2)" }}
-              >
-                {pick(edu.degree)} · {pick(edu.place)}
-              </p>
+              <p className="xp-fade mt-3 text-[16px] font-medium">{r.sub}</p>
             </div>
-
-            {/* Right — Languages as soft chips */}
-            <div className="col-span-12 md:col-span-3 flex md:justify-end flex-wrap gap-1.5">
-              {profile.languages.map((l, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[12px] tracking-wider uppercase font-semibold"
-                  style={{
-                    background: "rgba(11,12,15,0.08)",
-                    color: "var(--ink)",
-                  }}
-                >
-                  {pick(l.name)}
-                  <span style={{ color: "var(--ink-2)", opacity: 0.7 }}>
-                    · {pick(l.level)}
-                  </span>
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
+            <p className="xp-fade relative max-w-[60ch] text-[17px] leading-[1.65] text-ink-2 transition-colors duration-500 group-hover:text-on-ink-2 lg:col-span-5 lg:pt-2">
+              {r.body}
+            </p>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
