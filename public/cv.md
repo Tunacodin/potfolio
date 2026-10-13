@@ -1,6 +1,6 @@
 # Tuna Bostancıbaşı
 
-**Mobile & Cross-Platform Developer · React Native / Expo · Full-stack**
+**Full Stack Developer · React Native / Expo · Laravel**
 
 Konya, Türkiye · +90 538 722 72 58 · bostancibasituna58@gmail.com
 [tunabostancibasi.com](https://tunabostancibasi.com) · [github.com/Tunacodin](https://github.com/Tunacodin) · [linkedin.com/in/tuna-bostancibasi](https://linkedin.com/in/tuna-bostancibasi)
@@ -9,17 +9,25 @@ Konya, Türkiye · +90 538 722 72 58 · bostancibasituna58@gmail.com
 
 ## Profile
 
-Computer Engineer working in mobile product development. I have contributed to technical development and product processes across projects in diverse domains — education technology, finance, inventory management, and digital platforms. I aim to build user-centered, scalable, and sustainable solutions.
+Computer Engineer building mobile and web products end to end as a full stack developer. I have contributed to technical development and product processes across projects in diverse domains — education technology, finance, inventory management, and digital platforms. I aim to build user-centered, scalable, and sustainable solutions.
 
 ---
 
 ## Experience
 
+### Ilgar Teknoloji — Full Stack Developer
+
+*Jul 2026 – Present*
+
+- Building SuPublic end to end, a platform that maps public water points across Türkiye.
+- Own the React Native / Expo mobile app together with the Laravel REST API and MySQL data layer.
+- Responsible for the admin panel, website, OTA updates, and app store releases.
+
 ### Divizyon — Community Lead
 
-*Open Innovation Platform · Feb 2026 – Present*
+*Open Innovation Platform · Feb 2026 – Jul 2026*
 
-- Leading a 3-discipline community (digital product, experience design, content production) — running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.
+- Led a 3-discipline community (digital product, experience design, content production) — ran events, sessions and sprint organisations, planned prototype-to-product sprints and coordinated mentors end-to-end.
 
 ### Füzyonist — Mobile Developer
 
@@ -44,23 +52,30 @@ Computer Engineer working in mobile product development. I have contributed to t
 
 ## Selected Projects
 
+### SuPublic — Map of public water points in Türkiye
+
+**Role:** Full Stack Developer · Ilgar Teknoloji · *Live · iOS + Android + Web*
+**Stack:** React Native, Expo SDK 55, TypeScript, Laravel, MySQL, Firebase, EAS Update
+
+A public-good platform that maps fountains and water points across Türkiye and lets users suggest new ones. Rebuilt the mobile app and run the Laravel API, admin panel, and website, along with OTA updates and store releases.
+
 ### Sorsana — Social Q&A platform for students
 
-**Role:** Lead Mobile Developer · *Closed testing · iOS + Android*
+**Role:** Lead Mobile Developer · *iOS + Android*
 **Stack:** Expo SDK 55, Zustand, TanStack Query, RHF + Zod, Skia, Supabase
 
 Peer-based question-solving platform where students post questions with images, get AI-augmented explanations, react, and discuss. Architecture, navigation, auth, admin panel, and release pipeline owned end-to-end.
 
 ### Verona — Management system for an art school
 
-**Role:** Full-stack · Mobile + Desktop · *In development*
+**Role:** Full-stack · Mobile + Desktop
 **Stack:** Expo Router, React Native, Supabase, Electron, Reanimated, TypeScript
 
 Instructor / student / course scheduling and session-based payment tracking for an art school, moving the studio off paper ledgers. A shared Supabase backend powers both an Expo mobile app and an Electron desktop panel — session billing, instructor contracts, and printable records.
 
 ### Yalın Depo — Smart warehouse & stock management
 
-**Role:** Full-stack · Mobile + Web · *In development*
+**Role:** Full-stack · Mobile + Web
 **Stack:** Expo SDK 54, React Native, Supabase, expo-sqlite, expo-camera, Three.js
 
 Warehouse optimization platform built on lean principles — a real-time 3D warehouse view (Three.js), color-coded shelves, critical-stock alerts, barcode scanning, and consumption analytics that route each part to the right shelf. React Native app + React/Three.js web dashboard on a shared Supabase backend; tracks 2600+ SKUs across 12 shelves.
@@ -74,14 +89,14 @@ Built React Native screens, integrated Web3 flows, and contributed full-stack fu
 
 ### Savely — Financial goal & social savings app
 
-**Role:** Lead Mobile Developer · *Closed testing · iOS + Android*
+**Role:** Lead Mobile Developer · *iOS + Android*
 **Stack:** Expo Router, Supabase, Apple Sign-In, signed Android release
 
 Goal-based savings app with social features. Apple Sign-In auth, Supabase backend, signed and released Android binary.
 
 ### Wallpaper Collection — Visual discovery app
 
-**Role:** Lead Mobile Developer · *Closed testing · iOS + Android*
+**Role:** Lead Mobile Developer · *iOS + Android*
 **Stack:** Expo Router, NativeWind, Expo Image, Bottom Sheet
 
 Visual discovery app with fluid masonry feed, gesture-driven Bottom Sheet, and Expo Image-powered high-performance rendering.
@@ -100,7 +115,7 @@ Zustand, TanStack Query, React Hook Form + Zod
 React, Vite, Three.js / react-three-fiber, Electron
 
 **Backend**
-Supabase, Firebase, .NET 6 Web API, REST, JWT, SQLite (expo-sqlite)
+Laravel, MySQL, Supabase, Firebase, .NET 6 Web API, REST, JWT, SQLite (expo-sqlite)
 
 **UI / Animation**
 NativeWind, Reanimated, Skia, FlashList, Bottom Sheet

@@ -11,22 +11,41 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: "Ilgar Teknoloji",
+    location: {
+      en: "SuPublic platform",
+      tr: "SuPublic platformu",
+    },
+    period: {
+      en: "Jul 2026 – Present",
+      tr: "Temmuz 2026 – Halen",
+    },
+    role: {
+      en: "Full Stack Developer",
+      tr: "Full Stack Developer",
+    },
+    description: {
+      en: "Building SuPublic end to end, a platform that maps public water points across Türkiye: React Native / Expo mobile app, Laravel REST API and MySQL, admin panel, website, OTA updates and store releases.",
+      tr: "Türkiye genelindeki su noktalarını haritada gösteren SuPublic platformunu uçtan uca geliştiriyor: React Native / Expo mobil uygulama, Laravel REST API ve MySQL, yönetim paneli, web sitesi, OTA güncellemeler ve mağaza yayınları.",
+    },
+  },
+  {
     company: "Divizyon",
     location: {
       en: "Open Innovation Platform",
       tr: "Open Innovation Platformu",
     },
     period: {
-      en: "Feb 2026 – Present",
-      tr: "Şubat 2026 – Halen",
+      en: "Feb 2026 – Jul 2026",
+      tr: "Şubat 2026 – Temmuz 2026",
     },
     role: {
       en: "Community Lead",
       tr: "Topluluk Lideri",
     },
     description: {
-      en: "Leading a 3-discipline community (digital product, experience design, content production), running events, sessions and sprint organisations, planning prototype-to-product sprints and coordinating mentors end-to-end.",
-      tr: "Üç disipline (dijital ürün, deneyim tasarımı, içerik üretimi) ait bir topluluğun liderliğini yürütüyor; etkinlik, oturum ve sprint organizasyonlarını koordine ediyor, prototipten ürüne giden sprintleri planlıyor ve mentor süreçlerini uçtan uca yönetiyor.",
+      en: "Led a 3-discipline community (digital product, experience design, content production), ran events, sessions and sprint organisations, planned prototype-to-product sprints and coordinated mentors end-to-end.",
+      tr: "Üç disipline (dijital ürün, deneyim tasarımı, içerik üretimi) ait bir topluluğun liderliğini yürüttü; etkinlik, oturum ve sprint organizasyonlarını koordine etti, prototipten ürüne giden sprintleri planladı ve mentor süreçlerini uçtan uca yönetti.",
     },
     href: "https://www.divizyon.org/",
   },
