@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kodla müzik klibi: P(doom) projesi rehberi | Tuna Bostancıbaşı</title>
+<meta name="description" content="Claude Code ile kodla yapılmış, sözlere ve ritme kilitli müzik klibi. Açık kaynak proje, kurulum, render ve kendi şarkına uyarlama adımları tek sayfada." />
+<meta property="og:title" content="Kodla müzik klibi: P(doom) projesi rehberi" />
+<meta property="og:description" content="Açık kaynak müzik klibi motoru. Ne yapar, ne yapmaz, nasıl kurulur, kendi şarkına nasıl uyarlanır." />
+<meta property="og:url" content="https://www.tunabostancibasi.com/clip/" />
+<link rel="icon" href="https://www.tunabostancibasi.com/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0B0C0F;
+    --paper: #FFFFFF;
+    --soft: #F4F5F7;
+    --line: #E3E5EA;
+    --muted: #5B606B;
+    --cobalt: #1F3FFF;
+    --cobalt-deep: #0E27B8;
+    --cobalt-soft: #E2E7FF;
+    --r: 14px;
+    --r-s: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .me { font-weight: 700; text-decoration: none; }
+  .me-link { font-size: 14px; color: var(--muted); text-decoration: none; }
+
+  .hero { padding: 32px 0 28px; }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .lead { margin-top: 12px; font-size: 18px; }
+  .lead b { color: var(--cobalt); }
+  .apply {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 24px; padding: 18px 20px;
+    background: var(--cobalt); color: #fff; text-decoration: none; border-radius: var(--r);
+    font-size: 20px; font-weight: 700;
+  }
+  .apply:active { background: var(--cobalt-deep); }
+  .apply span { font-size: 24px; }
+  .official { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+  section { border-top: 1px solid var(--line); padding: 24px 0; }
+  h2 { font-size: 22px; margin-bottom: 12px; }
+  ul, ol { list-style: none; }
+  li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  li strong { display: block; font-weight: 600; }
+  li small { display: block; color: var(--muted); font-size: 15px; }
+  .gift li { display: grid; grid-template-columns: 108px 1fr; gap: 12px; align-items: baseline; }
+  .gift .v { font-weight: 700; font-size: 20px; color: var(--cobalt); }
+  .yes li, .no li { padding-left: 30px; position: relative; }
+  .yes li::before, .no li::before {
+    position: absolute; left: 0; top: 12px; width: 20px; height: 20px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700; border-radius: 50%;
+  }
+  .yes li::before { content: "✓"; background: var(--cobalt-soft); color: var(--cobalt); }
+  .no li::before { content: "!"; background: var(--soft); color: var(--ink); }
+  ol { counter-reset: s; }
+  ol li { counter-increment: s; padding-left: 40px; position: relative; }
+  ol li::before {
+    content: counter(s); position: absolute; left: 0; top: 10px;
+    width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--r-s);
+    background: var(--ink); color: #fff; font-weight: 700;
+  }
+  .checked { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .code { position: relative; margin-top: 10px; }
+  .code pre {
+    background: var(--ink); color: #fff; border-radius: var(--r-s);
+    padding: 46px 16px 14px; overflow-x: auto;
+    font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    white-space: pre;
+  }
+  .code.prompt pre { white-space: pre-wrap; font-family: inherit; font-size: 15px; }
+  .copy {
+    position: absolute; top: 8px; right: 8px;
+    padding: 6px 10px; border: 0; border-radius: var(--r-s);
+    background: var(--cobalt); color: #fff; font: 600 13px "Inter", sans-serif; cursor: pointer;
+  }
+  .copy.ok { background: #fff; color: var(--ink); }
+  .note { margin-top: 10px; font-size: 15px; color: var(--muted); }
+  code { font: 14px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--soft); padding: 1px 5px; border-radius: 4px; }
+
+  .end { background: var(--soft); border-top: 1px solid var(--line); padding: 28px 0 40px; }
+  .end .wrap { display: grid; gap: 10px; }
+  .btn {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--ink); background: var(--paper); border-radius: var(--r);
+  }
+  .btn.dark { background: var(--ink); color: #fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="me" href="https://www.tunabostancibasi.com/">Tuna Bostancıbaşı</a>
+    <a class="me-link" href="https://www.tunabostancibasi.com/">Projelerim →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Kodla müzik klibi</h1>
+    <p class="lead">Sözlere ve ritme kilitli bir klip. <b>Tamamı kodla çizildi</b>, <b>Claude Code ile konuşarak</b> yapıldı. Kodu açık ve ücretsiz.</p>
+    <a class="apply" href="https://github.com/mexicat/pdoom-video" target="_blank" rel="noopener">Projeyi GitHub'da aç <span>→</span></a>
+    <a class="official" href="https://www.youtube.com/watch?v=5EoO5413dBY" target="_blank" rel="noopener">Klibi YouTube'da izle</a>
+  </div>
+
+  <section>
+    <h2>Önce şunu bil</h2>
+    <ul class="no">
+      <li><strong>"Şarkını yükle, klip çıksın" aracı değil</strong><small>Tek bir şarkı için yapılmış örnek bir proje. Kendi şarkın için sahneleri sen ya da Claude Code yazar.</small></li>
+      <li><strong>En doğru tanım: hazır bir başlangıç şablonu</strong><small>Ses analizi, söz senkronu, sahneler ve video çıktısı uçtan uca çalışıyor. Sen kendi şarkına uyarlıyorsun.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Ne yapabilirsin?</h2>
+    <ul class="yes">
+      <li><strong>Kendi şarkına klip</strong><small>Motoru ve analiz araçlarını temel alıp aynı tarzda video üretebilirsin.</small></li>
+      <li><strong>Tanıtım filmi ya da sosyal medya klibi</strong><small>Yazının ritme göre oynadığı, müziğe kilitli kurgu fikirleri.</small></li>
+      <li><strong>Claude Code ile büyük proje yönetmeyi öğrenmek</strong><small>Konsept dokümanı, motor rehberi, sahne sahne ilerleme. Hepsi repoda örnek olarak duruyor.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kutudan ne çıkıyor?</h2>
+    <ul class="gift">
+      <li><span class="v">Birebir</span><span><strong>Önizleme ile çıktı aynı</strong><small>Her kare yalnız şarkının o anına bağlı. Tarayıcıda gördüğün, videoda çıkan.</small></li>
+      <li><span class="v">4K60</span><span><strong>Sinema kalitesinde çıktı</strong><small>1080p ya da 4K, saniyede 60 kare, hareket bulanıklığı ile.</small></li>
+      <li><span class="v">Kelime</span><span><strong>Kelime kelime söz senkronu</strong><small>Sözler, şarkıda söylendiği anda ekrana geliyor.</small></li>
+      <li><span class="v">Ritim</span><span><strong>Sahneler müziğe bağlı</strong><small>Vuruş, davul, bas ve vokal verisi her karede sahneye geliyor.</small></li>
+      <li><span class="v">MIT</span><span><strong>Kod serbest</strong><small>Değiştirebilir, ticari işte kullanabilirsin.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neler gerekiyor?</h2>
+    <ul class="yes">
+      <li><strong>bun</strong><small>JavaScript çalıştırıcısı. bun.sh adresinden kurulur.</small></li>
+      <li><strong>Google Chrome ve ffmpeg</strong><small>Video çıktısını Chrome arka planda çizer, ffmpeg dosyaya yazar.</small></li>
+      <li><strong>Güçlü bir bilgisayar</strong><small>Önizleme yeni bir Mac'te akıcı. Video çıktısı ağır: bellek kullanımı 23 GB'a kadar çıkıyor.</small></li>
+      <li><strong>uv (yalnız kendi şarkın için)</strong><small>Python araç yöneticisi. Ses analizini yeniden çalıştıracaksan gerekir, yaklaşık 4 GB model indirir.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kur ve izle</h2>
+    <div class="code"><pre>git clone https://github.com/mexicat/pdoom-video
+cd pdoom-video/app
+bun install
+bunx vite</pre><button class="copy">Kopyala</button></div>
+    <p class="note">Tarayıcıda <code>localhost:5173</code> adresini aç. Boşluk oynatır, <code>[</code> ve <code>]</code> sahneler arasında geçer, <code>h</code> arayüzü gizler.</p>
+  </section>
+
+  <section>
+    <h2>Videoyu dışa aktar</h2>
+    <div class="code"><pre>cd app
+bun scripts/render.ts video --samples auto --shutter 0.2 --out ../out/pdoom.mp4</pre><button class="copy">Kopyala</button></div>
+    <p class="note">1080p, saniyede 60 kare. Hızlı taslak için <code>--samples auto</code> yerine <code>--samples 4</code> yaz. 4K için <code>--scale 2</code> ekle: tüm şarkı M5 Pro'da yaklaşık 57 dakika sürüyor, dosya 13 GB civarı.</p>
+  </section>
+
+  <section>
+    <h2>Kendi şarkına uyarla</h2>
+    <ol>
+      <li><strong>Şarkını hazırla</strong><small>Suno ya da Udio ile üretebilir veya kendi şarkını kullanabilirsin. Dosya <code>audio/</code> klasörüne gider.</small></li>
+      <li><strong>Sözleri yaz</strong><small>Satır satır, yaklaşık zamanlarıyla <code>lyrics/</code> klasörüne.</small></li>
+      <li><strong>Analizi çalıştır</strong><small>Araçlar vokali ayırır, sözleri kelime kelime zamanlar, vuruşları ve bölümleri çıkarır.</small></li>
+      <li><strong>Sahneleri yazdır</strong><small>Her sahne <code>app/src/scenes/</code> içinde ayrı dosya. En kolayı Claude Code'a yazdırmak.</small></li>
+      <li><strong>Kurguyu bağla</strong><small><code>app/src/timeline.ts</code> sahneleri söz satırlarına ve vuruşlara oturtur.</small></li>
+      <li><strong>İzle, sonra dışa aktar</strong><small>Önce tek kareler ve özet sayfasıyla kontrol et, tam çıktıyı en sona bırak.</small></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Claude Code'a bunu yapıştır</h2>
+    <div class="code prompt"><pre>Bu repoyu incele (README.md, docs/ENGINE.md, docs/TREATMENT.md, app/src/timeline.ts). Benim şarkım için aynı yapıyı kur: şarkı dosyam audio/ altında, sözlerim şu: [sözlerin]. Önce analiz hattını benim şarkıma uyarla, sonra konsept ve sahne planını birlikte çıkaralım.</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section>
+    <h2>Bilmen gerekenler</h2>
+    <ul class="no">
+      <li><strong>Şarkı serbest değil</strong><small>Kod MIT lisanslı, ama örnek şarkı ve sözler sahiplerine ait. Kendi hesabında kullanmak için izin gerekir.</small></li>
+      <li><strong>Suno projenin parçası değil</strong><small>Suno yalnız şarkıyı üretmek için kullanıldı. Video, söz zamanlaması ve sahneleri bu proje yapıyor.</small></li>
+      <li><strong>Kendi Suno şarkının haklarına bak</strong><small>Ticari ve sosyal medya kullanımı plana göre değişir. Kendi planının koşullarını kontrol et.</small></li>
+      <li><strong>Kod bilgisi ya da Claude Code şart</strong><small>Hazır sahne kütüphanesi yok. Sahneler TypeScript ve three.js ile yazılıyor.</small></li>
+    </ul>
+    <p class="checked">Bilgiler 13 Ekim 2026'da projenin GitHub sayfasından kontrol edildi.</p>
+  </section>
+</main>
+
+<div class="end">
+  <div class="wrap">
+    <a class="btn dark" href="https://github.com/mexicat/pdoom-video" target="_blank" rel="noopener">Projeyi GitHub'da aç <span>→</span></a>
+    <a class="btn" href="/clip/index.html" download="kodla-muzik-klibi.html">Bu sayfayı indir <span>↓</span></a>
+    <a class="btn" href="https://www.tunabostancibasi.com/">Diğer projelerime bak <span>→</span></a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(b.previousElementSibling.textContent).then(function () {
+        b.textContent = "Kopyalandı";
+        b.classList.add("ok");
+        setTimeout(function () { b.textContent = "Kopyala"; b.classList.remove("ok"); }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
