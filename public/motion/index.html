@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Motion: prompt yetmez, referans ver | Tuna Bostancıbaşı</title>
+<meta name="description" content="Yapay zekâ ile ilgi çekici video üretmenin yolu: referans video, referans görsel ve ölçülü prompt. İki gerçek örnek, promptları ve üç site." />
+<meta property="og:title" content="Motion: prompt yetmez, referans ver" />
+<meta property="og:description" content="İki gerçek örnek video, promptları, en sık yapılan hata ve üç site tek sayfada." />
+<meta property="og:url" content="https://www.tunabostancibasi.com/motion/" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://www.tunabostancibasi.com/motion/kapak.jpg" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="1080" />
+<meta property="og:image:alt" content="Motion rehberi kapağı" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.tunabostancibasi.com/motion/kapak.jpg" />
+<link rel="icon" href="https://www.tunabostancibasi.com/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0B0C0F;
+    --paper: #FFFFFF;
+    --soft: #F4F5F7;
+    --line: #E3E5EA;
+    --muted: #5B606B;
+    --cobalt: #1F3FFF;
+    --cobalt-deep: #0E27B8;
+    --cobalt-soft: #E2E7FF;
+    --r: 14px;
+    --r-s: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .me { font-weight: 700; text-decoration: none; }
+  .me-link { font-size: 14px; color: var(--muted); text-decoration: none; }
+
+  .hero { padding: 24px 0 28px; }
+  .cover { display: block; width: 100%; border-radius: var(--r); margin-bottom: 24px; }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(32px, 9vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .lead { margin-top: 12px; font-size: 18px; }
+  .lead b { color: var(--cobalt); }
+  .apply {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 24px; padding: 18px 20px;
+    background: var(--cobalt); color: #fff; text-decoration: none; border-radius: var(--r);
+    font-size: 20px; font-weight: 700;
+  }
+  .apply:active { background: var(--cobalt-deep); }
+  .apply span { font-size: 24px; }
+
+  section { border-top: 1px solid var(--line); padding: 28px 0; }
+  h2 { font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 12px; }
+  section > p { font-size: 17px; margin-bottom: 8px; }
+  ul, ol { list-style: none; }
+  li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  li strong { display: block; font-weight: 600; }
+  li small { display: block; color: var(--muted); font-size: 15px; }
+  .yes li, .no li { padding-left: 30px; position: relative; }
+  .yes li::before, .no li::before {
+    position: absolute; left: 0; top: 12px; width: 20px; height: 20px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700; border-radius: 50%;
+  }
+  .yes li::before { content: "✓"; background: var(--cobalt-soft); color: var(--cobalt); }
+  .no li::before { content: "!"; background: var(--soft); color: var(--ink); }
+  ol { counter-reset: s; }
+  ol li { counter-increment: s; padding-left: 40px; position: relative; }
+  ol li::before {
+    content: counter(s); position: absolute; left: 0; top: 10px;
+    width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--r-s);
+    background: var(--ink); color: #fff; font-weight: 700;
+  }
+  .checked { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .clip { width: 100%; display: block; border-radius: var(--r); background: var(--soft); margin: 6px 0 14px; }
+  .clip.tall { max-width: 360px; margin-left: auto; margin-right: auto; }
+  .credit { font-size: 15px; color: var(--muted); }
+  .credit a { color: var(--cobalt); text-decoration: none; font-weight: 600; }
+
+  .code { position: relative; margin-top: 12px; }
+  .code pre {
+    background: var(--ink); color: #fff; border-radius: var(--r-s);
+    padding: 46px 16px 14px; overflow: auto; max-height: 420px;
+    font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    white-space: pre-wrap;
+  }
+  .copy {
+    position: absolute; top: 8px; right: 8px;
+    padding: 6px 10px; border: 0; border-radius: var(--r-s);
+    background: var(--cobalt); color: #fff; font: 600 13px "Inter", sans-serif; cursor: pointer;
+  }
+  .copy.ok { background: #fff; color: var(--ink); }
+  .note { margin-top: 10px; font-size: 15px; color: var(--muted); }
+
+  .sites { display: grid; gap: 12px; }
+  .site {
+    display: grid; grid-template-columns: 64px 1fr 24px; gap: 16px; align-items: center;
+    padding: 16px; border: 1px solid var(--line); border-radius: var(--r); text-decoration: none;
+  }
+  .site img { width: 64px; height: 64px; border-radius: 16px; display: block; }
+  .site strong { display: block; font-size: 19px; }
+  .site small { display: block; color: var(--muted); font-size: 15px; line-height: 1.4; }
+  .site span { font-size: 22px; color: var(--cobalt); }
+
+  .end { background: var(--soft); border-top: 1px solid var(--line); padding: 32px 0 44px; }
+  .end .wrap { display: grid; gap: 12px; }
+  .end h2 { font-size: clamp(26px, 7vw, 34px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .end p { color: var(--muted); margin-bottom: 8px; }
+  .btn {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--ink); background: var(--paper); border-radius: var(--r);
+  }
+  .btn.dark { background: var(--ink); color: #fff; font-size: 18px; padding: 18px 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="me" href="https://www.tunabostancibasi.com/">Tuna Bostancıbaşı</a>
+    <a class="me-link" href="https://www.tunabostancibasi.com/">Projelerim →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <img class="cover" src="kapak.jpg" alt="Motion rehberi kapağı" width="1080" height="1080" />
+    <h1>Prompt yetmez, referans ver</h1>
+    <p class="lead">Yapay zekâya videoyu yalnız yazıyla tarif edersen sıradan bir sonuç alırsın. <b>Referans video</b>, <b>referans görsel</b> ve <b>ölçülü bir prompt</b> verdiğinde çıktı bambaşka olur. Aşağıda iki gerçek örnek, promptları ve üç site var.</p>
+    <a class="apply" href="#ornek-1">Örnekleri gör <span>↓</span></a>
+  </div>
+
+  <section>
+    <h2>İçerik üretirken en sık yapılan hata</h2>
+    <p>Promptu yalnız yazı olarak verip iyi bir video beklemek. Model senin kafandaki videoyu göremez, sadece kelimeleri görür.</p>
+    <ul class="no">
+      <li><strong>Sadece yazıyla tarif etmek</strong><small>"Dinamik, premium bir tanıtım videosu yap" cümlesini her model farklı anlar. Zamanlamayı, geçişi ve fontu göremediği için ortalama bir şey üretir.</small></li>
+      <li><strong>Sıfat verip ölçü vermemek</strong><small>"Hızlı", "şık", "akıcı" ölçü değildir. Saniye, piksel, renk kodu ve çekim süresi vermezsen model tahmin eder.</small></li>
+      <li><strong>Yasakları yazmamak</strong><small>Neyi istemediğini söylemezsen parlama efektleri, bej "sanatsal" görünüm, gereksiz etiketler gibi bilinen kalıplar geri gelir.</small></li>
+      <li><strong>Sonucu tek seferde beklemek</strong><small>Birkaç kare görmeden tam videoyu almak, hatayı en pahalı yerde yakalamaktır.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Doğrusu: referansla çalış, promptu güçlendir</h2>
+    <ol>
+      <li><strong>Referans video ekle</strong><small>Beğendiğin bir videoyu ekle. Modelden çekim sürelerini, geçişleri, fontları ve ritmi incelemesini iste. Birebir kopya değil: tekniği ödünç alıp tasarımı kendisinin yapmasını söyle.</small></li>
+      <li><strong>Referans görsel ve marka dosyalarını ver</strong><small>Logo, renk kodları, ürün ekran görüntüleri, beğendiğin bir kare. Model ne görürse onu kullanır, görmediğini uydurur.</small></li>
+      <li><strong>Sitenin linkini ver</strong><small>Ürünün ya da sayfan varsa linkini ver. Claude Code sayfayı açıp ekran görüntüsünü kendisi alır, videoyu senin gerçek arayüzünle kurar.</small></li>
+      <li><strong>Promptu bölümlere ayır</strong><small>Girdiler, yön, zaman planı, yapım adımları, dikkat edilecekler ve başlangıç. Birinci örnek tam bu düzende yazılmış.</small></li>
+      <li><strong>Her şeyi ölç</strong><small>Saniye saniye sahne planı, piksel boyutları, renk kodları, kamera açısı. Ne kadar ölçü verirsen model o kadar az tahmin eder.</small></li>
+      <li><strong>Yasak listesi yaz</strong><small>Kesme, parlama, ekrana gereksiz yazı... İstemediğin her şeyi tek satırda say.</small></li>
+      <li><strong>Önce kareleri iste</strong><small>Render almadan önce belirli saniyelerden kareler göstermesini iste. Onay verdikten sonra tam videoyu çıkar.</small></li>
+    </ol>
+    <p class="note">Videoyu dosya olarak almak için kod çalıştırabilen bir araç gerekir (örneğin Claude Code). Sohbet penceresinde çoğu zaman yalnız canlı önizleme alırsın.</p>
+  </section>
+
+  <section id="ornek-1">
+    <h2>Örnek 1: Sayfanın üstünde 3D kamera uçuşu</h2>
+    <video class="clip" src="ornek-1.mp4" poster="ornek-1.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Bir açılış sayfasının üstünde tek, kesintisiz bir kamera hareketi. Prompt senden sayfanın linkini istiyor, sayfayı yakalayıp 3D sahneye çeviriyor. Dikkat et: her şey saniye, piksel ve açıyla tarif edilmiş, yasaklar tek satırda yazılmış.</p>
+    <p class="credit">Prompt: <a href="https://x.com/twoclipping/status/2110329502676951367" target="_blank" rel="noopener">@twoclipping</a>, <a href="https://prompt-motion.com/twoclipping-d89be5" target="_blank" rel="noopener">Prompt Motion</a> üzerinden.</p>
+    <div class="code"><pre>&lt;inputs&gt;
+Ask me for: my landing page link, my brand name and logo mark, a two-part closing line (a statement, then a short italic tail), and a 15 second track (optional).
+&lt;/inputs&gt;
+
+&lt;direction&gt;
+A 14.5 second 3D fly-over of my landing page, 1440x1152 at 60fps. The page lies flat on a bright studio floor (#f9fbfb in the middle, #f2f3f6 in the corners) with a soft wide shadow around it and 24px rounded corners. One continuous camera, never a cut: it starts low over the hero and glides backwards down the page at one steady speed while looking up it, rises straight overhead to show the whole page as one strip, dives into the hero and lands it as a card under a two-line title. Focus is razor thin in front of the subject and almost none behind it, so everything near the lens melts. Cards float a little above the page with soft shadows; photos, chips and the testimonial lift off and stand up toward the lens as the camera passes them. Four small tiles of my logo lift off beside the hero button and stay with the film until the end card. The title is Geist 500, the italic tail Instrument Serif.
+Banned: cuts, crossfades, stops or surges in the glide, the camera turning or swinging sideways, zooming in and back out, glows, any text laid over the page before the end card.
+&lt;/direction&gt;
+
+&lt;structure&gt;
+14.5 seconds: flight 0-8.2s, rise 7.75-9.25s, overhead 9.25-9.47s, dive 9.47-9.97s, title card 9.97-14.5s.
+The camera 56° off straight-down and 1360px from the point it looks at, centred on the top half of the hero, the phone or product mockup sharp, four 32px logo tiles beside the button → 0-0.6: the glide eases in from rest → 0.1-1.35: the tiles lift, grow to 140-200px and hang just outside the page's top corners while the hero's chips rise to 60-80px and stand up 30° → 1.25-1.6: the glide doubles to cruising speed as the hero falls behind → 1.6: the second section's title passes the centre of the frame, its photos blurred near the lens → 1.35-2.7: that section's main photos lift to 100-130px and stand up 46°, two of its chips fly up to about 200px, stand up 54° and pass the left and right edges at 2.5 → 1.2-2.4: the tiles trail the camera 300px down the page, then drift out of the top → 3.0-7.3: every following section passes through at the same steady speed, each one sharp as it crosses the middle of the frame and soft below it; a logo tile drifts past the left edge close and blurred at 5.4 → 5.45-6.3: the testimonial card rises from 22 to 112px, stands up 30° and shows a 34px white edge → 7.3-8.2: the glide eases off as the footer arrives, the footer title sharp at 8.0 → 7.75-9.25: the rise, zooming out at an even rate while the tilt flattens (8.15-8.95) and the page's bottom edge settles 42px above the frame bottom → 9.25-9.47: the whole page as one centred strip, creeping 3.5% closer → 9.47-9.97: the dive, the page's top edge pinned to the frame top while it grows, everything below the hero fading out, then the top drops to y 283 so the hero lands as a 1018px wide card with 38px corners and a soft shadow; two logo tiles sit on its top corners, one crisp at the right edge, two huge soft blurs drift in at the bottom corners → 10.02: a white badge pill (logo + brand, 21px) fades in at y 44 → 10.12: line 1 at 74px, one word every 0.06s → 10.36: the italic tail at 82px in grey #8b8b92, one word every 0.05s, each word rising 16px out of a 12px blur in 0.34s → 10.6-14.5: hold, the card creeping 2% closer, the tiles drifting a few px.
+&lt;/structure&gt;
+
+&lt;build&gt;
+1. Open my link in headless Chromium (Playwright) at 1440px wide, device scale 2, and scroll to the bottom once so lazy images and scroll animations finish. Mark the pieces that lift (cards, phone or product mockups, chips, feature photos, the testimonial, the hero button) with data-layer. Screenshot the full page with them hidden, then each piece alone on a transparent background with 28px padding, and save every piece's page position to a JSON.
+2. One WebGL2 film page, 1440x1152, every frame computed from time inside seek(t): no timers, no CSS transitions. The page is a textured quad on the floor and each piece its own quad at its height, drawn lowest first with no depth buffer. Use mipmaps and 16x anisotropic filtering or the far text shimmers.
+3. Drive the camera from one speed curve, never from a position key every half second. Focal length 1880px, 56° tilt, distance easing out from 1360 to 1700px and never back in, no turning. Speed down the page as a share of cruise (cruise is about 770 page px/s): 0 at 0s, 0.5 by 0.6s, held at 0.5 to 1.25s, 1.0 by 1.6s, held between 0.94 and 1.1 to 7.3s, then easing to 0.12 by 8.3s. Integrate it into the page position.
+4. Depth of field per pixel: blur radius = 75 x (focus - depth) / depth in front of the focus and 6 x (depth - focus) / depth behind it, capped at 120px, 40 taps on a golden-angle disc, each tap read from a mip level matched to the blur. Keep the focus on whatever crosses the middle of the frame.
+5. A lifted piece stands up by turning about its own middle, top edge rising toward the lens. Each casts a shadow on whatever is under it: the same picture in flat #1a2133, offset (0.10z, 4 + 0.36z), blurred 7 + 0.5z, 26% opacity.
+6. Rise: zoom out in log scale with a smooth trapezoid speed (speeding up 7.75-8.35s, even 8.35-8.95s, slowing to a stop at 9.25s) and hand the glide over to a camera that holds the page's bottom edge at that 42px line from 8.3 to 8.65s. Dive: log scale on a quadratic ease in-out, then solve the look-at point from the pinned edge. A rounded-rect mask morphs from the full page to the hero, 24px to 38px corners.
+7. Render with Playwright on the real GPU (--use-angle=d3d11 --enable-gpu --ignore-gpu-blocklist): 60fps, 16 subframes across 0.7 of a frame for motion blur, H.264 MP4. The track's hit goes on 9.97s, whooshes on 8.66 and 9.80.
+&lt;/build&gt;
+
+&lt;gotchas&gt;
+If you can't run code on my computer, tell me straight away that you can only make a live preview here and that the MP4 needs Claude Code. Phones or cards that fade out with transparency show whatever is behind them, so fade them into the haze colour first and only cut to transparent at the very end. Keep most lifts tiny (20-40px) and lock the page before timing anything, because any change in a section's height shifts everything after it. Before the final render, measure a quick 30fps preview with optical flow: the speed down the page must never dip and the zoom must never turn into a zoom-in during the flight.
+&lt;/gotchas&gt;
+
+&lt;start&gt;
+Ask me for the inputs, capture my page, then show me stills at 0, 1.6, 2.5, 5, 6.5, 9.3 and 11 seconds before you render.
+&lt;/start&gt;</pre><button class="copy">Kopyala</button></div>
+    <p class="note">Claude Code'a yapıştır. Senden sayfanın linkini, marka adını, logonu ve kapanış cümleni isteyecek.</p>
+  </section>
+
+  <section id="ornek-2">
+    <h2>Örnek 2: Gravür tarzında hızlı reklam</h2>
+    <video class="clip tall" src="ornek-2.mp4" poster="ornek-2.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Prompt kısa ama yanında bir referans video var. İşi yapan o: model çekim sürelerini, geçişleri ve fontları referanstan öğreniyor, tasarımı kendisi yapıyor.</p>
+    <p class="credit">Prompt: <a href="https://x.com/LexnLin/status/2106101651010449796" target="_blank" rel="noopener">@LexnLin</a>, <a href="https://prompt-motion.com/lexnlin-claude-opus-5-5-made" target="_blank" rel="noopener">Prompt Motion</a> üzerinden.</p>
+    <div class="code"><pre>Make a fast-paced ad for Claude, about 10–15 s (closer to 15). Reference video attached.
+
+1. research:
+- Study Claude's earlier brand designs first.
+- Find every photo and asset that fits: artistic, editorial, whatever the idea needs.
+
+2. design/direction
+- An art reimagine: bold, light mode.
+- Clean and perfect: no beige "artsy" look, no eyebrow labels.
+- Paint elements on top of the images.
+- Above all: fast-paced and very creative.
+
+3. rules
+- No slop. Study the reference closely: smoothness, timing, shot durations, fonts, elements.
+- Take some inspiration and borrow techniques, but change the design overall, it should look like something you did completely on yourself with your own taste 
+- Every morph has to be perfect.
+
+ideas: (since everything moves fast)
+- Clean, varied Claude SVG animations
+- Images small, bigger, several at once
+- Morphing text
+- Clean 3D animation
+- Zooms
+
+extra notes:
+- Feel free to work 10+ hours 
+- Give me the final video, ending on the Claude logo.</pre><button class="copy">Kopyala</button></div>
+    <p class="note">Kullanırken beğendiğin bir videoyu mutlaka ekle; referans olmadan aynı sonucu vermez. "Claude" yerine kendi markanın adını yaz.</p>
+  </section>
+
+  <section>
+    <h2>Kendi promptun için şablon</h2>
+    <p>İki örneğin ortak iskeleti. Köşeli parantezleri doldur, referans videonu ekle, gönder.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Önce benden şunları iste: ürün ya da marka adı, sitemin linki, logom, renk kodlarım, referans videom.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+[Süre] saniyelik, [genişlik x yükseklik] boyutunda, saniyede [30/60] kare bir video.
+Hissi tek cümleyle: [örnek: aydınlık, hızlı, temiz bir lansman filmi].
+Referans videoyu incele: çekim sürelerini, geçişleri, fontları ve ritmi çıkar. Teknikleri ödünç al, tasarımı kendin yap.
+Yasaklar: [örnek: parlama efekti, bej arka plan, ekranda gereksiz yazı, ani zoom].
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-2 sn: [ne oluyor]
+2-5 sn: [ne oluyor]
+5-9 sn: [ne oluyor]
+9-12 sn: [kapanış ve logo]
+&lt;/yapı&gt;
+
+&lt;başlangıç&gt;
+Girdileri iste, sitemi aç ve ekran görüntülerini al. Render almadan önce 0, 3, 6 ve 10. saniyelerden kare göster; onay verince tam videoyu çıkar.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section>
+    <h2>Siteler</h2>
+    <div class="sites">
+      <a class="site" href="https://prompt-motion.com" target="_blank" rel="noopener"><img src="prompt-motion.png" alt="Prompt Motion" /><div><strong>Prompt Motion</strong><small>Claude ile yapılmış 230'dan fazla video ve promptları. Beğendiğin videoyu aç, promptu ücretsiz kopyala.</small></div><span>→</span></a>
+      <a class="site" href="https://www.raylight.app" target="_blank" rel="noopener"><img src="raylight.png" alt="Raylight" /><div><strong>Raylight</strong><small>Ekran görüntülerini gerçek bir iPhone ya da MacBook içine koyar, kamera hareketiyle dakikalar içinde lansman videosu çıkarır. Ücretsiz planı var.</small></div><span>→</span></a>
+      <a class="site" href="https://kantix.ai" target="_blank" rel="noopener"><img src="kantix.png" alt="Kantix" /><div><strong>Kantix</strong><small>Şablon seç, ne istediğini iki satırla yaz, sitenin linkini ver. Logonu ve renklerini kendisi alır, yaklaşık 2 dakikada videonu hazırlar.</small></div><span>→</span></a>
+    </div>
+    <p class="checked">Bilgiler 20 Ekim 2026'da sitelerden kontrol edildi. Promptlar sahiplerine aittir.</p>
+  </section>
+</main>
+
+<div class="end">
+  <div class="wrap">
+    <h2>İşini hızlandıracak yeni videolar yolda</h2>
+    <p>Kaçırmamak için beni takip etmeyi unutma.</p>
+    <a class="btn dark" href="https://www.instagram.com/tunacodin/" target="_blank" rel="noopener">Instagram'da takip et <span>→</span></a>
+    <a class="btn" href="https://www.tunabostancibasi.com/">Diğer projelerime bak <span>→</span></a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(b.previousElementSibling.textContent).then(function () {
+        b.textContent = "Kopyalandı";
+        b.classList.add("ok");
+        setTimeout(function () { b.textContent = "Kopyala"; b.classList.remove("ok"); }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
