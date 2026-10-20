@@ -5,6 +5,7 @@ dist/
 .DS_Store
 *.mov
 *.mp4
+!public/motion/*.mp4
 .git/
 .vercel
 .env*.local
