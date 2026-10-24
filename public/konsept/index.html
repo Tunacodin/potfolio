@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10 animasyonlu anlatım şablonu ve promptu | Tuna Bostancıbaşı</title>
+<meta name="description" content="Claude ile 10 tamamen farklı video türü: 2D, 3D, çizgi karakter, beyaz tahta, kâğıt masal, Blender, belgesel. Her birinin örnek videosu ve kopyalanabilir ayrıntılı promptu." />
+<meta property="og:title" content="10 animasyonlu anlatım şablonu ve promptu" />
+<meta property="og:description" content="Fetih haritası, meclis, şehir tarihi, çizgi anlatım ve 6 tarz daha: örnek video ve ayrıntılı prompt tek sayfada." />
+<meta property="og:url" content="https://www.tunabostancibasi.com/konsept/" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://www.tunabostancibasi.com/konsept/kapak.jpg" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="768" />
+<meta property="og:image:alt" content="10 animasyonlu anlatım şablonu kapağı" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.tunabostancibasi.com/konsept/kapak.jpg" />
+<link rel="icon" href="https://www.tunabostancibasi.com/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0B0C0F;
+    --paper: #FFFFFF;
+    --soft: #F4F5F7;
+    --line: #E3E5EA;
+    --muted: #5B606B;
+    --cobalt: #1F3FFF;
+    --cobalt-deep: #0E27B8;
+    --cobalt-soft: #E2E7FF;
+    --r: 14px;
+    --r-s: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .me { font-weight: 700; text-decoration: none; }
+  .me-link { font-size: 14px; color: var(--muted); text-decoration: none; }
+
+  .hero { padding: 24px 0 28px; }
+  .cover { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: var(--r); margin-bottom: 24px; }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(32px, 9vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .lead { margin-top: 12px; font-size: 18px; }
+  .lead b { color: var(--cobalt); }
+  .apply {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 24px; padding: 18px 20px;
+    background: var(--cobalt); color: #fff; text-decoration: none; border-radius: var(--r);
+    font-size: 20px; font-weight: 700;
+  }
+  .apply:active { background: var(--cobalt-deep); }
+  .apply span { font-size: 24px; }
+
+  section { border-top: 1px solid var(--line); padding: 28px 0; }
+  h2 { font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 12px; }
+  section > p { font-size: 17px; margin-bottom: 8px; }
+  ul, ol { list-style: none; }
+  li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  li strong { display: block; font-weight: 600; }
+  li small { display: block; color: var(--muted); font-size: 15px; }
+  .yes li, .no li { padding-left: 30px; position: relative; }
+  .yes li::before, .no li::before {
+    position: absolute; left: 0; top: 12px; width: 20px; height: 20px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700; border-radius: 50%;
+  }
+  .yes li::before { content: "✓"; background: var(--cobalt-soft); color: var(--cobalt); }
+  .no li::before { content: "!"; background: var(--soft); color: var(--ink); }
+  ol { counter-reset: s; }
+  ol li { counter-increment: s; padding-left: 40px; position: relative; }
+  ol li::before {
+    content: counter(s); position: absolute; left: 0; top: 10px;
+    width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--r-s);
+    background: var(--ink); color: #fff; font-weight: 700;
+  }
+  .checked { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .clip { width: 100%; display: block; border-radius: var(--r); background: var(--soft); margin: 6px 0 14px; }
+  .clip.tall { max-width: 360px; margin-left: auto; margin-right: auto; }
+  .credit { font-size: 15px; color: var(--muted); }
+  .credit a { color: var(--cobalt); text-decoration: none; font-weight: 600; }
+
+  .code { position: relative; margin-top: 12px; }
+  .code pre {
+    background: var(--ink); color: #fff; border-radius: var(--r-s);
+    padding: 46px 16px 14px; overflow: auto; max-height: 420px;
+    font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    white-space: pre-wrap;
+  }
+  .copy {
+    position: absolute; top: 8px; right: 8px;
+    padding: 6px 10px; border: 0; border-radius: var(--r-s);
+    background: var(--cobalt); color: #fff; font: 600 13px "Inter", sans-serif; cursor: pointer;
+  }
+  .copy.ok { background: #fff; color: var(--ink); }
+  .note { margin-top: 10px; font-size: 15px; color: var(--muted); }
+
+  .sites { display: grid; gap: 12px; }
+  .site {
+    display: grid; grid-template-columns: 64px 1fr 24px; gap: 16px; align-items: center;
+    padding: 16px; border: 1px solid var(--line); border-radius: var(--r); text-decoration: none;
+  }
+  .site img { width: 64px; height: 64px; border-radius: 16px; display: block; }
+  .site strong { display: block; font-size: 19px; }
+  .site small { display: block; color: var(--muted); font-size: 15px; line-height: 1.4; }
+  .site span { font-size: 22px; color: var(--cobalt); }
+
+  .end { background: var(--soft); border-top: 1px solid var(--line); padding: 32px 0 44px; }
+  .end .wrap { display: grid; gap: 12px; }
+  .end h2 { font-size: clamp(26px, 7vw, 34px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .end p { color: var(--muted); margin-bottom: 8px; }
+  .btn {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--ink); background: var(--paper); border-radius: var(--r);
+  }
+  .btn.dark { background: var(--ink); color: #fff; font-size: 18px; padding: 18px 20px; }
+.tag { display: block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cobalt); margin-bottom: 6px; }
+.when { font-size: 15px; color: var(--muted); }
+.all { margin-top: 18px; }
+.cover { aspect-ratio: 1080 / 768; object-fit: cover; }
+@media (min-width: 1000px) {
+  .wrap { max-width: 1200px; padding: 0 40px; }
+  .hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; padding: 48px 0; }
+  .hero > * { grid-column: 2; }
+  .hero > .cover { grid-column: 1; grid-row: 1 / 4; margin-bottom: 0; }
+  h1 { font-size: 56px; }
+  section ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  section ol li { border-bottom: 0; }
+  section[id^=ornek] { display: grid; grid-template-columns: 400px 1fr; grid-template-rows: repeat(5, auto) 1fr; column-gap: 56px; align-content: start; padding: 48px 0; }
+  section[id^=ornek] > * { grid-column: 2; }
+  section[id^=ornek] > .clip.tall { grid-column: 1; grid-row: 1 / 7; max-width: none; width: 100%; margin: 0; align-self: start; }
+  section[id^=ornek] h2 { font-size: 34px; }
+  section[id^=ornek] .code pre { max-height: 400px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="me" href="https://www.tunabostancibasi.com/">Tuna Bostancıbaşı</a>
+    <a class="me-link" href="https://www.tunabostancibasi.com/">Projelerim →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <img class="cover" src="/konsept/kapak.jpg" alt="10 animasyonlu anlatım şablonu kapağı" width="1080" height="768" />
+    <h1>10 animasyonlu anlatım şablonu ve promptu</h1>
+    <p class="lead">Son haftalarda patlayan anlatım videolarının 10 tarzı: <b>3D harita</b>, <b>Three.js meclis ve şehir</b>, <b>2D çizgi anlatım</b>, <b>sinematik ışık</b>, <b>çizgi karakter</b>, <b>beyaz tahta</b>, <b>kâğıt masal</b>, <b>Blender</b> ve <b>arşiv belgeseli</b>. Her örneğin altında videoyu üreten ayrıntılı prompt var. Kopyala, kendi konunla doldur.</p>
+    <a class="apply" href="#ornek-1">Örnekleri gör <span>↓</span></a>
+  </div>
+
+  <section>
+    <h2>Nasıl kullanılır</h2>
+    <ol>
+      <li><strong>Claude Code ya da Codex'i aç</strong><small>Videoyu dosya olarak almak için kod çalıştırabilen bir araç gerekir. Sohbet penceresinde çoğu zaman yalnız önizleme alırsın.</small></li>
+      <li><strong>Promptu kopyala, girdileri ver</strong><small>Her prompt önce senden konu, görsel ya da link ister. Ne kadar gerçek malzeme verirsen sonuç o kadar sana ait olur.</small></li>
+      <li><strong>Önce kareleri onayla</strong><small>Promptların hepsi tam videodan önce 4 kare göstermesini ister. Hatayı burada yakalamak en ucuzudur.</small></li>
+      <li><strong>Sonra tam videoyu al</strong><small>Onay verince 1080x1920 dikey MP4 çıkar. Ses ve müziği ayrıca eklersin.</small></li>
+    </ol>
+    <p class="note">Hepsi ücretsiz araçlarla çalışır: HyperFrames (HTML ile video), Three.js, Blender ve kamu malı arşiv fotoğrafları.</p>
+  </section>
+
+  <section id="ornek-1">
+    <span class="tag">3D · Three.js harita</span>
+    <h2>1. Yorumla büyüyen fetih haritası</h2>
+    <video class="clip tall" src="/konsept/01-fetih.mp4" poster="/konsept/01-fetih.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Gerçek dünya haritası üstünde ordular yorum sayısına göre büyür, sınırlar kayar, her ordunun başında bir takipçinin adı yazar.</p>
+    <p class="when"><b>Ne zaman:</b> yorumla oynanan seri içerik, "yorum yaz, ülken büyüsün" tarzı etkileşim videoları.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: başlangıç bölgesi (ülke ya da kıta), 3-6 oyuncu adı ve her birinin yorum sayısı (ya da yorumları yapıştırırım, sen say), her oyuncunun rengi (yoksa sen seç), kapanış cümlesi.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+15 saniyelik dikey Three.js sahnesi, 1080x1920, 30 fps. Gerçek dünya haritası: Natural Earth ülke sınırlarını (GeoJSON) kullan, kıtaları hafif kabartmalı (extrude 2-4 birim) koyu yeşil-bej tonlarla, denizi derin lacivert ve hafif dalgalı kur. Kamera önce uzaydan dünyayı görür, sonra seçilen bölgeye eğik açıyla (45°) iner. Her oyuncu kendi renginde, küçük low-poly asker figürlerinden oluşan bir ordu; ordunun üstünde oyuncunun adı ve yorum sayısı büyük, okunur (en az 56 px, beyaz, ince koyu gölgeli). Yorum arttıkça ordu çoğalır ve rengi komşu ülkelere yayılır.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-2 sn: uzaydan dünya, yavaş dönüş; ekranın üstünde tek cümle kanca ("Yorum sayın kadar toprak").
+2-5 sn: kamera bölgeye iner, ülke sınırları ince beyaz çizgiyle çizilir.
+5-11 sn: ordular sırayla belirir; her biri yorum sayısına göre büyür, ele geçirdiği ülke 0,4 sn içinde onun rengine boyanır. Sayaçlar 0'dan akar.
+11-13 sn: en çok yorum alan ordu bir sonraki ülkeye doğru yürür, kamera onu izler.
+13-15 sn: kamera yükselir, haritanın son hali görünür; altta "Sıradaki fetih senin yorumunla" çağrısı.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Natural Earth 110m ülke sınırlarını indir, seçilen bölgeyi süz, Three.js ExtrudeGeometry ile kabartmalı mesh'lere çevir (ülke başına bir mesh, renk değiştirmek için).
+2. Askerleri InstancedMesh ile kur (yüzlerce figür tek çizimle akıcı kalır). Adları HTML katmanında tut, 3D konumu her karede ekrana izdüşür.
+3. Sahneyi render(t) fonksiyonuna bağla; HyperFrames kompozisyonunda GSAP zaman çizelgesi bu fonksiyonu modifiers üzerinden çağırır (render kare kare atladığı için onUpdate kullanma).
+4. npx hyperframes render ile MP4 al.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Uydurma ya da yanlış ülke sınırları, siyasi taraf tutan ifade, okunmayan küçük isim etiketi, düz renkli 2D harita, kamera sarsıntısı, gerçek kişinin izni olmadan adını kullanmak.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce girdileri sor. Sonra 1, 4, 8 ve 13. saniyeden birer kare göster, onayımı bekle, ardından tam videoyu çıkar.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-2">
+    <span class="tag">3D · Low-poly mekân</span>
+    <h2>2. Meclis'te kanun nasıl çıkar</h2>
+    <video class="clip tall" src="/konsept/02-meclis.mp4" poster="/konsept/02-meclis.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Genel Kurul salonu küçük bir maket gibi kurulur; milletvekilleri ayağa kalkar, oylar sıralar halinde yanar ve sonuç büyük bir rakamla gelir.</p>
+    <p class="when"><b>Ne zaman:</b> yeni bir kanun, bir kurumun karar süreci, "bu nasıl işliyor" sorusuna cevap veren anlatım.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: anlatılacak kanun ya da karar, sürecin 3-4 adımı (yoksa resmî kaynaktan sen çıkar ve kaynağı yaz), oylama sonucu (kabul, ret, çekimser sayıları), tek cümlelik "bu seni nasıl etkiler" özeti.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+15 saniyelik dikey Three.js sahnesi, 1080x1920. TBMM Genel Kurul salonunu sade low-poly maket olarak kur: yarım daire sıralar, kürsü, Başkanlık Divanı, tavandan gelen yumuşak ışık. Milletvekilleri yüzsüz, yuvarlak hatlı küçük figürler (kapsül gövde, küre baş); renkler parti göstermez, nötr gri ve lacivert. Kamera salonun içinde yavaş yörüngede döner, hiç kesmez. Ekran yazıları büyük ve tek mesajlı (en az 80 px, beyaz, SF Pro ya da benzeri 700).
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-2 sn: salon karanlıktan aydınlanır, kanca cümlesi ("Bir kanun 4 adımda çıkar").
+2-5 sn: teklif kürsüye gelir: bir belge kürsünün üstünde süzülür, kamera ona yaklaşır.
+5-9 sn: görüşme: sıralardan figürler sırayla ayağa kalkıp oturur, salonun üstünde adım adı kelime kelime değişir (Teklif, Komisyon, Genel Kurul, Oylama).
+9-12 sn: oylama: koltuklar sıra sıra yeşil (kabul) ya da kırmızı (ret) yanar, ekranın üstünde iki sayaç 0'dan akar.
+12-15 sn: tokmak iner, sonuç rakamı büyür; altta "Resmî Gazete'de yayımlanınca yürürlüğe girer" gibi tek cümle.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Salonu Three.js ile koddan kur: sıralar için yarım halka üzerine dizilmiş InstancedMesh, figürler için ikinci bir InstancedMesh (her figürün rengi ve yüksekliği ayrı değişebilir).
+2. Oylama için koltuk başına renk değerini zamana bağla; sayaçlar HTML katmanında.
+3. Sahne render(t) ile zamana bağlı, HyperFrames kompozisyonunda modifiers üzerinden çağrılır. npx hyperframes render.
+4. Süreç adımlarını ve sayıları resmî kaynakla (TBMM sitesi, Resmî Gazete) doğrula, kaynağı açıklamaya yaz.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Gerçek milletvekili yüzü ya da adı, parti rengi ve logosu, taraf tutan yorum, doğrulanmamış sayı, uzun paragraf, kesme.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce süreç adımlarını ve kaynağını listele. Onaydan sonra 2, 6, 10 ve 14. saniyeden kare, sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-3">
+    <span class="tag">3D · Zaman yolculuğu</span>
+    <h2>3. Şehrin zaman yolculuğu</h2>
+    <video class="clip tall" src="/konsept/03-sehir.mp4" poster="/konsept/03-sehir.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Bir şehir aynı kamera açısından milyonlarca yıl yaşlanır: ormanlar, dinozorlar, buzul çağı, ilk yerleşim ve bugünün uydu görüntüsü. Köşede yıl sayacı akar.</p>
+    <p class="when"><b>Ne zaman:</b> bir şehrin, bölgenin ya da yerin "eskiden burası neydi" hikâyesi.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: şehir ya da yer, gösterilecek 4-5 dönem (yoksa jeoloji ve tarih kaynaklarından sen seç, kaynağı yaz), her dönem için tek kelimelik ad, kapanış cümlesi.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+15 saniyelik dikey Three.js sahnesi, 1080x1920. Kamera hep aynı yerin üstünde, hafif eğik kuşbakışı, çok yavaş döner; değişen yalnız zaman. Arazi gerçek yükseklik verisinden (SRTM) kurulur, kıyı çizgisi gerçek. Her dönem kendi dünyası: sık orman ve dinozor siluetleri, kar ve buz, ilk köyler, bugünün şehri (gerçek uydu dokusu). Dönemler arası geçiş: zemin dokusu ve bitki örtüsü aşağıdan yukarı dalga gibi değişir, gökyüzü ve ışık da dönemle birlikte döner. Sağ üstte yıl sayacı büyük ve okunur (en az 96 px), sayılar akarak değişir.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-2 sn: bugünün şehri, kanca cümlesi ("Burası 2 milyon yıl önce böyleydi").
+2-5 sn: zaman geri sarılır: sayaç hızla geriye akar, şehir siler gibi kaybolur, orman ve dinozorlar gelir.
+5-8 sn: buzul çağı: kar yağar, deniz çekilir, boğaz kuru bir vadiye döner.
+8-11 sn: ilk yerleşim: kıyıda küçük evler, duman, tekneler.
+11-15 sn: bugüne hızlı dönüş, gerçek uydu görüntüsü, kamera yükselir; altta kapanış cümlesi.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Bölgenin SRTM yükseklik verisini ve serbest lisanslı uydu dokusunu (Sentinel-2, ESA) indir, Three.js PlaneGeometry üzerine yükseklik olarak işle.
+2. Her dönem için ayrı doku ve nesne seti; geçişi tek shader içinde dalga eşiğiyle (zaman değeri) karıştır.
+3. Dinozor ve ağaçları low-poly modellerle (serbest lisanslı GLB) InstancedMesh olarak koy.
+4. Sahne render(t) ile zamana bağlı, HyperFrames kompozisyonunda modifiers üzerinden çağrılır. npx hyperframes render.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Bilimsel olarak yanlış dönem (aynı karede dinozor ve insan), uydurma kıyı çizgisi, lisansı belirsiz uydu görüntüsü, ani kesme, okunmayan sayaç.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce dönemleri ve yıllarını kaynaklarıyla listele. Onaydan sonra her dönemden birer kare, sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-4">
+    <span class="tag">2D · Çizgi anlatım</span>
+    <h2>4. Çizgi anlatım: tarih ve veri</h2>
+    <video class="clip tall" src="/konsept/04-cizgi.mp4" poster="/konsept/04-cizgi.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Koyu zemin üstünde ince beyaz çizgiler: yıl sayacı akar, nokta ızgarası nüfusu gösterir, harita çizilerek oluşur. Tek renk vurgu kırmızı.</p>
+    <p class="when"><b>Ne zaman:</b> tarihî bir süreç, nüfus ya da oran değişimi, bir çatışmanın ya da sınırın hikâyesi.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: konu, 4-6 an (yıl ve tek cümle), gösterilecek oranlar ya da sayılar (kaynağıyla), harita gerekiyorsa bölge.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+15-30 saniyelik dikey 2D anlatım, 1080x1920. Zemin koyu (#131116), çizgiler ince beyaz (2 px), tek vurgu rengi kırmızı (#E5322D); başka renk yok. Her öğe çizilerek gelir: çizgiler uçtan uca uzar, harita sınırları kalem gibi çizilir, noktalar tek tek dolar. Başlıklar serif (Fraunces 600), maskeden yükselir; açıklamalar sade sans (SF Pro 500), ekranın üstünde en fazla iki satır. Bir kırmızı nokta sahneden sahneye taşınarak anlatımı birbirine bağlar.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-2 sn: kırmızı nokta belirir, büyük serif başlık maskeden yükselir.
+2-6 sn: yıl sayacı (en az 140 px) akar; altında 10x10 nokta ızgarası, her nokta yüzde 1; oran değiştikçe noktalar beyaz ve boş arasında dolar, altında yüzde rakamı akar.
+6-11 sn: kırmızı nokta haritaya taşınır; bölge sınırları çizilir, değişen alanlar kırmızıyla dolar.
+11-15 sn: zaman çizgisi: yatay çizgi üstünde yıllar sırayla işaretlenir, son an büyür; kapanış cümlesi.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. HyperFrames kompozisyonu, tamamen SVG: çizgiler için stroke-dasharray ve stroke-dashoffset tween'i, nokta ızgarası için 100 küçük daire.
+2. Harita sınırları için Natural Earth GeoJSON'u d3-geo ile SVG yoluna çevir.
+3. Sayaçlar ve yüzdeler modifiers ile her karede hesaplanır. npx hyperframes render.
+4. Her yıl ve oranı kaynakla doğrula; kaynakları açıklamaya yaz.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+İkinci bir vurgu rengi, gradyan, 3D efekt, kaynaksız sayı, taraf tutan sıfat, ekranda paragraf.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce anları ve kaynaklarını listele. Onaydan sonra 1, 4, 8 ve 13. saniyeden kare, sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-5">
+    <span class="tag">3D · Sinematik ışık</span>
+    <h2>5. Fikir anlatımı: ışık ve gölge</h2>
+    <video class="clip tall" src="/konsept/05-felsefe.mp4" poster="/konsept/05-felsefe.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Soyut bir fikir tek bir sinematik sahneyle anlatılır: karanlık mekân, tek ışık kaynağı, duvara düşen gölgeler ve büyük bir soru.</p>
+    <p class="when"><b>Ne zaman:</b> felsefe, psikoloji, iş dünyasından bir ilke ya da bir kitap özeti.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: anlatılacak fikir, fikri tek görüntüde anlatan bir sahne önerisi (yoksa sen öner), kapanış sorusu.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+15 saniyelik dikey Three.js sahnesi, 1080x1920. Karanlık, sıcak tonlu bir mekân; tek güçlü ışık kaynağı (ateş, pencere, lamba) ve onun düşürdüğü uzun yumuşak gölgeler. Havada ince toz parçacıkları ışıkta parlar. Kamera ağır ağır ilerler, hiç kesmez. Yazı yalnız sonda: tek soru, serif bir font (Fraunces 600), kelime kelime odaktan netleşir.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-3 sn: tam karanlıktan ışık yanar, sahne ortaya çıkar.
+3-10 sn: kamera fikrin merkezine doğru yaklaşır; gölgeler hareket eder, ışık titrer.
+10-12 sn: bakış açısı değişir: gölgenin kaynağı görünür (fikrin "aha" anı).
+12-15 sn: soru belirir, kamera durmadan çok yavaş geri çekilir.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Three.js, gölgeli PointLight ya da SpotLight, sis (FogExp2) ve hafif bloom.
+2. Figürler basit geometrilerden (kapsül, küre) kurulabilir; asıl iş ışık ve gölgede.
+3. Sahne render(t) ile zamana bağlı, HyperFrames kompozisyonunda modifiers üzerinden çağrılır. npx hyperframes render.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Düz, gölgesiz aydınlatma, ekranda uzun paragraf, hazır stok görsel, kamera sarsıntısı, kesme.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce sahne önerini iki cümleyle anlat. Onaydan sonra 2, 6, 11 ve 14. saniyeden kare, sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-6">
+    <span class="tag">Çizgi karakter · SVG</span>
+    <h2>6. Maskot karakter</h2>
+    <video class="clip tall" src="/konsept/06-karakter.mp4" poster="/konsept/06-karakter.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Markanın ya da konunun sevimli bir karakteri olur: göz kırpar, zıplar, el sallar, konuşur. Her video aynı karakterle seri olur.</p>
+    <p class="when"><b>Ne zaman:</b> çocuklara ve gençlere yönelik içerik, marka maskotu, kısa eğitim serisi.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: karakterin adı ve kişiliği (3 sıfat), neyden ilham aldığı (örn. su damlası, kedi, robot), marka renkleri, karakterin söyleyeceği tek cümle, varsa seslendirme dosyası.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+10 saniyelik dikey çizgi animasyon, 1080x1920. Karakter tek parça SVG ama ayrı katmanlarda: gövde, gözler, göz kapakları, ağız, kollar. Kalın ve yuvarlak dış çizgi (8 px, #1E2430), düz renk dolgu, tek yumuşak gölge. Animasyonun 12 ilkesini uygula: zıplamada ezilip uzama (squash and stretch), hazırlık hareketi, takip eden hareket. Zemin açık ve sade, arkada yavaş süzülen 2-3 şekil.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-1,5 sn: karakter yukarıdan düşer, yere değince ezilir ve toparlanır.
+1,5-3 sn: etrafa bakar, iki kez göz kırpar.
+3-7 sn: el sallar ve cümlesini söyler; ağız sesin şiddetine göre açılıp kapanır, cümle konuşma balonunda kelime kelime belirir.
+7-10 sn: sevinçle zıplar, ardında küçük parıltılar; son pozda durmadan nefes alır (hafif büyüyüp küçülme).
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Karakteri SVG olarak çiz; her parçanın dönme noktasını svgOrigin ile ver, yoksa parçalar yanlış yerden döner.
+2. Ses varsa ffmpeg ile ses şiddetini kare başına çıkar, ağız açıklığını buna bağla.
+3. HyperFrames kompozisyonunda GSAP zaman çizelgesi. npx hyperframes render.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Robotik doğrusal hareket (ease: none), tamamen donan poz, ince kırık çizgiler, başka bir markanın karakterine benzeyen tasarım.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce karakteri 3 farklı pozda durağan görsel olarak göster. Seçtiğim tasarımla 4 kare, sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-7">
+    <span class="tag">Animasyonlu çizim</span>
+    <h2>7. Beyaz tahta</h2>
+    <video class="clip tall" src="/konsept/07-tahta.mp4" poster="/konsept/07-tahta.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Bir kalem fikri adım adım çizer: ampul, bilgisayar, roket. Kamera çizimi takip eder, sonunda tüm sayfayı gösterir.</p>
+    <p class="when"><b>Ne zaman:</b> bir süreci, iş modelini ya da adım adım bir yöntemi anlatırken.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: anlatılacak süreç, 3-4 adım (her adım için tek kelimelik etiket ve onu anlatan basit bir nesne), vurgu rengi.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+10 saniyelik dikey beyaz tahta videosu, 1080x1920. Kırık beyaz zemin (#FAF9F5), 60 px aralıklı çok soluk kareli çizgi. Çizimler kalın yuvarlak uçlu kontur (10 px, #1E2430), el yapımı hissi için hafif eğri. Mavi bir keçeli kalem çizginin ucunu gerçekten takip eder. Kontur bitince içi tek renk dolar. Etiketler kalın, büyük (90 px), soldan sağa yazılıyormuş gibi açılır ve altı çizilir.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+Her adım yaklaşık 2 sn: nesne çizilir (1,2 sn), dolar (0,3 sn), etiket yazılır ve altı çizilir (0,5 sn); adımlar arasında aşağı doğru bir ok çizilir.
+Kamera: yakından başlar, çizilen adımı takip ederek aşağı iner.
+Son 1,5 sn: kamera geri çekilir, tüm sayfa görünür, son nesne canlanır (örn. roket kalkar).
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Her çizgiyi ayrı bir SVG yolu olarak yaz; strokeDasharray ve strokeDashoffset ile çiz.
+2. Kalemin konumunu getPointAtLength ile çizginin ucundan al; çizgiler arasında kalemi yumuşakça bir sonraki başlangıca taşı.
+3. Tüm çizim mantığını tek bir zaman fonksiyonunda topla, GSAP modifiers ile zamana bağla. HyperFrames ile npx hyperframes render.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Kalemin çizgiden kopması, çizgilerin aynı anda belirmesi, hazır clip-art, ekranda uzun cümle.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce adım listesini ve nesneleri onayla. Sonra 2, 4, 6 ve 9. saniyeden kare, ardından tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-8">
+    <span class="tag">Resimli · Kâğıt kesik</span>
+    <h2>8. Kâğıt masal</h2>
+    <video class="clip tall" src="/konsept/08-masal.mp4" poster="/konsept/08-masal.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Kat kat kesilmiş kâğıt manzara derinlikte kayar; ay doğar, pencere yanar, ateş böcekleri uçar, masalın ilk cümlesi belirir.</p>
+    <p class="when"><b>Ne zaman:</b> hikâye anlatımı, marka hikâyesi, çocuk içeriği, duygusal açılışlar.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: hikâyenin ilk cümlesi, mekân (orman, deniz kıyısı, şehir), gece mi gündüz mü, 3 renk.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+10 saniyelik dikey kâğıt kesik animasyon, 1080x1920. Sahne 4 katman: uzak dağlar, ev ya da ana nesnenin olduğu tepe, ağaçlar, ön plan. Her katman düz renk, kenarlarında yumuşak gölge (kâğıt kalınlığı hissi). Paralaks: uzak katman 20 px, en yakın 180 px kayar. Tüm sahnenin üstünde hafif kâğıt dokusu ve köşelerde karartma. Yazı sıcak krem (#FFF6DE), kelime kelime bulanıklıktan netleşir.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-1,5 sn: katmanlar sırayla aşağıdan yerine oturur (0,12 sn arayla, hafif yaylanarak), ay yükselir.
+1,5-4 sn: başlık kelime kelime belirir, yıldızlar parlar.
+4-7 sn: hikâyenin canlı anı: pencere yanar, bacadan duman çıkar, ateş böcekleri yükselir.
+7-10 sn: kayan yıldız geçer, kamera durmadan çok yavaş yaklaşır.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Katmanları SVG yolları olarak çiz; doku için feTurbulence filtresi.
+2. Yıldız ve ateş böcekleri için tohumlu rastgele sayı kullan ki her render aynı çıksın.
+3. Aynı özelliğe aynı anda iki tween bağlama (örn. dumanın yükselmesi ve solması ayrı tween olsun). HyperFrames ile npx hyperframes render.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Fotoğraf gerçekliği, keskin dijital parlama, tek katmanlı düz sahne, çok uzun yazı.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce renk paletini ve katman çizimini durağan tek kare olarak göster. Onaydan sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-9">
+    <span class="tag">3D · Blender</span>
+    <h2>9. Kil diorama</h2>
+    <video class="clip tall" src="/konsept/09-diorama.mp4" poster="/konsept/09-diorama.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Havada süzülen minyatür bir dünya: evler, ağaçlar, dönen yel değirmeni, yolda giden araba. Kamera yavaşça etrafında döner.</p>
+    <p class="when"><b>Ne zaman:</b> bir şehri, bir işletmeyi ya da bir ekosistemi sevimli ve "dokunulabilir" göstermek için.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: dioramada ne olacak (örn. kafe, kampüs, köy), 5-8 nesne, renk paleti, hareket edecek 2-3 şey.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+7 saniyelik dikey 3D render, 1080x1920, 30 fps. Gökte süzülen yuvarlak bir ada: üstü çimen, altı katmanlı toprak. Her şey yumuşak köşeli, mat, hafif içten ışık alan kil malzemesi (roughness 0,85). Pastel gökyüzü, bir güneş ve bir yumuşak dolgu ışığı. Kamera 70° yörüngeyle döner ve hafif yaklaşır; hiçbir an durmaz.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+0-7 sn tek çekim: yel değirmeni döner, araba adanın etrafındaki yolda ilerler, bulutlar yavaşça yükselip alçalır, ağaçlar nefes alır gibi hafifçe büyüyüp küçülür.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Sahneyi tek bir Python betiği olarak yaz: bpy ile nesneleri kur, malzemeleri ver, her kareye anahtar kare ekle.
+2. Motor EEVEE, 16 örnek (32'de çok yavaşlar), gölgeler açık.
+3. Arka planda çalıştır: blender -b -P sahne.py (kareler PNG olarak bir klasöre yazılır).
+4. Önce tek kare render et (orta kare), kontrol et; sonra tüm animasyon.
+5. Kareleri ffmpeg ile birleştir: ffmpeg -framerate 30 -i kareler/%04d.png -c:v libx264 -crf 20 -pix_fmt yuv420p diorama.mp4
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Keskin köşeli parlak plastik görünüm, kararmış gölgeler, kamera sarsıntısı, ilk karede yarım yüklenmiş sahne.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce orta kareyi tek görsel olarak göster. Renk ve kompozisyonu onaylayınca tam render.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section id="ornek-10">
+    <span class="tag">Gerçekçi · Arşiv fotoğrafı</span>
+    <h2>10. Belgesel</h2>
+    <video class="clip tall" src="/konsept/10-belgesel.mp4" poster="/konsept/10-belgesel.jpg" controls muted loop playsinline preload="metadata"></video>
+    <p>Gerçek arşiv fotoğrafları yavaş yakınlaşma ve kaymayla canlanır; film greni, ışık sızması ve alt bantta tarih ile tek cümle.</p>
+    <p class="when"><b>Ne zaman:</b> tarihî olay, bir şirketin kuruluş hikâyesi, bir kişinin biyografisi.</p>
+    <div class="code"><pre>&lt;girdiler&gt;
+Benden iste: olay ya da kişi, 4 an (tarih ve tek cümle). Fotoğrafları kendin bul: yalnız kamu malı ya da serbest lisanslı arşivlerden (NASA, Wikimedia Commons, Library of Congress) al ve her birinin kaynağını listele.
+&lt;/girdiler&gt;
+
+&lt;yön&gt;
+7-15 saniyelik dikey belgesel, 1080x1920. Her fotoğraf ekranı doldurur ve Ken Burns hareketiyle canlanır: biri yakınlaşır, biri uzaklaşır, biri yana kayar (sırayla farklı). Fotoğraflar arası 0,3 sn yumuşak geçiş. Hafif sepya ve kontrast, hareket eden film greni, köşelerde karartma, geçişlerde kısa sıcak ışık sızması. Alt bant: üstte geniş aralıklı ince tarih (40 px), altında kalın tek cümle (90 px), altında çizilen ince bir çizgi.
+&lt;/yön&gt;
+
+&lt;yapı&gt;
+Her fotoğraf yaklaşık 2 sn (toplam 4 fotoğraf).
+0,4 sn: ilk alt bant maskeden yükselir, 2. saniyede söner.
+Ortadaki iki fotoğrafta yazı yok, görüntü konuşur.
+Son fotoğrafta ikinci alt bant gelir ve sona kadar kalır.
+&lt;/yapı&gt;
+
+&lt;yapım&gt;
+1. Fotoğrafları indir, lisanslarını doğrula, dikeye uygun kırpma noktasını seç (yüzler ve ana nesne ortada kalsın).
+2. HyperFrames kompozisyonu: her fotoğraf için ölçek ve konum tween'i; gren için SVG feTurbulence katmanı, konumu modifiers ile her kare değişir.
+3. Tarihleri ve cümleleri kaynakla doğrula. npx hyperframes render.
+&lt;/yapım&gt;
+
+&lt;yasaklar&gt;
+Lisansı belirsiz görsel, yapay zekâ ile üretilmiş sahte "arşiv" fotoğrafı, yanlış tarih, iki fotoğrafın aynı hareketi yapması.
+&lt;/yasaklar&gt;
+
+&lt;başlangıç&gt;
+Önce bulduğun fotoğrafları kaynaklarıyla listele. Onaydan sonra 4 kare, sonra tam video.
+&lt;/başlangıç&gt;</pre><button class="copy">Kopyala</button></div>
+    <a class="apply all" href="#" id="hepsi">Tüm promptları indir <span>↓</span></a>
+    <p class="checked">İlk beş örnek bu tarzda yayılan anlatım videolarından kısa kesitlerdir, diğerleri promptların uygulanmasıyla üretildi. Belgesel fotoğrafları NASA arşivinden, kamu malıdır.</p>
+  </section>
+</main>
+
+<div class="end">
+  <div class="wrap">
+    <h2>İşini hızlandıracak yeni videolar yolda</h2>
+    <p>Kaçırmamak için beni takip etmeyi unutma.</p>
+    <a class="btn dark" href="https://www.instagram.com/tunacodin/" target="_blank" rel="noopener">Instagram'da takip et <span>→</span></a>
+    <a class="btn" href="https://www.tunabostancibasi.com/">Diğer projelerime bak <span>→</span></a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(b.previousElementSibling.textContent).then(function () {
+        b.textContent = "Kopyalandı";
+        b.classList.add("ok");
+        setTimeout(function () { b.textContent = "Kopyala"; b.classList.remove("ok"); }, 1500);
+      });
+    });
+  });
+  document.getElementById("hepsi").addEventListener("click", function (e) {
+    e.preventDefault();
+    var md = "# 10 animasyonlu anlatım şablonu ve promptu\n\n";
+    document.querySelectorAll("section[id^=ornek]").forEach(function (s) {
+      md += "## " + s.querySelector("h2").textContent + "\n\n" + s.querySelector("pre").textContent + "\n\n";
+    });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([md], { type: "text/markdown" }));
+    a.download = "10-anlatim-sablonu-promptlari.md";
+    a.click();
+  });
+</script>
+
+</body>
+</html>
