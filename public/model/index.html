@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NVIDIA'nın ücretsiz 3D modelleri: SimReady rehberi | Tuna Bostancıbaşı</title>
+<meta name="description" content="NVIDIA SimReady kütüphanesinden 3D model bulma, tek modeli indirme, Blender'da açma ve oyun motoru ya da web için GLB'ye çevirme adımları tek sayfada." />
+<meta property="og:title" content="NVIDIA'nın ücretsiz 3D modelleri: SimReady rehberi" />
+<meta property="og:description" content="Binlerce hazır 3D model. Nerede aranır, nasıl indirilir, Blender'da nasıl açılır, lisansta nelere dikkat edilir." />
+<meta property="og:url" content="https://www.tunabostancibasi.com/model/" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://www.tunabostancibasi.com/model/kapak.jpg" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="1080" />
+<meta property="og:image:alt" content="NVIDIA SimReady 3D model kütüphanesi" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://www.tunabostancibasi.com/model/kapak.jpg" />
+<link rel="icon" href="https://www.tunabostancibasi.com/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0B0C0F;
+    --paper: #FFFFFF;
+    --soft: #F4F5F7;
+    --line: #E3E5EA;
+    --muted: #5B606B;
+    --green: #76B900;
+    --green-deep: #5A8E00;
+    --green-soft: #EEF7DC;
+    --r: 14px;
+    --r-s: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .me { font-weight: 700; text-decoration: none; }
+  .me-link { font-size: 14px; color: var(--muted); text-decoration: none; }
+
+  .hero { padding: 32px 0 28px; }
+  h1 {
+    font-weight: 800;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .lead { margin-top: 12px; font-size: 18px; }
+  .lead b { color: var(--green-deep); }
+  .shot {
+    margin-top: 22px; border: 1px solid var(--line); border-radius: var(--r);
+    overflow: hidden; box-shadow: 0 18px 40px -24px rgba(11, 12, 15, .35);
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  .apply {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 22px; padding: 18px 20px;
+    background: var(--ink); color: #fff; text-decoration: none; border-radius: var(--r);
+    font-size: 20px; font-weight: 700;
+  }
+  .apply:active { background: #23252B; }
+  .apply span { font-size: 24px; color: var(--green); }
+  .official { display: inline-block; margin-top: 10px; font-size: 14px; color: var(--muted); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+  .stat { background: var(--soft); border-radius: var(--r); padding: 16px 14px; }
+  .stat b { display: block; font-size: clamp(26px, 7vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .stat small { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
+
+  section { border-top: 1px solid var(--line); padding: 24px 0; }
+  h2 { font-size: 22px; margin-bottom: 12px; }
+  ul, ol { list-style: none; }
+  li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  li:last-child { border-bottom: 0; }
+  li strong { display: block; font-weight: 600; }
+  li small { display: block; color: var(--muted); font-size: 15px; }
+  .yes li, .no li { padding-left: 30px; position: relative; }
+  .yes li::before, .no li::before {
+    position: absolute; left: 0; top: 12px; width: 20px; height: 20px;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700; border-radius: 50%;
+  }
+  .yes li::before { content: "✓"; background: var(--green-soft); color: var(--green-deep); }
+  .no li::before { content: "!"; background: var(--soft); color: var(--ink); }
+  ol { counter-reset: s; }
+  ol li { counter-increment: s; padding-left: 40px; position: relative; }
+  ol li::before {
+    content: counter(s); position: absolute; left: 0; top: 10px;
+    width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--r-s);
+    background: var(--ink); color: #fff; font-weight: 700;
+  }
+  .checked { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .code { position: relative; margin-top: 10px; }
+  .code pre {
+    background: var(--ink); color: #fff; border-radius: var(--r-s);
+    padding: 46px 16px 14px; overflow-x: auto;
+    font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    white-space: pre;
+  }
+  .code.prompt pre { white-space: pre-wrap; font-family: inherit; font-size: 15px; }
+  .copy {
+    position: absolute; top: 8px; right: 8px;
+    padding: 6px 10px; border: 0; border-radius: var(--r-s);
+    background: var(--green); color: var(--ink); font: 600 13px "Inter", sans-serif; cursor: pointer;
+  }
+  .copy.ok { background: #fff; color: var(--ink); }
+  .note { margin-top: 10px; font-size: 15px; color: var(--muted); }
+  code { font: 14px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--soft); padding: 1px 5px; border-radius: 4px; }
+
+  .end { background: var(--soft); border-top: 1px solid var(--line); padding: 28px 0 40px; }
+  .end .wrap { display: grid; gap: 10px; }
+  .btn {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px; text-decoration: none; font-weight: 600;
+    border: 1px solid var(--ink); background: var(--paper); border-radius: var(--r);
+  }
+  .btn.dark { background: var(--ink); color: #fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="me" href="https://www.tunabostancibasi.com/">Tuna Bostancıbaşı</a>
+    <a class="me-link" href="https://www.tunabostancibasi.com/">Projelerim →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>NVIDIA'nın ücretsiz 3D modelleri</h1>
+    <p class="lead">SimReady: robot ve fabrika simülasyonu için hazırlanmış, <b>gerçek ölçüsüyle gelen</b> binlerce hazır model. Ara, beğendiğini indir, <b>Blender'da aç</b>.</p>
+    <div class="shot"><img src="kutuphane.jpg" alt="SimReady kütüphanesinden model örnekleri" width="1176" height="896" /></div>
+    <a class="apply" href="https://huggingface.co/spaces/nvidia/simready-central" target="_blank" rel="noopener">Modelleri ara <span>→</span></a>
+    <a class="official" href="https://huggingface.co/datasets/nvidia/simready-assets" target="_blank" rel="noopener">Tüm kütüphaneyi Hugging Face'te gör</a>
+  </div>
+
+  <section>
+    <h2>Kutudan ne çıkıyor?</h2>
+    <div class="stats">
+      <div class="stat"><b>2.603</b><small>NVIDIA modeli</small></div>
+      <div class="stat"><b>12</b><small>üretici koleksiyonu</small></div>
+      <div class="stat"><b>0 TL</b><small>NVIDIA setinde</small></div>
+    </div>
+    <ul class="yes">
+      <li><strong>Gerçek ölçü ve malzeme</strong><small>Modeller simülasyon için yapıldığı için boyutları gerçek dünyayla aynı, dokuları hazır.</small></li>
+      <li><strong>Fizik bilgisi içinde</strong><small>Paketlerde PhysX, MuJoCo ve Newton için fizik katmanları geliyor.</small></li>
+      <li><strong>Geniş yelpaze</strong><small>Otomotiv parçası, robot kol, ev aleti, mutfak eşyası, hastane ekipmanı, yiyecek.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Ne yapabilirsin?</h2>
+    <ul class="yes">
+      <li><strong>Dönen ürün çekimi</strong><small>Modeli Blender'a at, ışık ve kamera koy, dakikalar içinde tanıtım videosu çıkar.</small></li>
+      <li><strong>Oyun ve uygulama</strong><small>GLB'ye çevirip Unity, Unreal Engine ya da Godot projene ekle.</small></li>
+      <li><strong>Sitende döndürülebilir 3D</strong><small>GLB dosyası web sayfasında elle çevrilebilen model olarak gösterilebilir.</small></li>
+      <li><strong>Robot ve dijital ikiz demosu</strong><small>Isaac Sim ve Omniverse modelleri doğrudan açıyor.</small></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Siteden indir</h2>
+    <ol>
+      <li><strong>Arama sayfasını aç</strong><small>Yukarıdaki "Modelleri ara" düğmesi SimReady Central'ı açar. Hesap gerekmez.</small></li>
+      <li><strong>Aradığın ürünü yaz</strong><small>İngilizce yaz: "robot arm", "kettle", "chair" gibi. Üretici koleksiyonları da ayrıca listeleniyor.</small></li>
+      <li><strong>Modeli aç ve incele</strong><small>3D görüntüleyicide çevir, boyutuna ve lisansına bak.</small></li>
+      <li><strong>İndir</strong><small>Model sayfasındaki indirme düğmesiyle paket bilgisayarına iner. İçinde <code>.usd</code> dosyaları ve dokular var.</small></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Tek modeli komutla indir</h2>
+    <p class="note">Kütüphanenin tamamı yaklaşık 490 GB. Hepsini indirme, yalnız istediğin modelin klasörünü al. Klasör adını Hugging Face'teki dosya listesinden bulursun.</p>
+    <div class="code"><pre>pip install -U huggingface_hub
+python -c "from huggingface_hub import snapshot_download as s; s('nvidia/simready-assets', repo_type='dataset', allow_patterns='food_banana_a01/simready_usd/**', ignore_patterns=['**/source_assets/**','**/.thumbs/**'], local_dir='C:/sr')"</pre><button class="copy">Kopyala</button></div>
+    <p class="note">Örnekteki <code>food_banana_a01</code> yerine kendi modelinin klasör adını yaz. Windows'ta kısa bir klasör seç (<code>C:/sr</code> gibi), uzun yollar indirmeyi yarıda keser.</p>
+  </section>
+
+  <section>
+    <h2>Blender'da aç, GLB'ye çevir</h2>
+    <ol>
+      <li><strong>Blender'ı aç</strong><small>Ücretsiz, blender.org adresinden iner. 4.x sürümleri USD'yi doğrudan açıyor.</small></li>
+      <li><strong>İçe aktar</strong><small>File, Import, Universal Scene Description. Model klasöründeki ana <code>.usd</code> dosyasını seç.</small></li>
+      <li><strong>Oyun motoru ya da web için dışa aktar</strong><small>File, Export, glTF 2.0. Biçim olarak <code>.glb</code> seç. Unity, Unreal ve web sayfaları bu dosyayı açar.</small></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Claude Code'a bunu yapıştır</h2>
+    <div class="code prompt"><pre>NVIDIA'nın Hugging Face'teki nvidia/simready-assets veri setinden [model adı] modelini indir. Yalnız o modelin simready_usd klasörünü al, source_assets ve .thumbs klasörlerini atla, C:/sr altına kaydet. Sonra Blender'ı arka planda çalıştırıp USD dosyasını içe aktar ve aynı klasöre .glb olarak dışa aktar. Bitince dosya boyutunu ve kaç parça olduğunu söyle.</pre><button class="copy">Kopyala</button></div>
+  </section>
+
+  <section>
+    <h2>Bilmen gerekenler</h2>
+    <ul class="no">
+      <li><strong>NVIDIA setinde tek şart: adını belirtmek</strong><small>Lisans CC BY 4.0. Ticari işte de kullanabilirsin, açıklamada ya da jenerikte NVIDIA'yı kaynak olarak yazman yeterli.</small></li>
+      <li><strong>Üretici koleksiyonlarında lisans değişir</strong><small>LG, FANUC, Universal Robots gibi firmaların modellerinde lisansı firma seçiyor. Bazıları ticari kullanıma kapalı olabilir, modelin sayfasına bak.</small></li>
+      <li><strong>Büyük modeller ağır</strong><small>Bir motor paketi 700 MB, bir robot araba 1,7 GB tutabiliyor. Entegre ekran kartında ışın izlemeli çekim çökebilir, EEVEE ile çek.</small></li>
+    </ul>
+    <p class="checked">Bilgiler 29 Ekim 2026'da Hugging Face sayfasından ve kendi denememizden kontrol edildi.</p>
+  </section>
+</main>
+
+<div class="end">
+  <div class="wrap">
+    <a class="btn dark" href="https://huggingface.co/spaces/nvidia/simready-central" target="_blank" rel="noopener">Modelleri ara <span>→</span></a>
+    <a class="btn" href="/model/index.html" download="nvidia-3d-modeller.html">Bu sayfayı indir <span>↓</span></a>
+    <a class="btn" href="https://www.tunabostancibasi.com/">Diğer projelerime bak <span>→</span></a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(b.previousElementSibling.textContent).then(function () {
+        b.textContent = "Kopyalandı";
+        b.classList.add("ok");
+        setTimeout(function () { b.textContent = "Kopyala"; b.classList.remove("ok"); }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
